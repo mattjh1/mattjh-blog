@@ -1,0 +1,9 @@
+/public/
+/resources/_gen/
+
+hugo.exe
+hugo.linux
+hugo.darwin
+
+# Temporary lock file while building
+/.hugo_build.lock
