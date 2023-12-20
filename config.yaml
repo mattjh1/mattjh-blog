@@ -1,4 +1,4 @@
-baseURL: http://example.org/
+baseURL: http://localhost:1313/
 languageCode: en-us
 title: My New Hugo Site
 
@@ -6,3 +6,29 @@ module:
   imports:
     - path: github.com/LordMathis/hugo-theme-nightfall
 
+menu:
+  header:
+    - name: posts
+      weight: 0
+      url: post
+    - name: about
+      weight: 1
+      url: about
+    - name: cv
+      weight: 3
+      url: https://mattjh1.github.io/mattjh-terminal-cv/
+      hrefTargetBlank: true
+params:
+  author: Mattias Holmgren
+  user: mattjh
+  hostname: blog
+  social:
+    - key: 0
+      name: github
+      url: "https://github.com/mattjh1"
+    - key: 1
+      name: linkedin
+      url: "https://www.linkedin.com/in/mattias-holmgren-b2407714a/"
+    - key: 2
+      name: email
+      url: "mailto:mattias.holmgren46@gmail.com"
