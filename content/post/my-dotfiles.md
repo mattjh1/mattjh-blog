@@ -4,11 +4,13 @@ date: 2023-11-26T19:00:00+00:00
 draft: false
 ---
 
-Welcome to the heart of my computing environment.
+**Update:** I've recently revamped my dotfiles to create an even more streamlined and powerful setup. Check out the [new dotfiles configuration](./new-dotfiles.md) `ansible`, `chezmoi`, `Go templates`, `1password`, and enhanced portability across different systems.
 
 <!--more-->
 
-My dotfiles, hosted on [GitHub](https://github.com/mattjh1/dotfiles), are the core of my daily workflow. Carefully configured for productivity and centered around a keyboard-centric approach, these files simplify tasks. While designed for my use, feel free to explore and adopt elements that suit your preferences.
+Welcome to the heart of my computing environment.
+
+My dotfiles, hosted on [GitHub](https://github.com/mattjh1/dotfiles.old), are the core of my daily workflow. Carefully configured for productivity and centered around a keyboard-centric approach, these files simplify tasks. While designed for my use, feel free to explore and adopt elements that suit your preferences.
 
 ## The Essence of Dotfiles
 
@@ -34,7 +36,7 @@ Here's a quick overview of key components in my dotfiles repository:
 
 ## Seamless Installation with a Script
 
-To bring these dotfiles to your system, I've crafted a convenient installation script. The script, available [here](https://raw.githubusercontent.com/mattjh1/dotfiles/main/install.sh), performs the following tasks:
+To bring these dotfiles to your system, I've crafted a convenient installation script. The script, available [here](https://raw.githubusercontent.com/mattjh1/dotfiles.old/main/install.sh), performs the following tasks:
 
 1. **Clones the Repo**: A bare Git repository is cloned to your system.
 2. **Configures Git**: Sets up a function specifying the git-dir and work-tree.
@@ -44,7 +46,7 @@ To bring these dotfiles to your system, I've crafted a convenient installation s
 To install, run the following command in your terminal:
 
 ```bash
-curl -Lks https://raw.githubusercontent.com/mattjh1/dotfiles/main/install.sh | /bin/sh
+curl -Lks https://raw.githubusercontent.com/mattjh1/dotfiles.old/main/install.sh | /bin/sh
 ```
 
 Before executing the script, take a moment to inspect it and ensure compatibility with your system.
@@ -55,7 +57,7 @@ A significant aspect of my dotfiles philosophy is the emphasis on a keyboard-cen
 
 Stay tuned for deeper dives into specific components, such as my Neovim setup with Lua, Hammerspoon automation scripts, and the reasoning behind specific tweaks in my Git configurations.
 
-Let the journey into the intricacies of my dotfiles begin! Your keyboard is your guide.
+Let the journey into the intricacies of dotfiles begin! Your keyboard is your guide.
 
 ## Drawing Inspiration
 

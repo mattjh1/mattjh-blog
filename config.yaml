@@ -1,6 +1,6 @@
 baseURL: http://localhost:1313/
 languageCode: en-us
-title: My New Hugo Site
+title: Mattjh blog
 
 module:
   imports:
@@ -11,12 +11,12 @@ menu:
     - name: posts
       weight: 0
       url: post
-    - name: about
+    - name: whoami
       weight: 1
-      url: about
+      url: whoami
     - name: cv
       weight: 3
-      url: https://mattjh1.github.io/mattjh-terminal-cv/
+      url: https://cv.mattjh.sh/
       hrefTargetBlank: true
 params:
   author: Mattias Holmgren
@@ -31,4 +31,4 @@ params:
       url: "https://www.linkedin.com/in/mattias-holmgren-b2407714a/"
     - key: 2
       name: email
-      url: "mailto:mattias.holmgren46@gmail.com"
+      url: "mailto:me@mattjh.sh"
