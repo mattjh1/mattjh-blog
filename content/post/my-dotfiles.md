@@ -4,11 +4,11 @@ date: 2023-11-26T19:00:00+00:00
 draft: false
 ---
 
-**Update:** I've recently revamped my dotfiles to create an even more streamlined and powerful setup. Check out the [new dotfiles configuration](./new-dotfiles.md) `ansible`, `chezmoi`, `Go templates`, `1password`, and enhanced portability across different systems.
+Welcome to the heart of my computing environment. The core of my daily workflow.
 
 <!--more-->
 
-Welcome to the heart of my computing environment.
+**Update:** I've recently revamped my dotfiles to create an even more streamlined and powerful setup. Check out the [new dotfiles configuration](./new-dotfiles.md) `ansible`, `chezmoi`, `Go templates`, `1password`, and enhanced portability across different systems.
 
 My dotfiles, hosted on [GitHub](https://github.com/mattjh1/dotfiles.old), are the core of my daily workflow. Carefully configured for productivity and centered around a keyboard-centric approach, these files simplify tasks. While designed for my use, feel free to explore and adopt elements that suit your preferences.
 

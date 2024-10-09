@@ -1,12 +1,25 @@
 ---
 title: "updated dotfiles"
-date: 2024-09-08T19:00:00+00:00
-draft: false
+date: "2024-09-08"
+description: "Major rework done to create a robust and portable way to manage my dev configuration across platforms"
+tags:
+  - ansible
+  - chezmoi
+  - templates
+  - lua
+  - shell
+categories:
+  - customization
+  - tweakfest
+  - automation
+  - dotfiles
 ---
 
-After a significant overhaul of my dotfiles, I'm excited to share my new setup! This version moves away from a bare Git repository approach and embraces a more robust solution tailored for managing different environments. Many things in my [old post](./my-dotfiles.md) is still relevant but this just adds to it.
+After a significant overhaul of my dotfiles, I'm excited to share my new setup!
 
 <!--more-->
+
+This version moves away from a bare Git repository approach and embraces a more robust solution tailored for managing different environments. Many things in my [old post](./my-dotfiles.md) is still relevant but this just adds to it.
 
 ## What's New
 

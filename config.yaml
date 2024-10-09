@@ -18,6 +18,7 @@ menu:
       weight: 3
       url: https://cv.mattjh.sh/
       hrefTargetBlank: true
+
 params:
   author: Mattias Holmgren
   user: mattjh
@@ -26,9 +27,12 @@ params:
     - key: 0
       name: github
       url: "https://github.com/mattjh1"
+      icon: "fa-brands fa-github" # Add link to your icon font to `layouts/partials/custom-head.html`
     - key: 1
       name: linkedin
       url: "https://www.linkedin.com/in/mattias-holmgren-b2407714a/"
+      icon: "fa-brands fa-linkedin" # Add link to your icon font to `layouts/partials/custom-head.html`
     - key: 2
       name: email
       url: "mailto:me@mattjh.sh"
+      icon: "fa-regular fa-envelope" # Add link to your icon font to `layouts/partials/custom-head.html`
