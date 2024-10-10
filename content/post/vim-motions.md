@@ -9,9 +9,11 @@ tags:
   - vscode
 categories:
   - productivity
+series:
+  - Vim
 ---
 
-Vim motions; a skill every developer should learn.
+Vim motions; a skill every developer, sysadmin, or power-user should learn.
 
 <!--more-->
 
@@ -37,9 +39,9 @@ These basic motions may seem trivial, but the way vim works by chaining commands
 
 ## Why should you learn Vim motions?
 
-1. _Improved text navigation and selection:_
+1. **Improved text navigation and selection:**
    - Vim motions allow you to move to exactly where you need to be with minimal amount of keypresses and without using the mouse. It is easy to get distracted when coding, this feature alleviates that and makes it easier to focus on your code.
-2. _Gain better understanding of text structure:_
+2. **Gain better understanding of text structure:**
    - As you get comfortable with motions like `}` to move to next paragraph, and `f` to search for next occurrence of a character on the line you're currently editing. You begin to view the contents of the text buffer in a structural way, rather than a collection sequential characters. This shift in mindset helps understanding code on a deeper level.
 
 ## Discovering the beauty of Vim
@@ -52,13 +54,13 @@ Vim motions did not just make me faster at editing code, they fundamentally chan
 
 You do not need to commit to using Vim full-time to appreciate its motions, best way is to start slow.
 
-1. _Enable Vim keybindings in your current editor:_
+1. **Enable Vim keybindings in your current editor:**
    - Go the plugin section, search for Vim and you are sure to find it. Start by getting used to basic motions `h`,`j`,`k`,`l` for navigation.
-2. _One thing at a time:_
+2. **One thing at a time:**
    - Add things to your repertoire piece by piece, `w`, `b` for word navigation. Progress with stuff like `gg`. And eventually modifying text, eg., `ciw` to change inside word.
-3. _Practice command chaining:_
+3. **Practice command chaining:**
    - The really neat features of Vim comes by combining these trivial commands, try stuff like `c$` to change until the end of the file. `di)` delete inside parentheses.
-4. _Don't get overwhelmed:_
+4. **Don't get overwhelmed:**
    - Vim is known for a steep learning curve, if you try to take in too much too fast you are more likely to give up on it. Let it sink in, and the simplicity of the basic commands will eventually naturally guide you to the advanced aspects.
 
 ## Conclusion

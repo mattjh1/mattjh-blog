@@ -1,1 +1,10 @@
+{{/* TODO: figure this out, utilize hugo minify function on this large js file instead of using static */}}
+{{/* {{ $js := resources.Get "js/all.js" | minify | fingerprint }}
+<script src="{{ $js.Permalink }}" defer></script>
+*/}}
+
 <script defer src="/js/all.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+	rel="stylesheet" />

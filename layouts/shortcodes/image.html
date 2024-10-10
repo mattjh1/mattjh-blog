@@ -1,0 +1,9 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $width := .Get "width" }}
+{{ $height := .Get "height" }}
+{{ $image := resources.Get $src }}
+{{ $image =$image.Resize (printf "%dx%d" $width $height) }}
+
+
+<img src="{{ $image.Permalink }}" alt="{{ $alt }}" width="{{ $width }}" height="{{ $height }}" />
