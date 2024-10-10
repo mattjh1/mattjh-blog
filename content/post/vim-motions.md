@@ -1,25 +1,24 @@
 ---
 title: "Vim motions"
 date: "2024-10-09"
-description: "Vim motions - something every developer should learn to love"
 tags:
-  - vim motions
-  - hjkl
-  - IDE plugins
+  - vim-motions
+  - IDE-plugins
   - vscode
 categories:
   - productivity
-series:
-  - Vim
 ---
 
 Vim motions; a skill every developer, sysadmin, or power-user should learn.
 
 <!--more-->
 
+{{< image src="vscode.svg" alt="Funny meme about copying in vscode vs Vim" center="true" >}}
+
 As developers we're always looking for ways to optimize our workflows, making us more efficient. One tool that sticks out for me in its unique approach to navigation and text manipulation is Vim. But before you smirk and stop reading this post, thinking it's just another push to convert everyone to be a full-time Vim user, let me clarify; this is **not** about convincing you to ditch vscode, intellij or whatever.
 
 Instead, lets talk about a specific and in my opinion, the strongest feature of Vim-its motions. Vim motions are a set of commands, when mastered, can transform how you interact with any text. You do not need terminal Vim to take advantage of this, in fact all modern IDEs and editors offer plugins to mimic Vim motions. So you can reap many of the benefits that the fanatic Vim users are raving about without making the somewhat daunting editor switch.
+
 
 ## What are Vim motions?
 
@@ -50,7 +49,7 @@ Learning Vim was a game-changer for me. Before I mastered the motions, I used Vi
 
 Vim motions did not just make me faster at editing code, they fundamentally changed how I approach coding. As i become more comfortable I started using Vim as my primary editor over vscode with Vim plugin. As part of natural progression and wanting more and more advanced features out of Vim, like Vim macros.
 
-## How to start learning Vim motions
+## How to start learning Vim motions 
 
 You do not need to commit to using Vim full-time to appreciate its motions, best way is to start slow.
 

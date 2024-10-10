@@ -2,6 +2,7 @@
 /resources/_gen/
 .DS_Store
 node_modules
+_vendor
 
 hugo.exe
 hugo.linux

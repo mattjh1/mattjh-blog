@@ -9,8 +9,7 @@ tags:
   - lua
   - shell
 categories:
-  - customization
-  - tweakfest
+  - productivity
   - automation
   - dotfiles
 ---

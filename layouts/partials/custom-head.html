@@ -2,9 +2,27 @@
 {{/* {{ $js := resources.Get "js/all.js" | minify | fingerprint }}
 <script src="{{ $js.Permalink }}" defer></script>
 */}}
-
 <script defer src="/js/all.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-	rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+  rel="stylesheet"
+/>
+
+{{ if .IsPage }}
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:description" content="{{ .Summary }}" />
+  <meta
+    property="og:image"
+    content="{{ with .Params.featured_image }}
+      {{ . }}
+    {{ else }}
+      https://mattjh.sh/images/home.png
+    {{ end }}"
+  />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+{{ end }}

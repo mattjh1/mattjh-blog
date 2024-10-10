@@ -20,9 +20,12 @@ menu:
       hrefTargetBlank: true
 
 params:
-  author: Mattias Holmgren
+  author:
+    name: Mattias Holmgren
+    bio: "I build things"
   user: mattjh
   hostname: blog
+  readingTime: false
   social:
     - key: 0
       name: github
@@ -38,3 +41,6 @@ params:
       icon: "fa-regular fa-envelope" # Add link to your icon font to `layouts/partials/custom-head.html`
   customCSS:
     - "sass/main.scss"
+  minify: true
+  assets:
+    cachedir: "resources/_gen"

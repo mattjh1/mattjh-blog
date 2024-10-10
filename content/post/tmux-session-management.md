@@ -1,7 +1,11 @@
 ---
 title: "Enhancing Productivity with Custom Tmux Session Management"
 date: 2023-11-25
-draft: false
+tags:
+  - tmux
+  - script
+categories:
+  - productivity
 ---
 
 In the realm of terminal-based productivity, managing multiple projects efficiently can be a challenge. Enter my Tmux Session Script, a custom solution designed to streamline project switching and enhance your workflow.

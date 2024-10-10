@@ -1,7 +1,13 @@
 ---
 title: "dotfiles"
 date: 2023-11-26T19:00:00+00:00
-draft: false
+description: "Welcome to the heart of my computing environment. The core of my daily workflow."
+tags:
+  - lua
+  - shell
+categories:
+  - productivity
+  - dotfiles
 ---
 
 Welcome to the heart of my computing environment. The core of my daily workflow.
