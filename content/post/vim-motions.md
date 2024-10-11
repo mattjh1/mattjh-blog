@@ -58,7 +58,7 @@ You do not need to commit to using Vim full-time to appreciate its motions, best
 2. **One thing at a time:**
    - Add things to your repertoire piece by piece, `w`, `b` for word navigation. Progress with stuff like `gg`. And eventually modifying text, eg., `ciw` to change inside word.
 3. **Practice command chaining:**
-   - The really neat features of Vim comes by combining these trivial commands, try stuff like `c$` to change until the end of the file. `di)` delete inside parentheses.
+   - The really neat features of Vim comes by combining these trivial commands, try stuff like `c$` to change until the end of the line. `di)` delete inside parentheses.
 4. **Don't get overwhelmed:**
    - Vim is known for a steep learning curve, if you try to take in too much too fast you are more likely to give up on it. Let it sink in, and the simplicity of the basic commands will eventually naturally guide you to the advanced aspects.
 

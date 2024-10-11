@@ -1,0 +1,32 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $maxWidth := .Get "max-width" | default "100%" }}
+{{ $maxHeight := .Get "max-height" | default "auto" }}
+{{ $center := .Get "center" | default "false" }}
+
+{{ $cloudfrontURL := getenv "CLOUDFRONT_URL" }}
+{{ if $src }}
+<div style="{{ if eq $center "true" }}display: flex; justify-content: center; align-items: center;{{ end }}; max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }};">
+    <video controls crossorigin playsinline id="player-{{ $src | urlize }}">
+        <source src="{{ $cloudfrontURL }}/videos/{{ $src }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<script>
+    const player = new Plyr('#player-{{ $src | urlize }}', {
+        // Customization options
+        controls: [
+            'play', 
+            'progress', 
+            'current-time', 
+            'mute', 
+            'fullscreen'
+        ],
+        autoplay: false,
+        settings: ['speed', 'quality'],
+    });
+</script>
+{{ else }}
+<p>Video source not provided.</p>
+{{ end }}

@@ -13,4 +13,4 @@ showMetadata: false
 
 I live with my wonderful family, which includes my partner and our two amazing daughters. My interests lie in Linux, automation, prompt engineering, and exploring the ever-evolving tech landscape. Through this blog, I aim to share my knowledge and experiences.
 
-Feel free to explore my projects and skills. If you have any questions or just want to connect, you can contact [me@mattjh.sh](mailto:me@mattjh.sh).
+Feel free to explore my projects and skills. If you have any questions or just want to connect, you can contact [me@mattjh.sh](mailto:me@mattjh.sh)

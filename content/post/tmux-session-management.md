@@ -34,33 +34,30 @@ The script is designed with user experience in mind. Pressing Ctrl-C during sess
 
 ## Integration with Alacritty
 
-To seamlessly integrate the Tmux Session Chooser Script with Alacritty, follow these steps:
+To seamlessly integrate the Tmux Session Script with Alacritty, follow these steps:
 
-1. Open your Alacritty configuration file. This is usually located at `~/.config/alacritty/alacritty.yml` or `~/.alacritty.yml`.
+1. Open your Alacritty configuration file. This is usually located at `~/.config/alacritty/alacritty.{yaml,toml}` or `~/.alacritty.{yaml, toml}`.
 
-2. Add the following lines to the configuration file, replacing `<path_to_script>` with the actual path to your Tmux Session Chooser Script:
+2. Add the following lines to the configuration file, replacing `<path_to_script>` with the actual path to your Tmux Session Script:
 
    ```yaml
-   # This script will prompt to select tmux session or create a new one on startup
+   # yaml
    shell:
      program: /path/to/tmux_chooser_script
    ```
-
-   For example:
-
-   ```yaml
-   # This script will prompt to select tmux session or create a new one on startup
-   shell:
-     program: /Users/mattjh/.local/bin/tmux_chooser
-   ```
+    ```toml
+    # toml
+    [shell]
+    program = "/path/to/tmux_chooser_script"
+    ```
 
 3. Save the configuration file.
 
-Now, every time you launch Alacritty, the Tmux Session Chooser Script will run automatically, providing a seamless way to manage your projects.
+Now, every time you launch Alacritty, the Tmux Session Script will run automatically, providing a seamless way to manage your projects.
 
 ## Seamless Workflow Integration
 
-One of the strengths of the Tmux Session Chooser Script is its integration into the terminal configuration. By incorporating the script into the Alacritty terminal configuration file, the script is automatically executed on startup. This means that every time you open a terminal, you're presented with the session selection menu, enabling swift transitions between projects without additional manual steps.
+One of the strengths of the Tmux Session Script is its integration into the terminal configuration. By incorporating the script into the Alacritty terminal configuration file, the script is automatically executed on startup. This means that every time you open a terminal, you're presented with the session selection menu, enabling swift transitions between projects without additional manual steps.
 
 ## Personal Experience and Benefits
 
@@ -74,7 +71,7 @@ As a developer, I've found immense value in using this script as part of my dail
 
 ## Script
 
-Before diving into using the Tmux Session Chooser Script, it's essential to note that the script is configured with assumptions about the user's environment. The current version assumes a macOS environment with Tmux installed using Homebrew.
+Before diving into using the Tmux Session Script, it's essential to note that the script is configured with assumptions about the user's environment. The current version assumes a macOS environment with Tmux installed using Homebrew.
 
 If your setup differs—for example, if you're using a different operating system or if Tmux is installed using a method other than Homebrew—feel free to modify the script to suit your environment. The script is designed to be adaptable, ensuring compatibility with various configurations.
 The reason for opting to go for a full path to the installation is because of how I execute this script, it is the first thing introduced to my terminal emulator (Alacritty). So running `which tmux` will not work in this case albeit that would be a more elegant solution.
@@ -138,10 +135,10 @@ ext 0
 
 _Since writing this, I’ve further enhanced my environment management by integrating tools like **chezmoi** and **Go templating** to handle multiple configurations across different machines. This new approach allows me to maintain consistency across diverse environments with minimal manual intervention._
 
-With **chezmoi**, I can manage dotfiles and configuration settings across different systems, making it easy to adapt the Tmux Session Chooser script based on the environment. **Go templates** add another layer of flexibility, enabling dynamic generation of configuration files tailored to each machine.
+With **chezmoi**, I can manage dotfiles and configuration settings across different systems, making it easy to adapt the Tmux Session Script based on the environment. **Go templates** add another layer of flexibility, enabling dynamic generation of configuration files tailored to each machine.
 
 The script itself remains intact, but this added layer of customization has significantly improved my workflow, especially when dealing with different environments such as development, testing, or production.
 
 ## Conclusion
 
-The Tmux Session Chooser Script remains an integral part of my toolkit for managing multiple projects efficiently. Coupled with the recent enhancements using **chezmoi** and **Go templating**, it’s now even more versatile and powerful, ensuring a seamless and adaptable workflow across any system.
+The Tmux Session Script remains an integral part of my toolkit for managing multiple projects efficiently. Coupled with the recent enhancements using **chezmoi** and **Go templating**, it’s now even more versatile and powerful, ensuring a seamless and adaptable workflow across any system.
