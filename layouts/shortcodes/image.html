@@ -4,10 +4,9 @@
 {{ $maxHeight := .Get "max-height" | default "auto" }}
 {{ $center := .Get "center" | default "false" }}
 
-{{ $cloudfrontURL := getenv "CLOUDFRONT_URL" }}
 {{ if $src }}
 <div style="{{ if eq $center "true" }}display: flex; justify-content: center; align-items: center;{{ end }}">
-    <img src="{{ $cloudfrontURL }}/images/{{ $src }}" alt="{{ $alt }}"
+    <img src="{{ .Site.Params.cloudFront.images }}/{{ $src }}" alt="{{ $alt }}"
     style="max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }}; width: auto; height: auto;" />
 </div>
 {{ else }}

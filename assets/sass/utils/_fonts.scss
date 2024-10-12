@@ -1,19 +1,17 @@
 @font-face{
-    font-family: "Fira Mono";
-    src: url("../fonts/FiraMono/FiraMono-Medium.eot");
-    src: local("Fira Mono"),
-         url("../fonts/FiraMono/FiraMono-Medium.eot") format("embedded-opentype"),
-         url("../fonts/FiraMono/FiraMono-Medium.woff") format("woff"),
-         url("../fonts/FiraMono/FiraMono-Medium.ttf") format("truetype");
+    font-family: "Hack Nerd Font Mono";
+    src: url("../fonts/HackNerdFont/HackNerdFontMono-Regular.ttf");
+    src: local("Hack Nerd Font Mono"),
+         url("../fonts/HackNerdFont/HackNerdFontMono-Regular.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face{
     font-family: "Hack Nerd Font Mono";
-    src: url("../fonts/HackNerdFont/HackNerdFont-Regular.ttf");
+    src: url("../fonts/HackNerdFont/HackNerdFontMono-Bold.ttf");
     src: local("Hack Nerd Font Mono"),
-         url("../fonts/HackNerdFont/HackNerdFont-Regular.ttf") format("truetype");
+         url("../fonts/HackNerdFont/HackNerdFontMono-Bold.ttf") format("truetype");
     font-weight: 700;
-    font-style: normal;
+    font-style: Bold;
 }

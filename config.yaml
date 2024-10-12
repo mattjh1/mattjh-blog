@@ -6,11 +6,6 @@ module:
   imports:
     - path: github.com/LordMathis/hugo-theme-nightfall
 
-security:
-  enableInlineShortcodes: false
-  funcs:
-    getenv:
-      - '^CLOUDFRONT_URL$'
 menu:
   header:
     - name: posts
@@ -30,6 +25,11 @@ params:
     bio: "I build things"
   user: mattjh
   hostname: blog
+  cloudFront:
+    url: "https://d25ycjc5dtax3g.cloudfront.net"
+    images: "https://d25ycjc5dtax3g.cloudfront.net/images"
+    videos: "https://d25ycjc5dtax3g.cloudfront.net/videos"
+    asciinema: "https://d25ycjc5dtax3g.cloudfront.net/asciinema"
   readingTime: false
   social:
     - key: 0

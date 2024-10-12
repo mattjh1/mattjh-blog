@@ -7,6 +7,7 @@ tags:
   - vscode
 categories:
   - productivity
+featured_image: "vscode.svg"
 ---
 
 Vim motions; a skill every developer, sysadmin, or power-user should learn.

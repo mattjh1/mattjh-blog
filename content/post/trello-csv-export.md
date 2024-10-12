@@ -5,7 +5,7 @@ tags:
   - python
   - project
 categories:
-  - tool
+  - tools
 ---
 
 Managing tasks in Trello is convenient, but exporting your board data to CSV is a premium feature. Trello Board CSV Exporter is a free Python script that allows you to export Trello board data effortlessly, perfect for analysis or reporting.

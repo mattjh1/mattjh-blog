@@ -3,6 +3,7 @@
 <script src="{{ $js.Permalink }}" defer></script>
 */}}
 <script defer src="/js/all.js"></script>
+          
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -20,9 +21,9 @@
   <meta
     property="og:image"
     content="{{ with .Params.featured_image }}
-      {{ . }}
+			{{ $.Site.Params.cloudFront.images }}/{{ . }}
     {{ else }}
-      https://mattjh.sh/images/home.png
+			{{ $.Site.Params.cloudFront.images }}/mjh-logo.png
     {{ end }}"
   />
   <meta property="og:image:width" content="1200" />
