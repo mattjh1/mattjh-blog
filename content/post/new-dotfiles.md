@@ -15,10 +15,11 @@ categories:
 ---
 
 After a significant overhaul of my dotfiles, I'm excited to share my new setup!
+This version moves away from a bare Git repository approach and embraces a more robust solution tailored for managing different environments.
 
 <!--more-->
 
-This version moves away from a bare Git repository approach and embraces a more robust solution tailored for managing different environments. Many things in my [old post](./my-dotfiles.md) is still relevant but this just adds to it.
+Many things in my [old post](./my-dotfiles.md) is still relevant but this just adds to it.
 
 ## What's New
 
