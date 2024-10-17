@@ -8,7 +8,7 @@ categories:
   - productivity
 ---
 
-In the realm of terminal-based productivity, managing multiple projects efficiently can be a challenge. Enter my Tmux Session Script, a custom solution designed to streamline project switching and enhance your workflow.
+In the realm of terminal-based productivity, managing multiple projects efficiently can be a challenge. Enter Tmux Session Script, a custom solution designed to streamline project switching and enhance your workflow.
 
 <!--more-->
 
@@ -45,11 +45,12 @@ To seamlessly integrate the Tmux Session Script with Alacritty, follow these ste
    shell:
      program: /path/to/tmux_chooser_script
    ```
-    ```toml
-    # toml
-    [shell]
-    program = "/path/to/tmux_chooser_script"
-    ```
+
+   ```toml
+   # toml
+   [shell]
+   program = "/path/to/tmux_chooser_script"
+   ```
 
 3. Save the configuration file.
 
@@ -74,7 +75,7 @@ As a developer, I've found immense value in using this script as part of my dail
 Before diving into using the Tmux Session Script, it's essential to note that the script is configured with assumptions about the user's environment. The current version assumes a macOS environment with Tmux installed using Homebrew.
 
 If your setup differs—for example, if you're using a different operating system or if Tmux is installed using a method other than Homebrew—feel free to modify the script to suit your environment. The script is designed to be adaptable, ensuring compatibility with various configurations.
-The reason for opting to go for a full path to the installation is because of how I execute this script, it is the first thing introduced to my terminal emulator (Alacritty). So running `which tmux` will not work in this case albeit that would be a more elegant solution.
+The reason for opting to go for a full path to the installation is because of how I execute this script, it is the first thing introduced to my terminal emulator (Alacritty) as `PATH` is not initiated at this point. So running `which tmux` will not work in this case albeit that would be a more elegant solution.
 
 Here's a quick overview of the assumptions made by the script:
 
