@@ -18,6 +18,8 @@ My dotfiles, are the core of my daily workflow. Carefully configured for product
 
 My dotfiles hosted on [GitHub](https://github.com/mattjh1/dotfiles.old)
 
+---
+
 ## The Essence of Dotfiles
 
 Dotfiles, those hidden configuration files residing in your home directory, are the unsung heroes of a customized computing experience. My dotfiles encapsulate configurations for various tools and applications, including `zsh`, `nvim`, `tmux`, `alacritty`, `kitty`, `git`, `karabiner`, `hammerspoon`, `vscode`, and even `macOS settings`.

@@ -12,6 +12,8 @@ Managing tasks in Trello is convenient, but exporting your board data to CSV is 
 
 <!--more-->
 
+---
+
 ## Why Use Trello Board CSV Exporter?
 
 While Trello’s CSV export is limited to premium users, this script leverages the Trello API to pull board data and export it to CSV, saving you from upgrading just for exports.

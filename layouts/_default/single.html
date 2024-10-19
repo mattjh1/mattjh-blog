@@ -1,5 +1,6 @@
-{{ define "title"}}
-{{ .Title }} | {{ .Site.Params.author.name }}
+{{ define "title" }}
+{{ .Title }} |
+{{ .Site.Params.author.name }}
 {{ end }}
 
 {{ define "main" }}
@@ -20,7 +21,9 @@
 			{{ if .Site.Params.published | default true }}
 			<dt>{{ i18n "published" }}</dt>
 			{{ $formattedDate := .Date.Format "2006-01-02" }}
-			<dd><time datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time></dd>
+			<dd>
+				<time datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time>
+			</dd>
 			{{ end }}
 			{{ if .Site.Params.readingTime | default true }}
 			<dt>{{ i18n "reading_time" }}</dt>
@@ -33,4 +36,6 @@
 		{{ .Content }}
 	</div>
 </div>
+<!-- Include Mermaid Partial -->
+{{ partial "mermaid.html" . }}
 {{ end }}

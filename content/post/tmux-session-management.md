@@ -14,6 +14,8 @@ In the realm of terminal-based productivity, managing multiple projects efficien
 
 This article explores the motivations, functionalities, and benefits of this script, illustrating how it has become an indispensable tool for me to effortlessly navigate between different tasks.
 
+---
+
 ## The Need for Efficient Project Switching
 
 Imagine you're working on multiple projects simultaneously, each with its own set of terminal sessions and configurations. Switching between these projects can quickly become cumbersome, leading to a loss of focus and productivity. The Tmux Session Script addresses this challenge by providing a user-friendly interface to select or create Tmux sessions, enabling seamless transitions between projects.

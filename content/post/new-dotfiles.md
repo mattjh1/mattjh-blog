@@ -21,6 +21,8 @@ This version moves away from a bare Git repository approach and embraces a more 
 
 Many things in my [old post](./my-dotfiles.md) is still relevant but this just adds to it.
 
+---
+
 ## What's New
 
 This new dotfiles setup utilizes a combination of **Ansible**, **Chezmoi**, **1Password**, and **Go templates**, creating a portable and efficient way to manage configurations across multiple machines. Here’s a breakdown of the key components:
