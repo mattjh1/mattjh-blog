@@ -22,7 +22,6 @@
   justify-content: center;
   min-height: 100vh;
   flex: 1 auto;
-
 }
 
 .main {
@@ -33,6 +32,6 @@
   }
 
   @media screen and (max-width: v.$breakLarge) {
-    width: 100%;    
+    width: 100%;
   }
 }

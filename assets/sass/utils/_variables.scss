@@ -9,27 +9,25 @@ $black: #2f2f2f;
 $backgroundDarker: #252627;
 $backgroundDark: #292a2d;
 
-$fontHeader: 'Hack Nerd Font Mono', monospace;
-$fontParagraph: 'Open Sans', sans-serif;
-$fontCode: 'Hack Nerd Font Mono', monospace;
+$fontHeader: "Hack Nerd Font Mono", monospace;
+$fontParagraph: "Open Sans", sans-serif;
+$fontCode: "Hack Nerd Font Mono", monospace;
 
 // Content
 $breakLarge: 992px;
 $width: 760px;
 
 $primary-colors: (
-    'blue': #80AADD,
-    'orange': #FFB300,
-    'green': #33D17A,
-    'red': #F26E74
+  "blue": #80aadd,
+  "orange": #ffb300,
+  "green": #33d17a,
+  "red": #f26e74,
 );
 
 @mixin primary-color {
-
-    @if map.has-key($primary-colors, h.$color) {
-        color: map.get($primary-colors, h.$color);
-    } @else {
-        color: h.$color;
-    }
-
+  @if map.has-key($primary-colors, h.$color) {
+    color: map.get($primary-colors, h.$color);
+  } @else {
+    color: h.$color;
+  }
 }

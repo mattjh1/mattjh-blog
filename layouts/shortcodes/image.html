@@ -5,10 +5,17 @@
 {{ $center := .Get "center" | default "false" }}
 
 {{ if $src }}
-<div style="{{ if eq $center " true" }} display: flex; justify-content: center; align-items: center; {{ end }}">
-	<img src="{{ .Site.Params.cloudFront.images }}/{{ $src }}" alt="{{ $alt }}"
-		style="max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }}; width: auto; height: auto;" />
-</div>
+  <div
+    style="{{ if eq $center " true" }}
+      display: flex; justify-content: center; align-items: center;
+    {{ end }}"
+  >
+    <img
+      src="{{ .Site.Params.cloudFront.images }}/{{ $src }}"
+      alt="{{ $alt }}"
+      style="max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }}; width: auto; height: auto;"
+    />
+  </div>
 {{ else }}
-<p>Image source not provided.</p>
+  <p>Image source not provided.</p>
 {{ end }}

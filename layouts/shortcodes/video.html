@@ -5,21 +5,28 @@
 {{ $center := .Get "center" | default "false" }}
 
 {{ if $src }}
-<div style="{{ if eq $center "true" }}display: flex; justify-content: center; align-items: center;{{ end }}; max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }};">
+  <div
+    style="{{ if eq $center "true" }}
+      display: flex; justify-content: center; align-items: center;
+    {{ end }}; max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }};"
+  >
     <video controls crossorigin playsinline id="player-{{ $src | urlize }}">
-        <source src="{{ .Site.Params.cloudFront.videos }}/{{ $src }}" type="video/mp4">
-        Your browser does not support the video tag.
+      <source
+        src="{{ .Site.Params.cloudFront.videos }}/{{ $src }}"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
     </video>
-</div>
+  </div>
 
 <script>
     const player = new Plyr('#player-{{ $src | urlize }}', {
         // Customization options
         controls: [
-            'play', 
-            'progress', 
-            'current-time', 
-            'mute', 
+            'play',
+            'progress',
+            'current-time',
+            'mute',
             'fullscreen'
         ],
         autoplay: false,
@@ -27,5 +34,5 @@
     });
 </script>
 {{ else }}
-<p>Video source not provided.</p>
+  <p>Video source not provided.</p>
 {{ end }}
