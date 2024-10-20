@@ -19,7 +19,7 @@ This version moves away from a bare Git repository approach and embraces a more 
 
 <!--more-->
 
-Many things in my [old post](./my-dotfiles.md) is still relevant but this just adds to it.
+Many things in my [old post](../my-dotfiles) is still relevant but this just adds to it.
 
 ---
 

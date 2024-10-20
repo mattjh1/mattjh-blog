@@ -14,11 +14,11 @@ As developers we're always looking for ways to optimize our workflows, making us
 
 <!--more-->
 
-{{< image src="vscode.svg" alt="Funny meme about copying in vscode vs Vim" center="true" >}}
+{{< image src="vscode.svg" alt="Funny meme about copying in vscode vs Vim" center=true >}}
 
 Before you smirk and stop reading this post, thinking it's just another push to convert everyone to be a full-time Vim user, let me clarify; this is **not** about convincing you to ditch vscode, intellij or whatever.
 
-Instead, lets talk about a specific and in my opinion, the strongest feature of Vim-its motions. Vim motions are a set of commands, when mastered, can transform how you interact with any text. You do not need terminal Vim to take advantage of this, in fact all modern IDEs and editors offer plugins to mimic Vim motions. So you can reap many of the benefits that the fanatic Vim users are raving about without making the somewhat daunting editor switch.
+Instead, lets talk about a specific and in my opinion, the strongest feature of Vim-its motions. Vim motions are a set of commands, when mastered, can transform how you interact with any text. You do not need terminal Vim to take advantage of this, in fact all modern IDEs and editors offer plugins to mimic Vim motions. So you can reap many of the benefits that the fanatic Vim users (which I'm one, more on that [here](../nvim-obsession)) are raving about without making the somewhat daunting editor switch.
 
 ## What are Vim motions?
 
