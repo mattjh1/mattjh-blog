@@ -42,7 +42,7 @@ params:
       url: "https://github.com/mattjh1"
       icon: "fa-brands fa-github"
     - key: 1
-      name: X/twitter
+      name: twitter
       url: "https://x.com/MattiasHolmgr"
       icon: "fa-brands fa-x-twitter"
     - key: 2
