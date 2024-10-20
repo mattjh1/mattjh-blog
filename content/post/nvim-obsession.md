@@ -30,7 +30,7 @@ When I started my first job in tech, I was determined to make Vim my main editor
 
 Once I fully committed to using Vim at work, I started to improve rapidly. Vim became less of a tool that slowed me down and more of an extension of how I thought about code. Now, when my colleagues see me navigate projects using **only my keyboard**, they often express a bit of curiosity. The initial effort was significant, but the payoff has been immense.
 
-Vim's keybinding system is so ingrained in my workflow now that even outside of Vim, I rely on it. Fortunately, a wide array of tools and applications have embraced Vim keybindings, which means you don't even need to use Vim in the terminal to benefit from them. I even wrote a separate [blog post](../vim-motions) that more specifically deals with the matters of these useful keybinds knows as **vim motions**.
+Vim's keybinding system is so ingrained in my workflow now that even outside of Vim, I rely on it. Fortunately, a wide array of tools and applications have embraced Vim keybindings, which means you don't even need to use Vim in the terminal to benefit from them. I even wrote a separate [blog post](../vim-motions) that more specifically deals with the matters of these useful keybinds known as **vim motions**.
 
 Here are just a few tools that incorporate Vim keybindings in one way or another and are part of my daily workflow:
 
