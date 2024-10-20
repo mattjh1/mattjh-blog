@@ -1,10 +1,15 @@
 baseURL: http://www.mattjh.sh/
 languageCode: en-us
 title: Mattjh blog
+sitedescription: "Welcome to my space! My name is Mattias and this is where I share whatever i want!"
 
 module:
   imports:
     - path: github.com/LordMathis/hugo-theme-nightfall
+
+markup:
+  highlight:
+    style: "nord"
 
 menu:
   header:
@@ -35,15 +40,19 @@ params:
     - key: 0
       name: github
       url: "https://github.com/mattjh1"
-      icon: "fa-brands fa-github" # Add link to your icon font to `layouts/partials/custom-head.html`
+      icon: "fa-brands fa-github"
     - key: 1
+      name: X/twitter
+      url: "https://x.com/MattiasHolmgr"
+      icon: "fa-brands fa-x-twitter"
+    - key: 2
       name: linkedin
       url: "https://www.linkedin.com/in/mattias-holmgren-b2407714a/"
-      icon: "fa-brands fa-linkedin" # Add link to your icon font to `layouts/partials/custom-head.html`
-    - key: 2
+      icon: "fa-brands fa-linkedin"
+    - key: 3
       name: email
       url: "mailto:me@mattjh.sh"
-      icon: "fa-regular fa-envelope" # Add link to your icon font to `layouts/partials/custom-head.html`
+      icon: "fa-regular fa-envelope"
   customCSS:
     - "sass/main.scss"
   minify: true

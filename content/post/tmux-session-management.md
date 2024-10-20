@@ -108,35 +108,36 @@ function ctrl_c() {
 
 trap ctrl_c SIGINT
 
-no_of_terminals=$(/opt/homebrew/bin/tmux list-sessions | wc -l)
+path=/opt/homebrew/bin/tmux
+no_of_terminals=$($path list-sessions | wc -l)
 IFS=$'\n'
-output=($(/opt/homebrew/bin/tmux list-sessions))
-output_names=($(/opt/homebrew/bin/tmux list-sessions -F\#S))
+output=($($path list-sessions))
+output_names=($($path list-sessions -F\#S))
 k=1
 echo "Choose the terminal to attach: "
 for i in "${output[@]}"; do
-	echo "$k - $i"
-	((k++))
+  echo "$k - $i"
+  ((k++))
 done
 echo
 echo "Create a new session by entering a name for it"
 read -r input
 if [[ $input == "" ]]; then
-	/opt/homebrew/bin/tmux new-session
+  $path new-session
 elif [[ $input == 'nil' ]]; then
-	exit 1
+  exit 1
 elif [[ $input =~ ^[0-9]+$ ]] && [[ $input -le $no_of_terminals ]]; then
-    terminal_name="${output_names[input]}"
-	/opt/homebrew/bin/tmux attach -t "$terminal_name"
+  terminal_name="${output_names[input - 1]}"
+  $path attach -t "$terminal_name"
 else
-	/opt/homebrew/bin/tmux new-session -s "$input"
+  $path new-session -s "$input"
 fi
 ext 0
 ```
 
 ## Recent Enhancements: Integrating Chezmoi and Go Templating
 
-_Since writing this, I’ve further enhanced my environment management by integrating tools like **chezmoi** and **Go templating** to handle multiple configurations across different machines. This new approach allows me to maintain consistency across diverse environments with minimal manual intervention._
+_Since writing this, I’ve further enhanced my environment management by integrating tools like **chezmoi** and **Go templating** to handle multiple configurations across different machines. This new approach allows me to maintain consistency across diverse environments with minimal manual intervention. `path` variable in the codeblock above, is set by utilizing templating._
 
 With **chezmoi**, I can manage dotfiles and configuration settings across different systems, making it easy to adapt the Tmux Session Script based on the environment. **Go templates** add another layer of flexibility, enabling dynamic generation of configuration files tailored to each machine.
 

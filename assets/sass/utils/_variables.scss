@@ -1,13 +1,21 @@
 @use "hugo:vars" as h;
 @use "sass:map";
 
-// Colors
-$darkGrey: #323232;
-$white: #f8f8ff;
-$black: #2f2f2f;
+/* // Colors (Dark Theme) */
+/* $darkGrey: #323232; */
+/* $white: #f8f8ff; */
+/* $black: #2f2f2f; */
+/**/
+/* $backgroundDarker: #252627; */
+/* $backgroundDark: #292a2d; */
 
-$backgroundDarker: #252627;
-$backgroundDark: #292a2d;
+// Colors (Nord Theme)
+$darkGrey: #2e3440; // Nord Polar Night
+$white: #eceff4; // Nord Snow Storm
+$black: #3b4252; // Nord Polar Night
+
+$backgroundDarker: #2e3440; // Nord Polar Night (Darkest)
+$backgroundDark: #3b4252; // Slightly lighter shade from Nord Polar Night
 
 $fontHeader: "Hack Nerd Font Mono", monospace;
 $fontParagraph: "Open Sans", sans-serif;
@@ -17,17 +25,29 @@ $fontCode: "Hack Nerd Font Mono", monospace;
 $breakLarge: 992px;
 $width: 760px;
 
+/* Dark Theme */
+/* $primary-colors: ( */
+/* 	"blue": #80aadd, */
+/* 	"orange": #ffb300, */
+/* 	"green": #33d17a, */
+/* 	"red": #f26e74, */
+/* ); */
+
+// Updated primary colors for Nord palette
 $primary-colors: (
-  "blue": #80aadd,
-  "orange": #ffb300,
-  "green": #33d17a,
-  "red": #f26e74,
+	"blue": #88c0d0,
+	"orange": #d08770,
+	"green": #a3be8c,
+	"red": #bf616a,
 );
 
+// Mixin to set primary color based on the Nord palette
 @mixin primary-color {
-  @if map.has-key($primary-colors, h.$color) {
-    color: map.get($primary-colors, h.$color);
-  } @else {
-    color: h.$color;
-  }
+	@if map.has-key($primary-colors, h.$color) {
+		color: map.get($primary-colors, h.$color);
+	}
+
+	@else {
+		color: h.$color;
+	}
 }
