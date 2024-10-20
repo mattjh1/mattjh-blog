@@ -1,6 +1,6 @@
-baseURL: http://www.mattjh.sh/
+baseURL: https://www.mattjh.sh/
 languageCode: en-us
-title: Mattjh blog
+title: mattjh blog
 sitedescription: "Welcome to my space! My name is Mattias and this is where I share whatever i want!"
 
 module:
@@ -29,7 +29,7 @@ params:
     name: Mattias Holmgren
     bio: "I build things"
   user: mattjh
-  hostname: blog
+  hostname: mattjh.sh
   cloudFront:
     url: "https://d25ycjc5dtax3g.cloudfront.net"
     images: "https://d25ycjc5dtax3g.cloudfront.net/images"
