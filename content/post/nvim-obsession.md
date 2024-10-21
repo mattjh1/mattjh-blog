@@ -8,7 +8,7 @@ categories:
   - productivity
 ---
 
-Ever since I was first introduced to Vim in university, I've been captivated by its philosophy. The idea of a highly efficient, **keyboard-centric** editor intrigued me, especially its intricate and well-thought-out **keybinding** system.
+Ever since I was first introduced to Vim in University, I've been captivated by its philosophy. The idea of a highly efficient, **keyboard-centric** editor intrigued me, especially its intricate and well-thought-out **keybinding** system.
 
 <!--more-->
 
@@ -30,7 +30,7 @@ When I started my first job in tech, I was determined to make Vim my main editor
 
 Once I fully committed to using Vim at work, I started to improve rapidly. Vim became less of a tool that slowed me down and more of an extension of how I thought about code. Now, when my colleagues see me navigate projects using **only my keyboard**, they often express a bit of curiosity. The initial effort was significant, but the payoff has been immense.
 
-Vim's keybinding system is so ingrained in my workflow now that even outside of Vim, I rely on it. Fortunately, a wide array of tools and applications have embraced Vim keybindings, which means you don't even need to use Vim in the terminal to benefit from them. I even wrote a separate [blog post](../vim-motions) that more specifically deals with the matters of these useful keybinds known as **vim motions**.
+Vim's keybinding system is so ingrained in my workflow now that even outside of Vim, I rely on it. Fortunately, a wide array of tools and applications have embraced Vim keybindings, which means you don't even need to use Vim in the terminal to benefit from them, in fact, before making the full-on switch to vim in the terminal I used a vscode extension to mimic some of the behaviors of vim. I even wrote a separate [blog post](../vim-motions) that more specifically deals with the matters of these useful keybinds known as **vim motions**.
 
 Here are just a few tools that incorporate Vim keybindings in one way or another and are part of my daily workflow:
 
@@ -89,7 +89,7 @@ graph TD
     N --> Y[Language Support]
 ```
 
-Sure, IDEs like VSCode _"just work"_ out of the box, and there’s value in that. However, the process of setting up and maintaining my Neovim environment has taught me invaluable lessons about the tools I use daily. Even if I eventually go back to an IDE for convenience, the time I’ve spent mastering Neovim will have been well worth it.
+Sure, IDEs like VSCode _"just work"_ out of the box, and there's value in that. However, the process of setting up and maintaining my Neovim environment has taught me invaluable lessons about the tools I use daily. Even if I eventually go back to an IDE for convenience, the time I’ve spent mastering Neovim will have been well worth it.
 
 In summary, using the leader key for custom bindings has enabled me to build a keyboard-centric workflow that feels intuitive and responsive. The combination of standard Vim keybindings and my curated set of shortcuts ensures that I can navigate my codebase and tools with confidence and speed.
 

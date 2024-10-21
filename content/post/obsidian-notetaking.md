@@ -23,7 +23,7 @@ In this post, I’ll share my evolution as a note-taker and how I’ve finally f
 
 ## My Early Experiences
 
-During my university days, I began developing a habit of note-taking on paper. This practice positively impacted my studies, and I credit much of my academic success to it. The act of writing helped solidify information in my mind, even though I rarely revisited my notes afterward and if I did it rarely helped due to disorganized nature of it. When I first started my job as a software engineer, the overwhelming amount of information I ran into made it clear that I needed an efficient system for capturing and organizing notes.
+During my University days, I began developing a habit of note-taking on paper. This practice positively impacted my studies, and I credit much of my academic success to it. The act of writing helped solidify information in my mind, even though I rarely revisited my notes afterward and if I did it rarely helped due to disorganized nature of it. When I first started my job as a software engineer, the overwhelming amount of information I ran into made it clear that I needed an efficient system for capturing and organizing notes.
 
 ## Finding the Right Tool...
 
