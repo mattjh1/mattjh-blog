@@ -29,7 +29,7 @@ params:
     name: Mattias Holmgren
     bio: "I build things"
   user: mattjh
-  hostname: mattjh.sh
+  hostname: blog
   cloudFront:
     url: "https://d25ycjc5dtax3g.cloudfront.net"
     images: "https://d25ycjc5dtax3g.cloudfront.net/images"
