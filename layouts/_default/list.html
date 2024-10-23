@@ -1,55 +1,57 @@
 {{ define "title" }}
-{{ .Title }} |
-{{ .Site.Params.author.name }}
+  {{ .Title }} |
+  {{ .Site.Params.author.name }}
 {{ end }}
 
 {{ define "main" }}
-<div>
-	<div class="listHeader">
-		<h1>{{ .Title }}</h1>
-	</div>
+  <div>
+    <div class="listHeader">
+      <h1>{{ .Title }}</h1>
+    </div>
 
-	{{ with .Content }}
-	<div class="listContent">
-		{{- . -}}
-	</div>
-	{{ end }}
+    {{ with .Content }}
+      <div class="listContent">
+        {{- . -}}
+      </div>
+    {{ end }}
 
-	{{ $paginator := .Paginate (where .Pages "Type" "post") }}
-
-
-	<div>
-		{{ range $paginator.Pages }}
-		<a class="postListLink" href="{{ .Permalink }}">
-			<div class="postListItem" role="listitem">
-				<div class="postHeader">
-					<span class="postTitle">{{ .Title }}</span>
-					{{ $formattedDate := .Date.Format "2006-01-02" }}
-					<time class="postDate" datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time>
-				</div>
-				<div class="postExcerpt">
-					<p>{{ .Summary }}</p>
-				</div>
-			</div>
-		</a>
-		{{ end }}
+    {{ $paginator := .Paginate (where .Pages "Type" "post") }}
 
 
-		<!-- Pagination Navigation -->
-		<div class="pagination">
-			{{ if $paginator.HasPrev }}
-			<a href="{{ $paginator.Prev.URL }}" aria-label="Previous">
-				<i class="fas fa-chevron-left"></i>
-			</a>
-			{{ end }}
+    <div>
+      {{ range $paginator.Pages }}
+        <a class="postListLink" href="{{ .Permalink }}">
+          <div class="postListItem" role="listitem">
+            <div class="postHeader">
+              <span class="postTitle">{{ .Title }}</span>
+              {{ $formattedDate := .Date.Format "2006-01-02" }}
+              <time class="postDate" datetime="{{ $formattedDate }}"
+                >{{ .Date | time.Format ":date_long" }}</time
+              >
+            </div>
+            <div class="postExcerpt">
+              <p>{{ .Summary }}</p>
+            </div>
+          </div>
+        </a>
+      {{ end }}
 
-			{{ if $paginator.HasNext }}
-			<span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
-			<a href="{{ $paginator.Next.URL }}">
-				<i class="fas fa-chevron-right"></i>
-			</a>
-			{{ end }}
-		</div>
-	</div>
-</div>
+
+      <!-- Pagination Navigation -->
+      <div class="pagination">
+        {{ if $paginator.HasPrev }}
+          <a href="{{ $paginator.Prev.URL }}" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        {{ end }}
+
+        {{ if $paginator.HasNext }}
+          <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+          <a href="{{ $paginator.Next.URL }}">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
 {{ end }}
