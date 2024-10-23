@@ -7,7 +7,7 @@ showMetadata: false
 
 ## Hello, I'm Mattias Holmgren
 
-{{< image src="me.jpeg" alt="Me in Kivik town" max-width="75%" max-height="75%" >}}
+{{< image src="me.jpg" alt="Me close" max-width="55%" max-height="50%" >}}
 
 **Welcome to my space!** I’m originally from Stockholm and have been living in Kalmar for the past six years. As a passionate and self-motivated software engineer, I find great joy in simplifying complex problems. I love learning and sharing my thoughts on tech topics, particularly around productivity, customization, AI, and automation.
 

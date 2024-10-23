@@ -5,18 +5,14 @@
 {{ $center := .Get "center" | default false }}
 
 {{ if $src }}
-  <img
-    src="{{ .Site.Params.cloudFront.images }}/{{ $src }}"
-    alt="{{ $alt }}"
-    style="
+<img src="{{ .Site.Params.cloudFront.images }}/{{ $src }}" alt="{{ $alt }}" style="
       max-width: {{ $maxWidth }};
       max-height: {{ $maxHeight }};
       width: auto;
       height: auto;
       {{ if eq $center true }}
       display: block; margin-left: auto; margin-right: auto;
-    {{ end }} "
-  />
+    {{ end }} " />
 {{ else }}
-  <p>Image source not provided.</p>
+<p>Image source not provided.</p>
 {{ end }}
