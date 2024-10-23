@@ -11,6 +11,12 @@ markup:
   highlight:
     style: "nord"
 
+paginate: 50
+pagination:
+  disableAliases: false
+  pagerSize: 10
+  path: page
+
 menu:
   header:
     - name: posts
