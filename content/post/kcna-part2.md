@@ -1,6 +1,6 @@
 ---
 title: "Learning k8s, KCNA preparation (Part 2)"
-date: 2024-10-22
+date: 2024-10-23
 description: "Understanding Kubernetes Architecture – My KCNA Journey (Part 1)"
 tags:
   - KCNA
@@ -16,6 +16,10 @@ draft: true
 In this second part of this series we're diving into some fundamental aspects of **Cloud Native Applications** and **Kubernetes architecture**. By the end, you'll have a clearer understanding of how cloud-native principles, architectures, and practices differ from traditional approaches and how they enhance **R**esilience, **A**gility, **O**perability, and **O**bservability.
 
 <!--more-->
+
+{{< disclaimer >}}
+These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW). I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
+{{< /disclaimer >}}
 
 ---
 
@@ -208,23 +212,9 @@ When there is a disagreement within the CNCF community, discussions and debates 
 
 ## Serverless
 
-```mermaid
-
-graph TD
-    Client[Client] -->|Trigger Event| Event[Event]
-
-    subgraph Serverless Architecture
-        Event --> FaaS[AWS Lambda / Knative / OpenFaaS / ...]
-
-        FaaS --> Function[Function Code]
-        Function -->|Accesses| DB[(Database)]
-
-        FaaS --> API[API Gateway]
-        API -->|Triggers| OtherServices[Other Services]
-    end
-```
-
 Despite its name, **serverless** still involves servers, but the infrastructure management is handled by the cloud provider, shifting the responsibility away from users. Serverless architecture is event-driven, meaning that code is executed in response to events, and billing follows usage—potentially scaling up to meet demand or scaling down to zero when idle.
+
+{{< image src="no-cloud.jpg" alt="No cloud, only someone elses computer joke" center=true max-width="100%" >}}
 
 **Function as a Service (FaaS)**, such as **AWS Lambda**, is a typical example. In the cloud-native world, Kubernetes-based serverless solutions like **Knative** and **OpenFaaS** provide similar scalability and flexibility, automatically adjusting resources as needed.
 
@@ -232,33 +222,98 @@ Despite its name, **serverless** still involves servers, but the infrastructure 
 
 CNCF also hosts **CloudEvents**, which standardizes how event data is described and transferred across systems. It provides SDKs for various languages and specifications for protocols like HTTP, Kafka, and NATS.
 
-## Personas in Cloud-Native Ecosystem
+## Personas
 
-Cloud-native best practices and processes rely on a variety of professional roles, each specializing in different areas. These roles are essential for implementing, maintaining, and securing cloud-native architectures:
+In any organization pursuing cloud-native practices, multiple professional roles contribute to building, operating, and scaling applications effectively. Each role plays a vital part in ensuring cloud-native principles, such as scalability, automation, resilience, and security, are integrated into the workflow.
 
-- **DevOps Engineer**: Combines development and operational skills, driving automation, infrastructure management, and cloud-native best practices.
-- **Site Reliability Engineer (SRE)**: Focuses on availability, scalability, and robustness, ensuring systems meet **Service Level Agreements (SLA)**, **Objectives (SLO)**, and **Indicators (SLI)**.
-- **CloudOps Engineer**: More focused on deploying and managing cloud services compared to DevOps.
-- **Security Engineer**: Specialized in IT security, ensuring protection against external threats.
-- **DevSecOps Engineer**: Merges security expertise with DevOps to incorporate security into every stage of the development lifecycle.
-- **Full-Stack Developer**: Develops both frontend and backend systems, a generalist across technologies.
-- **Cloud Architect**: Designs cloud-native applications, making decisions on platforms, tools, and interoperability.
-- **Data Engineer**: Builds and maintains data processing systems, ensuring scalability and compliance.
+### Key Roles in Cloud-Native Environments
+
+Below are some of the key roles that shape cloud-native operations:
+
+### 1. DevOps Engineer
+
+{{< image src="devops-infinity.png" alt="DevOps Infinity loop" center=true max-width="100%" >}}
+
+A DevOps Engineer combines development and operations expertise to manage infrastructure and deploy software efficiently. Key skills include:
+
+- **Infrastructure Provisioning**
+- **Automation** (CI/CD, GitOps)
+- **Performance Monitoring**
+- **System Administration**
+
+Their workflow follows the familiar DevOps infinity loop: planning → coding → building → testing → deploying → operating → monitoring.
+
+### 2. Site Reliability Engineer (SRE)
+
+Born from Google's need to manage reliability at scale, SREs focus on **availability, scalability, and robustness**. They are responsible for SLAs, SLOs, and SLIs, ensuring uptime and quick response times.
+
+- **SLA**: Ensuring 99.99% uptime
+- **SLO**: Keeping response times under 200ms
+- **SLI**: Monitoring performance against objectives
+
+### 3. CloudOps Engineer
+
+CloudOps narrows its focus to cloud deployment, operation, and monitoring, especially for cloud-native environments. Tools like Terraform or direct cloud resource management differentiate CloudOps from traditional DevOps roles.
+
+### 4. Security Engineer
+
+Specializing in **IT security**, they address threats from various vectors, including:
+
+- **Network Security**
+- **Operating System Security**
+- **Threat Detection and Mitigation**
+
+### 5. DevSecOps Engineer
+
+A blend of DevOps and security principles, DevSecOps Engineers integrate security best practices into the DevOps lifecycle. They automate vulnerability scanning, enforce security protocols, and ensure code and infrastructure security from development to deployment.
+
+### 6. Full Stack Developer
+
+Full-stack developers span both front-end and back-end development, working with **web frameworks**, **UI**, and backend **data handling** to build fully integrated systems.
+
+### 7. Cloud Architect
+
+Cloud Architects design cloud infrastructures and ensure they meet business needs. They decide on:
+
+- **Cloud platforms** (AWS, GCP, etc.)
+- **Multi-cloud strategies**
+- **Cloud interoperability**
+
+### 8. Data Engineer
+
+Focused on scaling data pipelines, **data engineers** build systems that collect, store, and process data. They handle distributed data processing, algorithmic efficiency, and vendor-agnostic solutions to prevent lock-in.
 
 ## Open Standards
 
-Open standards are foundational in cloud-native environments, promoting interoperability and innovation. CNCF supports several important open standards:
+Adopting open standards is crucial in cloud-native architecture. Open standards promote interoperability and flexibility, enabling organizations to use best-of-breed tools without vendor lock-in.
 
-- **Open Container Initiative (OCI)**: Establishes open standards for container runtimes and images. Tools like Docker, BuildKit, and Podman comply with these specifications, ensuring compatibility across different environments.
-- **Container Network Interface (CNI)**: Standard for managing container networking.
-- **Container Storage Interface (CSI)**: Provides a standard for interacting with storage solutions.
-- **Container Runtime Interface (CRI)**: Allows Kubernetes to interface with various container runtimes, such as **containerd** and **CRI-O**.
-- **Service Mesh Interface (SMI)**: Standardizes service mesh implementations, providing consistent interfaces across different tools.
+### Examples of Open Standards:
 
-## CNCF Terminology
+- **OCI (Open Container Initiative)**: Ensures Docker images and runtimes are standardized, supporting compatibility across multiple platforms.
 
-- **TOC**: Technical Oversight Committee that provides governance over CNCF projects.
-- **SIG**: Special Interest Groups focus on specific areas of cloud-native technology.
-- **TAG**: Technical Advisory Groups provide expertise in areas like storage, security, and observability, helping projects progress from Sandbox to Graduation.
+  - **Image Specification**: Defines how to bundle files into container images.
+  - **Runtime Specification**: Standard for container runtimes (e.g., runC, kata Containers).
+  - **Distribution Specification**: Standard for distributing container images.
 
-These roles, processes, and standards ensure the CNCF ecosystem continues to evolve and adapt, driving cloud-native innovation across a broad range of technologies and industries.
+- **CNI (Container Network Interface)**: Manages network resources in Kubernetes.
+- **CSI (Container Storage Interface)**: Standardizes how storage is managed in containerized environments.
+
+- **CRI (Container Runtime Interface)**: Interface for Kubernetes to interact with container runtimes.
+
+- **SMI (Service Mesh Interface)**: A standard for service mesh management across different implementations (e.g., Istio, Linkerd).
+
+## Cloud Native Terminology You Should Know
+
+- **TOC (Technical Oversight Committee)**: Governs cloud-native project development.
+- **SIG (Special Interest Groups)**: Focus groups within the CNCF community.
+- **TAG (Technical Advisory Groups)**: Provide domain-specific guidance and help onboard new projects into the CNCF ecosystem.
+
+## Conclusion
+
+Cloud-native architecture is fundamentally transforming how modern applications are designed, deployed, and managed. By embracing key principles like **resilience**, **agility**, **operability**, and **observability**—or **RACO** for short—organizations can build systems that excel in today’s dynamic cloud environments. Techniques such as **microservices**, **containers**, **service meshes**, and **immutable infrastructure** empower teams to deliver software faster, scale more efficiently, and ensure higher uptime with minimal disruptions.
+
+For cloud-native systems to function optimally, roles like **DevOps Engineers**, **Site Reliability Engineers (SREs)**, and **CloudOps Engineers** are critical. These professionals ensure seamless operation and scaling by leveraging tools like **CI/CD pipelines**, **self-healing mechanisms**, and **autoscaling**. By adopting **open standards**—such as **OCI**, **CNI**, and **SMI**—organizations avoid vendor lock-in and maintain flexibility in their infrastructure, fostering innovation across the ecosystem.
+
+As the landscape of cloud-native technologies continues to evolve, practices like **continuous integration**, **continuous delivery**, and **predictive autoscaling** will only become more advanced. With the **CNCF** and its rich ecosystem driving forward the cloud-native movement, businesses can seize new opportunities for automation, scalability, and innovation. The cloud-native journey promises higher efficiency and resilience, helping organizations deliver modern, secure applications that meet today’s business and user demands.
+
+This post is part two this **KCNA preparation series**. Stay tuned for the next installment, where we’ll dive deep into **Kubernetes fundamentals**!
