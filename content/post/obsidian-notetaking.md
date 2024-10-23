@@ -60,11 +60,11 @@ Eight months into using Obsidian, I’ve found it to be the most sustainable not
 - **Backup with Git:**
   - The Git plugin automates the backup of my notes to a private GitHub repository, ensuring my thoughts are portable and secure. This level of control over my data is liberating, especially compared to proprietary solutions that limit accessibility.
 
-{{< image src="obsidian-graphview.png" alt="Graph view of my obsidian notes so far" center="true" >}}
+{{< image src="obsidian-graphview.png" alt="Graph view of my obsidian notes so far" center=true max-width="100%" >}}
 
 My graph view is still modest, i want to look back at and see it sprawling with patterns to see. But already I'm able to draw inspiration from it, and it has made it more clear to me what I'm actually interested in pursuing, and therefore taking the correct path moving forward. It makes it easier to reflect for sure.
 
-{{< image src="gh-notes.png" alt="Private vault repo" center="true" >}}
+{{< image src="gh-notes.png" alt="Private vault repo" center=true max-width="100%" >}}
 
 The **Git** plugin is an absolute game-changer for managing backups of my notes to my private GitHub repository. The best part? It all happens automatically. I no longer have to worry about the tedious tasks of manually adding, committing, and pushing files. This seamless integration is nothing short of amazing, allowing my notes to be portable and accessible from anywhere. Each time I think about it, I'm genuinely blown away by the convenience it offers.
 
