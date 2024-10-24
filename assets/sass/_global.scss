@@ -1,51 +1,51 @@
 @use "utils/variables" as v;
 
 body {
-	font-family: v.$fontParagraph;
-	color: v.$white;
-	background-color: v.$backgroundDark;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+  font-family: v.$fontParagraph;
+  color: v.$white;
+  background-color: v.$backgroundDark;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
-	@include v.primary-color;
+  @include v.primary-color;
 }
 
 @mixin codeStyles {
-	font-family: v.$fontCode;
-	font-size: 90%;
+  font-family: v.$fontCode;
+  font-size: 90%;
 }
 
 pre code {
-	@include codeStyles;
-	display: block;
-	background: v.$backgroundDarker;
-	padding: 10px;
-	overflow: auto;
+  @include codeStyles;
+  display: block;
+  background: v.$backgroundDarker;
+  padding: 10px;
+  overflow: auto;
 }
 
 // Apply the mixin to both code and .code
 code {
-	@include codeStyles;
-	padding: 2px 4px;
-	border-radius: 3px;
-	background: v.$backgroundDarker;
-	color: v.$whiter;
+  @include codeStyles;
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: v.$backgroundDarker;
+  color: v.$whiter;
 }
 
 .code {
-	@include codeStyles;
+  @include codeStyles;
 }
 
 @for $i from 1 through 6 {
-	h#{$i} {
-		font-family: v.$fontHeader;
-	}
+  h#{$i} {
+    font-family: v.$fontHeader;
+  }
 }
 
 @-ms-viewport {
-	width: device-width;
+  width: device-width;
 }

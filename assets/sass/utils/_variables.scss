@@ -36,19 +36,17 @@ $width: 760px;
 
 // Updated primary colors for Nord palette
 $primary-colors: (
-	"blue": #88c0d0,
-	"orange": #d08770,
-	"green": #a3be8c,
-	"red": #bf616a,
+  "blue": #88c0d0,
+  "orange": #d08770,
+  "green": #a3be8c,
+  "red": #bf616a,
 );
 
 // Mixin to set primary color based on the Nord palette
 @mixin primary-color {
-	@if map.has-key($primary-colors, h.$color) {
-		color: map.get($primary-colors, h.$color);
-	}
-
-	@else {
-		color: h.$color;
-	}
+  @if map.has-key($primary-colors, h.$color) {
+    color: map.get($primary-colors, h.$color);
+  } @else {
+    color: h.$color;
+  }
 }
