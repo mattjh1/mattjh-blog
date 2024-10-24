@@ -1,22 +1,20 @@
 {{ $src := .Get "src" }}
+{{ $inCDN := .Get "inCDN" | default true }}
 {{ $alt := .Get "alt" }}
 {{ $maxWidth := .Get "max-width" | default "75%" }}
 {{ $maxHeight := .Get "max-height" | default "auto" }}
 {{ $center := .Get "center" | default false }}
 
 {{ if $src }}
-  <img
-    src="{{ .Site.Params.cloudFront.images }}/{{ $src }}"
-    alt="{{ $alt }}"
-    style="
+<img {{ if eq $inCDN true }} src="{{ .Site.Params.cloudFront.images }}/{{ $src }}" {{ else }} src="{{ $src }}" {{ end }}
+	alt="{{ $alt }}" style="
       max-width: {{ $maxWidth }};
       max-height: {{ $maxHeight }};
       width: auto;
       height: auto;
       {{ if eq $center true }}
       display: block; margin-left: auto; margin-right: auto;
-    {{ end }} "
-  />
+    {{ end }} " />
 {{ else }}
-  <p>Image source not provided.</p>
+<p>Image source not provided.</p>
 {{ end }}
