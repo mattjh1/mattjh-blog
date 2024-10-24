@@ -33,7 +33,7 @@ menu:
 params:
   author:
     name: Mattias Holmgren
-    bio: "I build things"
+    bio: "I enjoy building things"
   user: mattjh
   hostname: blog
   cloudFront:
