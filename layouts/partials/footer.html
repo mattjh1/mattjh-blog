@@ -1,0 +1,40 @@
+<footer class="footer">
+	{{ with .Site.Params.footerHtml }}
+	<span>{{ . | safeHTML }}</span>
+	{{ else }}
+	<span>
+		<i class="fa-regular fa-copyright fa-sm"></i> {{ now.Format "2006" }}
+		{{ .Site.Params.author.name }} •
+		{{ i18n "powered_by" }}
+		<a href="https://gohugo.io" class="footerLink" style="text-decoration: none;">
+			<i class="devicon-hugo-plain-wordmark" style="font-size: 3.5em; vertical-align: middle;"></i>
+		</a>
+	</span>
+	{{ end }}
+
+
+	<a href="#" class="back-to-top" title="Back to Top">
+		<i class="fas fa-arrow-up"></i>
+	</a>
+
+	<script>
+		const backToTop = document.querySelector(".back-to-top");
+
+		window.onscroll = function () {
+			if (
+				document.body.scrollTop > 100 ||
+				document.documentElement.scrollTop > 100
+			) {
+				backToTop.style.display = "block";
+			} else {
+				backToTop.style.display = "none";
+			}
+		};
+
+		// Smooth scroll to top when clicked
+		backToTop.addEventListener("click", function (event) {
+			event.preventDefault();
+			window.scrollTo({top: 0, behavior: "smooth"});
+		});
+	</script>
+</footer>
