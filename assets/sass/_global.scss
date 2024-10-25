@@ -27,7 +27,6 @@ pre code {
   overflow: auto;
 }
 
-// Apply the mixin to both code and .code
 code {
   @include codeStyles;
   padding: 2px 4px;
