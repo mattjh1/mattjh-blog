@@ -1,0 +1,38 @@
+<header class="headerWrapper">
+  <div class="header">
+    <div>
+      <a class="terminal" href="{{ .Site.BaseURL }}">
+        <span>
+          <span style="color: #88c0d0; margin-right: -8px;">[</span>
+          <span style="color: #e5e9f0; margin-right: -8px;"
+            >{{ .Site.Params.user }}</span
+          >
+          <span style="color: #bf616a; margin-right: -8px;">@</span>
+          <span style="color: #e5e9f0; margin-right: -8px;"
+            >{{ .Site.Params.hostname }}</span
+          >
+          <span style="color: #88c0d0;">]</span>
+          <i class="fa-solid fa-arrow-right-long" style="color: #a3be8c;"></i>
+          <span style="color: #88c0d0;">blog</span>
+          <span style="color: #88c0d0; margin-right: -8px;"> (</span>
+          <span style="color: #d08770; margin-right: -8px;"> </span>
+          <span style="color: #a3be8c; margin-right: -8px;">main</span>
+          <span style="color: #88c0d0;">)</span>
+        </span>
+      </a>
+    </div>
+    <input class="side-menu" type="checkbox" id="side-menu" />
+    <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+    <nav class="headerLinks">
+      <ul>
+        {{ range .Site.Menus.header }}
+          <li>
+            <a href="{{ .URL | absURL }}" title="{{ .Title }}">
+              ~/{{- .Name -}}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>
