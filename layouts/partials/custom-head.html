@@ -1,9 +1,15 @@
-{{/* TODO: figure this out, utilize hugo minify function on this large js file instead of using static */}}
-{{/* {{ $js := resources.Get "js/all.js" | minify | fingerprint }}
-<script src="{{ $js.Permalink }}" defer></script>
-*/}}
-<script defer src="/js/all.js"></script>
-
+<link
+  rel="preload"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+  as="script"
+  onload="this.onload=null;this.rel='script'"
+/>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+  integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 <link
   rel="stylesheet"
   type="text/css"

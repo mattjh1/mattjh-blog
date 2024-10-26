@@ -38,6 +38,7 @@ params:
   hostname: home
   cloudFront:
     url: "https://d25ycjc5dtax3g.cloudfront.net"
+    js: "https://d25ycjc5dtax3g.cloudfront.net/js"
     images: "https://d25ycjc5dtax3g.cloudfront.net/images"
     videos: "https://d25ycjc5dtax3g.cloudfront.net/videos"
     asciinema: "https://d25ycjc5dtax3g.cloudfront.net/asciinema"
