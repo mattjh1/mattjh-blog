@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: v.$width;
+  width: 100%;
 }
 
 .headerWrapper {
@@ -55,7 +55,7 @@
 .hamb {
   cursor: pointer;
   float: right;
-  display: none;
+  display: block;
   padding: 10px 4px;
 }
 
@@ -108,6 +108,22 @@
 .side-menu:checked ~ .hamb .hamb-line::after {
   transform: rotate(45deg);
   top: 0;
+}
+
+@media (min-width: 768px) {
+  .header {
+    width: v.$width;
+  }
+
+  .headerLinks {
+    width: auto;
+    position: static;
+    max-height: none;
+  }
+
+  .hamb {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
