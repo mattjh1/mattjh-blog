@@ -7,6 +7,20 @@
 
 {{ hugo.Generator }}
 
+{{ $vars := dict
+  "color" (or site.Params.styles.color "blue")
+}}
+
+{{ $options := dict
+  "targetPath" "css/style.css"
+  "transpiler" "dartsass"
+  "vars" $vars
+}}
+
+{{ $style := resources.Get "sass/main.scss" | toCSS $options | minify | fingerprint }}
+
+
+<link href="{{ $style.RelPermalink }}" rel="stylesheet" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,10 +40,21 @@
   crossorigin
 />
 
+<!-- Preload the Google Fonts stylesheet -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-  rel="stylesheet"
+  rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
 />
+
+<!-- Fallback for browsers that do not support preload -->
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,400;0,700;1,700&display=swap"
+  />
+</noscript>
 
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
@@ -55,18 +80,5 @@
     title="{{ $.Site.Title }}"
   />
 {{- end -}}
-
-{{ $vars := dict
-  "color" (or site.Params.styles.color "blue")
-}}
-
-{{ $options := dict
-  "targetPath" "css/style.css"
-  "transpiler" "dartsass"
-  "vars" $vars
-}}
-
-{{ $style := resources.Get "sass/main.scss" | toCSS $options | minify | fingerprint }}
-<link href="{{ $style.RelPermalink }}" rel="stylesheet" />
 
 {{ partial "custom-head.html" . }}
