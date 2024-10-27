@@ -1,0 +1,72 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="{{ .Description | default .Site.Params.SiteDescription }}"
+/>
+
+{{ hugo.Generator }}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link
+  rel="preload"
+  href="https://d25ycjc5dtax3g.cloudfront.net/fonts/HackNerdFont/HackNerdFontMono-Regular.ttf"
+  as="font"
+  type="font/ttf"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="https://d25ycjc5dtax3g.cloudfront.net/fonts/HackNerdFont/HackNerdFontMono-Bold.ttf"
+  as="font"
+  type="font/ttf"
+  crossorigin
+/>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+  rel="stylesheet"
+/>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+  integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  defer
+></script>
+
+<!-- Permalink & RSSlink -->
+<link rel="canonical" href="{{ .Permalink }}" />
+{{- with .OutputFormats.Get "RSS" }}
+  <link
+    href="{{ .Permalink }}"
+    rel="alternate"
+    type="application/rss+xml"
+    title="{{ $.Site.Title }}"
+  />
+  <link
+    href="{{ .Permalink }}"
+    rel="feed"
+    type="application/rss+xml"
+    title="{{ $.Site.Title }}"
+  />
+{{- end -}}
+
+{{ $vars := dict
+  "color" (or site.Params.styles.color "blue")
+}}
+
+{{ $options := dict
+  "targetPath" "css/style.css"
+  "transpiler" "dartsass"
+  "vars" $vars
+}}
+
+{{ $style := resources.Get "sass/main.scss" | toCSS $options | minify | fingerprint }}
+<link href="{{ $style.RelPermalink }}" rel="stylesheet" />
+
+{{ partial "custom-head.html" . }}
