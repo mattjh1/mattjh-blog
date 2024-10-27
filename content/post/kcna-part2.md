@@ -10,7 +10,6 @@ tags:
 categories:
   - k8s
   - cloud-native
-draft: true
 ---
 
 In this second part of this series we're diving into some fundamental aspects of **Cloud Native Applications** and **Kubernetes architecture**. By the end, you'll have a clearer understanding of how cloud-native principles, architectures, and practices differ from traditional approaches and how they enhance **R**esilience, **A**gility, **O**perability, and **O**bservability.
