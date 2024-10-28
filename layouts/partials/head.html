@@ -73,13 +73,33 @@
   />
 </noscript>
 
+<style>
+  .indexWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .indexHeader {
+    font-size: 3em;
+  }
+</style>
+
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
   integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
+  media="print"
+  onload="this.media='all'"
 />
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  />
+</noscript>
 
 <!-- Permalink & RSSlink -->
 <link rel="canonical" href="{{ .Permalink }}" />
