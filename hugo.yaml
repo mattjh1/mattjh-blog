@@ -18,6 +18,9 @@ caches:
   images:
     dir: :resourceDir/_gen
     maxAge: 31536000
+  getresource:
+    dir: :cacheDir/:project
+    maxAge: 31536000
 
 paginate: 50
 pagination:
