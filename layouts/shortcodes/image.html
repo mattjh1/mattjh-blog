@@ -1,27 +1,67 @@
 {{ $src := .Get "src" }}
-{{ $inCDN := .Get "inCDN" | default true }}
-{{ $alt := .Get "alt" }}
-{{ $maxWidth := .Get "max-width" | default "75%" }}
+{{ $alt := .Get "alt" | default "Image description" }}
+{{ $maxWidth := .Get "max-width" | default "70%" }}
 {{ $maxHeight := .Get "max-height" | default "auto" }}
 {{ $center := .Get "center" | default false }}
 
 {{ if $src }}
-  <img
-    {{ if eq $inCDN true }}
-      src="{{ .Site.Params.cloudFront.images }}/{{ $src }}"
+  {{ $original := resources.Get (printf "images/%s" $src) }}
+
+  {{ if $original }}
+    {{ if eq $original.MediaType.SubType "svg" }}
+      <img
+        src="{{ $original.RelPermalink }}"
+        alt="{{ $alt }}"
+        style="max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }};
+               {{ if eq $center true }}
+          display: block; margin-left: auto; margin-right: auto;
+        {{ end }}"
+      />
     {{ else }}
-      src="{{ $src }}"
+      <picture>
+        {{/* Create different sizes in WebP format */}}
+        {{ $smallWebP := $original.Process "fit 320x240" }}
+        {{ $mediumWebP := $original.Process "fit 640x480" }}
+        {{ $largeWebP := $original.Process "fit 1024x768" }}
+
+        {{/* Create fallback versions in original format */}}
+        {{ $small := $smallWebP.Process "format:webp" }}
+        {{ $medium := $mediumWebP.Process "format:webp" }}
+        {{ $large := $largeWebP.Process "format:webp" }}
+
+
+        <source
+          srcset="{{ $largeWebP.RelPermalink }}"
+          type="image/webp"
+          media="(min-width: 1024px)"
+        />
+        <source
+          srcset="{{ $mediumWebP.RelPermalink }}"
+          type="image/webp"
+          media="(min-width: 640px)"
+        />
+        <source
+          srcset="{{ $smallWebP.RelPermalink }}"
+          type="image/webp"
+          media="(min-width: 320px)"
+        />
+
+        {{/* Fallback to original format if WebP is not supported */}}
+        <source srcset="{{ $original.RelPermalink }}" type="image/jpeg" />
+
+        <img
+          src="{{ $original.RelPermalink }}"
+          alt="{{ $alt }}"
+          style="max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }};
+                 {{ if eq $center true }}
+            display: block; margin-left: auto; margin-right: auto;
+          {{ end }}"
+        />
+      </picture>
     {{ end }}
-    alt="{{ $alt }}"
-    style="
-      max-width: {{ $maxWidth }};
-      max-height: {{ $maxHeight }};
-      width: auto;
-      height: auto;
-      {{ if eq $center true }}
-      display: block; margin-left: auto; margin-right: auto;
-    {{ end }} "
-  />
+  {{ else }}
+    <p>Image not found in assets/images/ directory.</p>
+  {{ end }}
 {{ else }}
   <p>Image source not provided.</p>
 {{ end }}
