@@ -1,0 +1,37 @@
+<picture>
+  {{ $filename := path.Base .Destination }}
+  {{ $src := printf "/images/%s" $filename | absURL }}
+  {{ $ext := lower (path.Ext $filename) }}
+  {{ $isJPG := or (eq $ext ".jpg") (eq $ext ".jpeg") }}
+  {{ $isPNG := eq $ext ".png" }}
+  {{ $isSVG := eq $ext ".svg" }}
+
+  {{/* Generate AVIF and WebP fallbacks for JPG, JPEG, and PNG images */}}
+  {{ if or $isJPG $isPNG }}
+    {{ $avifPath := replace $src $ext ".avif" }}
+    {{ $webpPath := replace $src $ext ".webp" }}
+
+    {{ if fileExists (printf "static/images/%s" (replace $filename $ext ".avif")) }}
+      <source srcset="{{ $avifPath | safeURL }}" type="image/avif" />
+    {{ end }}
+
+    {{ if fileExists (printf "static/images/%s" (replace $filename $ext ".webp")) }}
+      <source srcset="{{ $webpPath | safeURL }}" type="image/webp" />
+    {{ end }}
+  {{ end }}
+
+  {{/* For SVGs, just output the main image tag since no fallback is needed */}}
+  {{ if $isSVG }}
+    <img src="{{ $src }}" alt="SVG image" loading="lazy" decoding="async" />
+  {{ else }}
+    {{ $img := imageConfig (printf "static/images/%s" $filename) }}
+    <img
+      src="{{ $src }}"
+      alt="Raster image"
+      loading="lazy"
+      decoding="async"
+      width="{{ $img.Width }}"
+      height="{{ $img.Height }}"
+    />
+  {{ end }}
+</picture>
