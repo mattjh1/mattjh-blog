@@ -11,6 +11,14 @@ markup:
   highlight:
     style: "nord"
 
+caches:
+  assets:
+    dir: :resourceDir/_gen
+    maxAge: 31536000 # Cache for 1 year (in seconds)
+  images:
+    dir: :resourceDir/_gen
+    maxAge: 31536000
+
 paginate: 50
 pagination:
   disableAliases: false
