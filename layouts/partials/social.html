@@ -1,0 +1,34 @@
+<div class="socialNavbar">
+  <ul>
+    {{ range sort .Site.Params.social "key" }}
+      <li>
+        {{ if isset . "icon" }}
+          <a
+            href="{{ .url | safeURL }}"
+            {{ if .target }}target="{{ .target }}"{{ end }}
+            {{ if .aria }}
+              aria-label="{{ .aria }}"
+            {{ end }}
+            title="{{ .name }}"
+            {{ if .rel }}rel="{{ .rel }}"{{ end }}
+          >
+            <i class="{{ .icon }}"></i>
+          </a>
+        {{ else }}
+          <a
+            href="{{ .url | safeURL }}"
+            {{ if .target }}target="{{ .target }}"{{ end }}
+            {{ if .aria }}
+              aria-label="{{ .aria }}"
+            {{ else }}
+              title="{{ .name }}"
+            {{ end }}
+            {{ if .rel }}rel="{{ .rel }}"{{ end }}
+          >
+            {{ .name }}
+          </a>
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</div>
