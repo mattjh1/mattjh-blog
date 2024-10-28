@@ -1,34 +1,32 @@
+/* @font-face { */
+/*   font-family: "Hack Nerd Font Mono"; */
+/*   src: url("https://d25ycjc5dtax3g.cloudfront.net/fonts/HackNerdFont/HackNerdFontMono-Regular.ttf") */
+/*     format("truetype"); */
+/*   font-weight: 500; */
+/*   font-style: normal; */
+/*   font-display: swap; */
+/* } */
+/**/
+/* @font-face { */
+/*   font-family: "Hack Nerd Font Mono"; */
+/*   src: url("https://d25ycjc5dtax3g.cloudfront.net/fonts/HackNerdFont/HackNerdFontMono-Bold.ttf") */
+/*     format("truetype"); */
+/*   font-weight: 700; */
+/*   font-style: bold; */
+/*   font-display: swap; */
+/* } */
+
 @font-face {
-  font-family: "Hack Nerd Font Mono";
-  src: url("https://d25ycjc5dtax3g.cloudfront.net/fonts/HackNerdFont/HackNerdFontMono-Regular.ttf")
-    format("truetype");
+  font-family: "Hack";
+  src: url("../fonts/hack-regular-subset.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Hack Nerd Font Mono";
-  src: url("https://d25ycjc5dtax3g.cloudfront.net/fonts/HackNerdFont/HackNerdFontMono-Bold.ttf")
-    format("truetype");
-  font-weight: 700;
-  font-style: bold;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Hack";
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/fonts/hack-regular.woff2")
-    format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hack";
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/fonts/hack-bold.woff2")
-    format("woff2");
+  src: url("../fonts/hack-bold-subset.woff2") format("woff2");
   font-weight: 700;
   font-style: bold;
   font-display: swap;
