@@ -11,6 +11,12 @@ markup:
   highlight:
     style: "nord"
 
+privacy:
+  youtube:
+    disable: false
+    privacyEnhanced: true
+    loading: "lazy"
+
 caches:
   assets:
     dir: :resourceDir/_gen
