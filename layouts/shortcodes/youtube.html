@@ -40,7 +40,6 @@
     {{- $mute := 0 }}
     {{- $start := 0 }}
     {{- $title := "YouTube video" }}
-    {{- $consentGiven := false }}
 
     {{- /* Get arguments. */}}
     {{- if in (slice "false" false 0) ($.Get "allowFullScreen") }}
@@ -112,82 +111,70 @@
       {{- $src = printf "%s?%s" $src . }}
     {{- end }}
 
-    {{- /* Set iframe attributes. */}}
-    {{- $iframeAttributes := dict
-      "allow" "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      "allowfullscreen" $allowFullScreen
-      "loading" $loading
-      "referrerpolicy" "strict-origin-when-cross-origin"
-      "src" $src
-      "style" $iframeStyle
-      "title" $title
-    }}
-
     {{- /* Render. */}}
     <div {{ $divClassOrStyle | safeHTMLAttr }}>
-      {{ if not $consentGiven }}
-        <div class="youtube-video-wrapper">
-          <div class="youtube-consent-banner">
-            <p>
-              This video requires your consent to load. Please accept to view.
-            </p>
-            <button
-              class="youtube-consent-button"
-              onclick="giveConsentAndLoadVideo('{{ $src }}', '{{ $allowFullScreen }}', '{{ $loading }}', '{{ $iframeStyle }}', '{{ $title }}')"
-            >
-              Accept and Load Video
-            </button>
-          </div>
+      <div class="youtube-video-wrapper">
+        <div class="youtube-consent-banner">
+          <p>
+            This video requires your consent to load. Please accept to view.
+          </p>
+          <button
+            class="youtube-consent-button"
+            onclick="giveConsentAndLoadVideo('{{ $src }}', '{{ $allowFullScreen }}', '{{ $loading }}', '{{ $iframeStyle }}', '{{ $title }}')"
+          >
+            Accept and Load Video
+          </button>
         </div>
-      {{ else }}
-        <iframe
-          {{- range $k, $v :=$iframeAttributes }}
-            {{- if $v }}{{- printf " %s=%q" $k $v | safeHTMLAttr }}{{- end }}
-          {{- end }}
-        ></iframe>
-      {{ end }}
+      </div>
     </div>
 
 		<script>
-			// Check local storage for consent
-			document.addEventListener("DOMContentLoaded", function () {
-				if (localStorage.getItem('youtubeConsent') === 'accepted') {
-					document.querySelector('.youtube-consent-banner').style.display = 'none';
-					loadYouTubeVideo('{{ $src }}', '{{ $allowFullScreen }}', '{{ $loading }}', '{{ $iframeStyle }}', '{{ $title }}');
-				} else {
-					document.querySelector('.youtube-consent-banner').style.display = 'flex'; // Show the banner
-				}
-			});
-
-			function giveConsentAndLoadVideo(src, allowFullScreen, loading, iframeStyle, title) {
-				localStorage.setItem('youtubeConsent', 'accepted'); // Store consent
-				const consentBanner = document.querySelector('.youtube-consent-banner');
-				consentBanner.style.display = 'none'; // Hide the banner
-				loadYouTubeVideo(src, allowFullScreen, loading, iframeStyle, title); // Load the video
+		// Check local storage for consent
+		document.addEventListener("DOMContentLoaded", function() {
+			if (localStorage.getItem("youtubeConsent") === "accepted") {
+				document.querySelector(".youtube-consent-banner").style.display = "none";
+				loadYouTubeVideo(
+					"{{ $src }}",
+					"{{ $allowFullScreen }}",
+					"{{ $loading }}",
+					"{{ $iframeStyle }}",
+					"{{ $title }}",
+				);
+			} else {
+				document.querySelector(".youtube-consent-banner").style.display = "flex"; // Show the banner
 			}
-			function loadYouTubeVideo(
-				src,
-				allowFullScreen,
-				loading,
-				iframeStyle,
-				title,
-			) {
-				const iframe = document.createElement("iframe");
-				iframe.src = src;
-				iframe.allow =
-					"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-				if (allowFullScreen) {
-					iframe.setAttribute("allowfullscreen", "");
-				}
-				iframe.setAttribute("loading", loading);
-				iframe.setAttribute("style", iframeStyle);
-				iframe.setAttribute("title", title);
+		});
 
-				// Replace consent banner with the iframe
-				const videoWrapper = document.querySelector(".youtube-video-wrapper");
-				videoWrapper.innerHTML = ''; // Clear any existing content
-				videoWrapper.appendChild(iframe); // Add the iframe
+		function giveConsentAndLoadVideo(
+			src,
+			allowFullScreen,
+			loading,
+			iframeStyle,
+			title,
+		) {
+			localStorage.setItem("youtubeConsent", "accepted"); // Store consent
+			const consentBanner = document.querySelector(".youtube-consent-banner");
+			consentBanner.style.display = "none"; // Hide the banner
+			loadYouTubeVideo(src, allowFullScreen, loading, iframeStyle, title); // Load the video
+		}
+
+		function loadYouTubeVideo(src, allowFullScreen, loading, iframeStyle, title) {
+			const iframe = document.createElement("iframe");
+			iframe.src = src;
+			iframe.allow =
+				"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+			if (allowFullScreen) {
+				iframe.setAttribute("allowfullscreen", "");
 			}
+			iframe.setAttribute("loading", loading);
+			iframe.setAttribute("style", iframeStyle);
+			iframe.setAttribute("title", title);
+
+			// Replace consent banner with the iframe
+			const videoWrapper = document.querySelector(".youtube-video-wrapper");
+			videoWrapper.innerHTML = ""; // Clear any existing content
+			videoWrapper.appendChild(iframe); // Add the iframe
+		}
 		</script>
   {{- else }}
     {{- errorf "The %q shortcode requires an id argument. See %s" .Name .Position }}
