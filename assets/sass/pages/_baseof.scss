@@ -23,59 +23,54 @@
   background-color: #2e3440;
   color: #eceff4;
   border: 1px solid #4c566a;
-  padding: 15px;
+  padding: 12px;
   border-radius: 5px;
   text-align: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  /* Full width of the wrapper */
   height: 100%;
-  /* Full height of the wrapper */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow */
   display: flex;
-  /* Use flexbox for centering */
   flex-direction: column;
-  /* Stack elements vertically */
   justify-content: center;
-  /* Center vertically */
   align-items: center;
-  /* Center horizontally */
+  box-sizing: border-box;
 }
 
 .youtube-consent-button {
   background-color: #5e81ac;
-  /* Primary accent color */
-  color: #ffffff;
-  /* White text */
+  color: #eceff4;
   border: none;
   padding: 10px 20px;
-  /* Space inside the button */
   border-radius: 5px;
-  /* Rounded corners */
-  font-size: 18px;
-  /* Size of the text */
+  font-size: 16px;
   cursor: pointer;
-  /* Change cursor to pointer on hover */
   transition: background-color 0.3s ease;
-  /* Smooth background transition */
   padding-top: 10x;
 }
 
 .youtube-consent-button:hover {
   background-color: #81a1c1;
-  /* Lighter blue on hover */
 }
 
 .youtube-consent-banner p {
-  margin: 0 0 10px 0;
-  /* Remove default margin */
-  font-size: 16px;
-  /* Text size */
+  margin: 0 0 8px 0;
+  font-size: 14px;
   text-align: center;
-  /* Center text */
+}
+
+@media (max-width: 768px) {
+  .youtube-consent-banner {
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .youtube-consent-button {
+    padding: 8px 14px;
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 .back-to-top {
