@@ -131,7 +131,16 @@
 		<script>
 		// Check local storage for consent
 		document.addEventListener("DOMContentLoaded", function() {
-			if (localStorage.getItem("youtubeConsent") === "accepted") {
+				const consentExpiryDays = 30; // Expiration period in days
+				const consentTimestamp = localStorage.getItem("youtubeConsentTimestamp");
+				const currentTime = new Date().getTime();
+
+				// Check if consent is expired
+				if (
+					localStorage.getItem("youtubeConsent") === "accepted" &&
+					consentTimestamp &&
+					currentTime - consentTimestamp < consentExpiryDays * 24 * 60 * 60 * 1000
+				) {
 				document.querySelector(".youtube-consent-banner").style.display = "none";
 				loadYouTubeVideo(
 					"{{ $src }}",
@@ -141,6 +150,9 @@
 					"{{ $title }}",
 				);
 			} else {
+				// Consent has expired or is not set
+				localStorage.removeItem("youtubeConsent");
+				localStorage.removeItem("youtubeConsentTimestamp");
 				document.querySelector(".youtube-consent-banner").style.display = "flex"; // Show the banner
 			}
 		});
@@ -152,7 +164,10 @@
 			iframeStyle,
 			title,
 		) {
-			localStorage.setItem("youtubeConsent", "accepted"); // Store consent
+			const currentTime = new Date().getTime();
+			localStorage.setItem("youtubeConsent", "accepted");
+			localStorage.setItem("youtubeConsentTimestamp", currentTime);
+
 			const consentBanner = document.querySelector(".youtube-consent-banner");
 			consentBanner.style.display = "none"; // Hide the banner
 			loadYouTubeVideo(src, allowFullScreen, loading, iframeStyle, title); // Load the video
@@ -172,8 +187,8 @@
 
 			// Replace consent banner with the iframe
 			const videoWrapper = document.querySelector(".youtube-video-wrapper");
-			videoWrapper.innerHTML = ""; // Clear any existing content
-			videoWrapper.appendChild(iframe); // Add the iframe
+			videoWrapper.innerHTML = "";
+			videoWrapper.appendChild(iframe);
 		}
 		</script>
   {{- else }}
