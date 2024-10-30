@@ -105,13 +105,66 @@
   justify-content: center;
 }
 
-.disclaimer {
+.card {
   background-color: #2e3440;
-  border-left: 4px solid #ebcb8b;
-  border-radius: 8px;
+  border-left: 4px solid;
+  border-radius: 5px;
   padding: 15px;
   margin: 20px 0;
   position: relative;
+  color: #eceff4;
+}
+
+.card-icon {
+  margin-right: 4px;
+  font-size: 1.2em;
+  font-family: "Font Awesome\ 6 Free";
+  font-weight: 900;
+}
+
+.card.notice {
+  border-left-color: #ebcb8b;
+}
+
+.card.notice .card-icon::before {
+  content: "\f328";
+  color: #ebcb8b;
+}
+
+.card.disclaimer {
+  border-left-color: #ebcb8b;
+}
+
+.card.disclaimer .card-icon::before {
+  content: "\f071";
+  color: #ebcb8b;
+}
+
+.card.info {
+  border-left-color: #a3be8c;
+}
+
+.card.info .card-icon::before {
+  content: "";
+  color: #a3be8c;
+}
+
+.card.warning {
+  border-left-color: #d08770;
+}
+
+.card.warning .card-icon::before {
+  content: "\f06a";
+  color: #d08770;
+}
+
+.card.success {
+  border-left-color: #a3be8c;
+}
+
+.card.success .card-icon::before {
+  content: "\f058";
+  color: #a3be8c;
 }
 
 .vertical {

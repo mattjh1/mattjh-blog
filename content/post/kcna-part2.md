@@ -16,9 +16,9 @@ In this second part of this series we're diving into some fundamental aspects of
 
 <!--more-->
 
-{{< disclaimer >}}
+{{< card type="disclaimer" >}}
 These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW). I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
-{{< /disclaimer >}}
+{{< /card >}}
 
 ---
 

@@ -1,0 +1,5 @@
+{{ $type := .Get "type" | default "notice" | lower }}
+<div class="card {{ $type }}">
+  <span class="card-icon"></span>
+  <strong>{{ $type | humanize }}:</strong> {{ .Inner | markdownify }}
+</div>
