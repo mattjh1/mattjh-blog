@@ -59,7 +59,7 @@ params:
     images: "https://d25ycjc5dtax3g.cloudfront.net/images"
     videos: "https://d25ycjc5dtax3g.cloudfront.net/videos"
     asciinema: "https://d25ycjc5dtax3g.cloudfront.net/asciinema"
-  readingTime: false
+  readingTime: true
   social:
     - key: 0
       name: github
