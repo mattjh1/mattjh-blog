@@ -1,14 +1,6 @@
 @use "hugo:vars" as h;
 @use "sass:map";
 
-/* // Colors (Dark Theme) */
-/* $darkGrey: #323232; */
-/* $white: #f8f8ff; */
-/* $black: #2f2f2f; */
-/**/
-/* $backgroundDarker: #252627; */
-/* $backgroundDark: #292a2d; */
-
 // Colors (Nord Theme)
 $darkGrey: #2e3440;
 $white: #e5e9f0;
@@ -28,15 +20,7 @@ $fontCode: "Hack", "Consolas", "Lucida Console", "DejaVu Sans Mono",
 $breakLarge: 992px;
 $width: 760px;
 
-/* Dark Theme */
-/* $primary-colors: ( */
-/* 	"blue": #80aadd, */
-/* 	"orange": #ffb300, */
-/* 	"green": #33d17a, */
-/* 	"red": #f26e74, */
-/* ); */
-
-// Updated primary colors for Nord palette
+// Primary colors for Nord palette
 $primary-colors: (
   "blue": #88c0d0,
   "orange": #d08770,

@@ -39,7 +39,11 @@
       <ul>
         {{ range .Site.Menus.header }}
           <li>
-            <a href="{{ .URL | absURL }}" title="{{ .Title }}">
+            <a
+              href="{{ .URL | absURL }}"
+              title="{{ .Title }}"
+              class="menu-link"
+            >
               ~/{{- .Name -}}
             </a>
           </li>

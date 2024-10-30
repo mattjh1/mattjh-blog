@@ -24,6 +24,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 1.5rem;
 
     li {
       display: inline;
@@ -34,6 +36,36 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+.menu-link {
+  display: inline-block;
+  position: relative;
+}
+
+/* Cursor styling */
+.menu-link:hover::after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 3px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 16px;
+  background-color: v.$white;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.1%,
+  100% {
+    opacity: 0;
   }
 }
 
@@ -135,5 +167,9 @@
 
   .hamb {
     display: block;
+  }
+
+  .menu-link:hover::after {
+    display: none;
   }
 }
