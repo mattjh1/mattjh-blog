@@ -1,7 +1,6 @@
 baseURL: https://www.mattjh.sh/
 languageCode: en-us
 title: mattjh blog
-sitedescription: "Welcome to my space! My name is Mattias and this is where I share whatever i want!"
 
 module:
   imports:

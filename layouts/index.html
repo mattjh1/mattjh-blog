@@ -44,25 +44,51 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        new TypeIt("#author-name", {
+        let bioInstance; // Define bioInstance globally for access by other functions
+
+        const typeInstance = new TypeIt("#author-name", {
           speed: 100,
           lifeLike: true,
           waitUntilVisible: true,
           cursor: true,
-          afterComplete: (instance) => {
-            // Show the bio after the name is done
-            instance.destroy();
-
+          cursorChar: "█",
+          afterComplete: (i) => {
+            i.destroy();
+          },
+        })
+          .exec(() => {
+            // Make author-bio visible and initialize typing for it after author-name finishes
             const bioElement = document.getElementById("author-bio");
             bioElement.style.display = "block"; // Make the bio visible
-            new TypeIt("#author-bio", {
+
+            // Initialize the bioInstance
+            bioInstance = new TypeIt("#author-bio", {
               speed: 50,
               waitUntilVisible: true,
               lifeLike: true,
-              startDelay: 500,
+              cursorChar: "█",
             }).go();
-          },
-        }).go();
+          })
+          .go();
+
+        // Function to hide the cursor
+        function hideCursor() {
+          const cursor = document.querySelector("#author-bio .ti-cursor");
+          if (cursor) cursor.style.visibility = "hidden"; // Hide the cursor
+        }
+
+        // Function to show the cursor
+        function showCursor() {
+          const cursor = document.querySelector("#author-bio .ti-cursor");
+          if (cursor) cursor.style.visibility = "visible"; // Show the cursor
+        }
+
+        // Add hover listeners for links to control bioInstance
+        const menuLinks = document.querySelectorAll(".menu-link");
+        menuLinks.forEach((link) => {
+          link.addEventListener("mouseenter", hideCursor);
+          link.addEventListener("mouseleave", showCursor);
+        });
       });
     </script>
   </body>

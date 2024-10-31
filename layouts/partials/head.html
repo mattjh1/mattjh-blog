@@ -101,12 +101,8 @@
   />
 </noscript>
 
-<link
-  rel="preload"
-  href="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"
-  as="script"
-/>
-<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js" defer></script>
+{{ $js := resources.Get "js/typeit.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.Permalink }}" defer></script>
 <!-- Permalink & RSSlink -->
 <link rel="canonical" href="{{ .Permalink }}" />
 {{- with .OutputFormats.Get "RSS" }}
