@@ -1,6 +1,7 @@
 ---
 title: "Enhancing Productivity with Custom Tmux Session Management"
 date: 2023-11-25
+description: "Going through how i use tmux in my daily workflow, and my little custom script"
 tags:
   - tmux
   - script

@@ -1,8 +1,8 @@
 ---
 title: "whoami"
 date: "2023-11-25"
-draft: false
 showMetadata: false
+description: "Welcome to my space! My name is Mattias and this is where I share whatever i want!"
 ---
 
 ## Hello, I'm Mattias Holmgren

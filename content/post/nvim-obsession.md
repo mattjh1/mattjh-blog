@@ -1,6 +1,7 @@
 ---
 title: "My Journey with Vim: Gotta love Keybindings"
 date: 2024-10-20
+description: "Ever since I was first introduced to Vim in University, I've been captivated by its philosophy. The idea of a highly efficient, keyboard-centric editor"
 tags:
   - vim-motions
   - neovim
