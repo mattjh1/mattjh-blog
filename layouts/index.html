@@ -4,10 +4,16 @@
     <title>
       {{ i18n "home" }} |
       {{ .Site.Params.author.name }}
+
     </title>
 
     {{ partial "head.html" . }}
-
+    <style>
+      /* Hide the author bio initially */
+      #author-bio {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -19,8 +25,12 @@
         <main class="main">
           <div class="indexWrapper">
             <div>
-              <h1 class="indexHeader">{{ .Site.Params.author.name }}</h1>
-              <p class="code">{{ .Site.Params.author.bio }}</p>
+              <h1 class="indexHeader" id="author-name">
+                {{ .Site.Params.author.name }}
+              </h1>
+              <p class="code" id="author-bio">
+                {{ .Site.Params.author.bio }}
+              </p>
             </div>
             {{ if isset .Site.Params "social" }}
               {{ partial "social.html" . }}
@@ -31,5 +41,29 @@
 
       {{ partial "footer.html" . }}
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        new TypeIt("#author-name", {
+          speed: 100,
+          lifeLike: true,
+          waitUntilVisible: true,
+          cursor: true,
+          afterComplete: (instance) => {
+            // Show the bio after the name is done
+            instance.destroy();
+
+            const bioElement = document.getElementById("author-bio");
+            bioElement.style.display = "block"; // Make the bio visible
+            new TypeIt("#author-bio", {
+              speed: 50,
+              waitUntilVisible: true,
+              lifeLike: true,
+              startDelay: 500,
+            }).go();
+          },
+        }).go();
+      });
+    </script>
   </body>
 </html>
