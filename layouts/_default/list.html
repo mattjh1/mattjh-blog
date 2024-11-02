@@ -7,6 +7,15 @@
   <div>
     <div class="listHeader">
       <h1>{{ .Title }}</h1>
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input
+          type="text"
+          class="search-query"
+          id="search-query"
+          placeholder="Search posts..."
+        />
+      </div>
     </div>
 
     {{ with .Content }}
@@ -21,7 +30,7 @@
     <div>
       {{ range $paginator.Pages }}
         <a class="postListLink" href="{{ .Permalink }}">
-          <div class="postListItem" role="listitem">
+          <div class="postListItem">
             <div class="postHeader">
               <span class="postTitle">{{ .Title }}</span>
               {{ $formattedDate := .Date.Format "2006-01-02" }}
@@ -40,7 +49,7 @@
       <!-- Pagination Navigation -->
       <div class="pagination">
         {{ if $paginator.HasPrev }}
-          <a href="{{ $paginator.Prev.URL }}" aria-label="Previous">
+          <a href="{{ $paginator.Prev.URL }}" aria-label="Go to Previous Page">
             <i class="fas fa-chevron-left"></i>
           </a>
           <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
@@ -48,11 +57,51 @@
 
         {{ if $paginator.HasNext }}
           <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
-          <a href="{{ $paginator.Next.URL }}">
+          <a href="{{ $paginator.Next.URL }}" aria-label="Go to Next Page">
             <i class="fas fa-chevron-right"></i>
           </a>
         {{ end }}
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("search-query");
+
+      function startTypingAnimation() {
+        if (!searchInput.value) {
+          const typeInstance = new TypeIt(searchInput, {
+            speed: 50,
+            lifeLike: true,
+            waitUntilVisible: true,
+            cursor: true,
+            cursorChar: "█",
+            afterComplete: (i) => {
+              i.destroy();
+            },
+          })
+            .type("Search posts...")
+            .go();
+        }
+      }
+
+      window.addEventListener("pageshow", function () {
+        searchInput.value = ""; // Clear the input value
+        startTypingAnimation(); // Restart the typing animation
+      });
+
+      searchInput.addEventListener("focus", function () {
+        if (searchInput.value === "Search posts...") {
+          searchInput.value = "";
+        }
+      });
+
+      searchInput.addEventListener("blur", function () {
+        if (searchInput.value === "") {
+          searchInput.value = "Search posts...";
+        }
+      });
+    });
+  </script>
 {{ end }}
