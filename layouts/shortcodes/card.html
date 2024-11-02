@@ -1,3 +1,11 @@
+{{/* Available cards are:
+
+  - notice
+  - disclaimer
+  - info
+  - warning
+  - success
+*/}}
 {{ $type := .Get "type" | default "notice" | lower }}
 <div class="card {{ $type }}">
   <span class="card-icon"></span>
