@@ -1,6 +1,6 @@
 ---
 title: "Learning k8s, KCNA preparation (Part 3)"
-date: 2024-10-30
+date: 2024-11-03
 description: "Containers and Kubernetes Fundamentals – My KCNA Journey (Part 3)"
 tags:
   - KCNA
@@ -14,7 +14,7 @@ categories:
 draft: true
 ---
 
-In this third part of the series, we’ll dive into the fundamentals of **Containers** and **Kubernetes**. You’ll gain insights into how containerization revolutionizes application deployment and management, while Kubernetes provides the orchestration needed for scalability and resilience. Lets explore the power of containers and Kubernetes in modern application development.
+In this third part of the series, we’ll dive into the fundamentals of **Containers**, crucial to understanding the benefits that container orchestration via **Kubernetes** bring. You’ll gain insights into how containerization revolutionizes application deployment and management, while Kubernetes provides the orchestration needed for scalability and resilience. Lets explore the power of containers in modern application development.
 
 <!--more-->
 
