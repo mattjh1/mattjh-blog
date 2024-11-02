@@ -25,21 +25,14 @@ pre {
   position: relative;
   background: v.$backgroundDarker;
   padding: 1em;
-  overflow: auto;
+  overflow: hidden;
 }
 
 pre code {
   display: block;
-  /* Ensures the code is displayed as a block */
+  white-space: pre-wrap;
+  word-break: break-word;
 }
-
-/* pre code { */
-/* 	@include codeStyles; */
-/* 	display: block; */
-/* 	background: v.$backgroundDarker; */
-/* 	padding: 1em; */
-/* 	overflow: auto; */
-/* } */
 
 code {
   @include codeStyles;
