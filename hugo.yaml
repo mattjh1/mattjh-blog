@@ -9,6 +9,7 @@ module:
 markup:
   highlight:
     style: "nord"
+    tabWidth: 2
 
 privacy:
   youtube:
@@ -27,7 +28,7 @@ caches:
     dir: :cacheDir/:project
     maxAge: 31536000
 
-paginate: 50
+paginate: 5
 pagination:
   disableAliases: false
   pagerSize: 10
