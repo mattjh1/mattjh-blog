@@ -1,4 +1,66 @@
+@use "../utils/variables" as v;
+
 .listHeader,
 .listContent {
   text-align: left;
+}
+
+/* Search Container Styles */
+.search-container {
+  position: relative;
+  display: flex;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Icon Styles */
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e5e9f0;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* Search Input Styles */
+.search-query {
+  padding: 10px 15px;
+  padding-left: 35px;
+  border: 1px solid #4c566a;
+  border-radius: 5px;
+  background-color: v.$backgroundDarker;
+  color: #e5e9f0;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Placeholder Style */
+.search-query::placeholder {
+  color: transparent;
+  /* Make placeholder text transparent initially */
+}
+
+/* Hide the default placeholder until the input is focused */
+.search-query::placeholder {
+  color: transparent;
+}
+
+/* When input is focused, make the placeholder visible */
+.search-query:focus::placeholder {
+  color: #e5e9f0;
+  opacity: 0.7;
+}
+
+/* Focus State */
+.search-query:focus {
+  outline: none;
+  border-color: #88c0d0;
+  background-color: #434c5e;
 }

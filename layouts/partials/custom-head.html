@@ -1,3 +1,33 @@
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"
+  defer
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"
+  integrity="sha512-FwWaT/y9ajd/+J06KL9Fko1jELonJNHMUTR4nGP9MSIq4ZdU2w9/OiLxn16p/zEOZkryHi3wKYsnWPuADD328Q=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  defer
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"
+  integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  defer
+></script>
+
+{{ $js := resources.Get "js/copyCode.js" | minify | fingerprint }}
+<script
+  src="{{ $js.Permalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  defer
+></script>
+
+<script src="{{ "js/search.js" | absURL }}" defer></script>
+
 {{ if .IsPage }}
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ .Permalink }}" />
