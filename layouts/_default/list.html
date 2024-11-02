@@ -43,10 +43,11 @@
           <a href="{{ $paginator.Prev.URL }}" aria-label="Previous">
             <i class="fas fa-chevron-left"></i>
           </a>
+          <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
         {{ end }}
 
         {{ if $paginator.HasNext }}
-          <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+          <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
           <a href="{{ $paginator.Next.URL }}">
             <i class="fas fa-chevron-right"></i>
           </a>
