@@ -83,6 +83,7 @@ params:
       name: email
       url: "mailto:me@mattjh.sh"
       icon: "fa-regular fa-envelope"
+
   customCSS:
     - "sass/main.scss"
   minify: true

@@ -52,56 +52,58 @@
           <a href="{{ $paginator.Prev.URL }}" aria-label="Go to Previous Page">
             <i class="fas fa-chevron-left"></i>
           </a>
-          <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
         {{ end }}
 
+
+        <!-- Display Page Number and Total Pages only once -->
+        <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+
         {{ if $paginator.HasNext }}
-          <span>{{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
           <a href="{{ $paginator.Next.URL }}" aria-label="Go to Next Page">
             <i class="fas fa-chevron-right"></i>
           </a>
         {{ end }}
       </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const searchInput = document.getElementById("search-query");
+
+          function startTypingAnimation() {
+            if (!searchInput.value) {
+              const typeInstance = new TypeIt(searchInput, {
+                speed: 50,
+                lifeLike: true,
+                waitUntilVisible: true,
+                cursor: true,
+                cursorChar: "█",
+                afterComplete: (i) => {
+                  i.destroy();
+                },
+              })
+                .type("Search posts...")
+                .go();
+            }
+          }
+
+          window.addEventListener("pageshow", function () {
+            searchInput.value = ""; // Clear the input value
+            startTypingAnimation(); // Restart the typing animation
+          });
+
+          searchInput.addEventListener("focus", function () {
+            if (searchInput.value === "Search posts...") {
+              searchInput.value = "";
+            }
+          });
+
+          searchInput.addEventListener("blur", function () {
+            if (searchInput.value === "") {
+              searchInput.value = "Search posts...";
+            }
+          });
+        });
+      </script>
     </div>
   </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const searchInput = document.getElementById("search-query");
-
-      function startTypingAnimation() {
-        if (!searchInput.value) {
-          const typeInstance = new TypeIt(searchInput, {
-            speed: 50,
-            lifeLike: true,
-            waitUntilVisible: true,
-            cursor: true,
-            cursorChar: "█",
-            afterComplete: (i) => {
-              i.destroy();
-            },
-          })
-            .type("Search posts...")
-            .go();
-        }
-      }
-
-      window.addEventListener("pageshow", function () {
-        searchInput.value = ""; // Clear the input value
-        startTypingAnimation(); // Restart the typing animation
-      });
-
-      searchInput.addEventListener("focus", function () {
-        if (searchInput.value === "Search posts...") {
-          searchInput.value = "";
-        }
-      });
-
-      searchInput.addEventListener("blur", function () {
-        if (searchInput.value === "") {
-          searchInput.value = "Search posts...";
-        }
-      });
-    });
-  </script>
 {{ end }}

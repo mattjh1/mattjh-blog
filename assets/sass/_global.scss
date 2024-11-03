@@ -23,9 +23,13 @@ pre {
   @include codeStyles;
   display: block;
   position: relative;
-  background: v.$backgroundDarker;
   padding: 1em;
   overflow: hidden;
+  background: v.$backgroundDark;
+}
+
+pre:not(.mermaid) {
+  background: v.$backgroundDarker;
 }
 
 pre code {
