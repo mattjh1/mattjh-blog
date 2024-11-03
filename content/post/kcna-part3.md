@@ -11,7 +11,6 @@ tags:
 categories:
   - k8s
   - cloud-native
-draft: true
 ---
 
 In this third part of the series, we’ll dive into the fundamentals of **Containers**, crucial to understanding the benefits that container orchestration via **Kubernetes** bring. You’ll gain insights into how containerization revolutionizes application deployment and management, while Kubernetes provides the orchestration needed for scalability and resilience. Lets explore the power of containers in modern application development.
@@ -129,6 +128,8 @@ Running a container is straightforward. Once you have an image, use `docker run 
 **Start Small**: Using a lightweight base image like `alpine` helps minimize the size of your images.
 
 **Install Dependencies Only**: Keep the container image as lean as possible by installing only necessary dependencies. Document each step in your `Dockerfile` to ensure a repeatable and efficient build process.
+
+---
 
 ## Hands-On Exercises
 
