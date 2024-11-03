@@ -30,10 +30,15 @@
   "vars" $vars
 }}
 
-{{ $style := resources.Get "sass/main.scss" | toCSS $options | minify | fingerprint }}
+{{ with resources.Get "sass/main.scss" | toCSS $options | minify | fingerprint }}
+  <link
+    rel="stylesheet"
+    href="{{ .RelPermalink }}"
+    integrity="{{ .Data.Integrity }}"
+    crossorigin="anonymous"
+  />
+{{ end }}
 
-
-<link href="{{ $style.RelPermalink }}" rel="stylesheet" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
