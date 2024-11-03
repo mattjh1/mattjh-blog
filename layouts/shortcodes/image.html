@@ -21,35 +21,21 @@
       />
     {{ else }}
       <picture>
-        {{/* Create different sizes in WebP format */}}
-        {{ $smallWebP := $original.Process "fit 320x240" }}
-        {{ $mediumWebP := $original.Process "fit 640x480" }}
-        {{ $largeWebP := $original.Process "fit 1024x768" }}
-
-        {{/* Create fallback versions in original format */}}
-        {{ $small := $smallWebP.Process "format:webp" }}
-        {{ $medium := $mediumWebP.Process "format:webp" }}
-        {{ $large := $largeWebP.Process "format:webp" }}
+        {{/* Generate different sizes in original format only */}}
+        {{ $small := $original.Process "fit 320x240" }}
+        {{ $medium := $original.Process "fit 640x480" }}
+        {{ $large := $original.Process "fit 1024x768" }}
 
 
         <source
-          srcset="{{ $largeWebP.RelPermalink }}"
-          type="image/webp"
+          srcset="{{ $large.RelPermalink }}"
           media="(min-width: 1024px)"
         />
         <source
-          srcset="{{ $mediumWebP.RelPermalink }}"
-          type="image/webp"
+          srcset="{{ $medium.RelPermalink }}"
           media="(min-width: 640px)"
         />
-        <source
-          srcset="{{ $smallWebP.RelPermalink }}"
-          type="image/webp"
-          media="(min-width: 320px)"
-        />
-
-        {{/* Fallback to original format if WebP is not supported */}}
-        <source srcset="{{ $original.RelPermalink }}" type="image/jpeg" />
+        <source srcset="{{ $small.RelPermalink }}" media="(min-width: 320px)" />
 
         <img
           src="{{ $original.RelPermalink }}"
