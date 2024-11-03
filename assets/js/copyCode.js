@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     button.innerText = "Copy";
     button.className = "copy-button";
     button.onclick = function () {
-      const text = block.innerText;
+      const text = block.textContent;
       navigator.clipboard.writeText(text).then(() => {
         button.innerText = "Copied!";
         setTimeout(() => (button.innerText = "Copy"), 2000);
