@@ -40,6 +40,17 @@ pagination:
   pagerSize: 10
   path: page
 
+security:
+  enableInlineShortcodes: false
+  exec:
+    allow:
+      - "^(dart-)?sass(-embedded)?$"
+      - "^go$"
+      - "^git$"
+      - "^npx$"
+      - "^postcss$"
+      - "^tailwindcss$"
+      - "/dart-sass/sass"
 menu:
   header:
     - name: posts
