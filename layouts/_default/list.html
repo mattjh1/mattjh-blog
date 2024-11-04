@@ -27,7 +27,11 @@
 
     <div id="post-list" class="listContent">
       {{ range .Pages }}
-        <a class="postListLink" href="{{ .Permalink }}">
+        <a
+          class="postListLink"
+          href="{{ .Permalink }}"
+          aria-label="Read more about {{ .Title }}"
+        >
           <div class="postListItem">
             <div class="postHeader">
               <span class="postTitle">{{ .Title }}</span>
