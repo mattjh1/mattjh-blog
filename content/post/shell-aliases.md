@@ -169,7 +169,7 @@ These aliases will colorize results by default, making it much faster to spot ma
 
 ## Miscellaneous Aliases
 
-Here are some versatile aliases for common tasks, such as clearing the screen, accessing history, viewing system information, and checking paths.
+Here are some versatile aliases for common tasks, such as load `zsh` config in editor, accessing history, viewing system information, count files in cwd, go to sleep, reboot and power off.
 
 ```bash
 # Open Zsh configuration for quick edits
