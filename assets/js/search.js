@@ -1,4 +1,4 @@
-const itemsPerPage = 1; // Set the number of items to display per page
+const itemsPerPage = 5; // Set the number of items to display per page
 const maxVisiblePages = 5;
 let currentPage = 1;
 let paginatedResults = [];
@@ -44,6 +44,7 @@ if (searchInput) {
       paginatedResults = result.map((res) => res.item);
       renderPage(currentPage);
       renderPagination();
+      highlightMatches(searchQuery);
     } else {
       resetSearch();
     }
@@ -55,6 +56,10 @@ function resetSearch() {
   paginatedResults = posts;
   renderPage(1);
   renderPagination();
+
+  // Clear any existing highlights
+  const markInstance = new Mark(document.querySelectorAll(".postListItem"));
+  markInstance.unmark();
 }
 
 // Render the specified page of results
@@ -85,6 +90,15 @@ function renderPage(page) {
     const noResults = document.querySelector(".no-results");
     if (noResults) noResults.remove();
   }
+}
+
+function highlightMatches(query) {
+  const markInstance = new Mark(document.querySelectorAll(".postListItem"));
+  markInstance.unmark({
+    done: function () {
+      markInstance.mark(query);
+    },
+  });
 }
 
 // Render pagination buttons
