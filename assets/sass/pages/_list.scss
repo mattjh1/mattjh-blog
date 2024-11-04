@@ -64,3 +64,59 @@
   border-color: #88c0d0;
   background-color: #434c5e;
 }
+
+.pagination-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* Add space below pagination */
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination-button {
+  padding: 0.5rem;
+  cursor: pointer;
+  border: 1px solid #4c566a;
+  background-color: v.$backgroundDarker;
+  color: v.$white;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  border-radius: 4px;
+}
+
+.pagination-button:hover {
+  background-color: #88c0d0;
+  color: #2e3440;
+}
+
+.pagination-button.active {
+  background-color: #88c0d0;
+  color: #2e3440;
+}
+
+.pagination-chevron {
+  font-size: 1.5rem;
+  color: #88c0d0;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0.5rem;
+}
+
+.pagination-chevron:hover {
+  color: #5e81ac;
+  /* Nord blue */
+}
+
+.no-results {
+  text-align: center;
+  color: v.$white;
+  font-style: italic;
+  margin-top: 1rem;
+}
