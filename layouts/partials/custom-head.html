@@ -26,7 +26,12 @@
   defer
 ></script>
 
-<script src="{{ "js/search.js" | absURL }}" defer></script>
+{{ $js := resources.Get "js/search.js" | minify | fingerprint }}
+<script
+  src="{{ $js.Permalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  defer
+></script>
 
 {{ if .IsPage }}
   <meta property="og:type" content="article" />
