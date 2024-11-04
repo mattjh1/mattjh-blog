@@ -19,14 +19,13 @@
   defer
 ></script>
 
-{{ $js := resources.Get "js/copyCode.js" | minify | fingerprint }}
-<script
-  src="{{ $js.Permalink }}"
-  integrity="{{ $js.Data.Integrity }}"
-  defer
-></script>
+{{ $js1 := resources.Get "js/typeit.js" }}
+{{ $js2 := resources.Get "js/copyCode.js" }}
+{{ $js3 := resources.Get "js/backToTop.js" }}
+{{ $js4 := resources.Get "js/search.js" }}
+{{ $js := slice $js1 $js2 $js3 $js4 | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
 
-{{ $js := resources.Get "js/search.js" | minify | fingerprint }}
+
 <script
   src="{{ $js.Permalink }}"
   integrity="{{ $js.Data.Integrity }}"

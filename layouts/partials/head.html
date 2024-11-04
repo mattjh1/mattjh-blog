@@ -107,8 +107,6 @@
   />
 </noscript>
 
-{{ $js := resources.Get "js/typeit.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $js.Permalink }}" defer></script>
 <!-- Permalink & RSSlink -->
 <link rel="canonical" href="{{ .Permalink }}" />
 {{- with .OutputFormats.Get "RSS" }}
