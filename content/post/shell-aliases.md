@@ -166,7 +166,6 @@ alias fgrep='fgrep --color=auto'
 ```
 
 These aliases will colorize results by default, making it much faster to spot matches.
-For a **Miscellaneous** category, we could include aliases that don't fit into other specialized groups but are generally helpful for day-to-day tasks. This section might include aliases for system operations, path management, and utility commands that don't fall under the more focused sections like file operations, text editors, or git commands.
 
 ## Miscellaneous Aliases
 
