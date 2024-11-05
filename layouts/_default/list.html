@@ -32,7 +32,11 @@
           href="{{ .Permalink }}"
           aria-label="Read more about {{ .Title }}"
         >
-          <div class="postListItem">
+          <div
+            class="postListItem"
+            data-tags="{{ delimit .Params.tags "," }}"
+            data-categories="{{ delimit .Params.categories "," }}"
+          >
             <div class="postHeader">
               <span class="postTitle">{{ .Title }}</span>
               {{ $formattedDate := .Date.Format "2006-01-02" }}

@@ -22,9 +22,13 @@ const fuseOptions = {
 // Collect posts from the DOM
 const posts = [];
 document.querySelectorAll(".postListItem").forEach((item) => {
+  const tags = item.dataset.tags;
+  const categories = item.dataset.categories;
   posts.push({
     title: item.querySelector(".postTitle").textContent,
     contents: item.querySelector(".postExcerpt").textContent,
+    tags: tags ? tags.split(",") : [],
+    categories: categories ? categories.split(",") : [],
     element: item,
   });
 });
