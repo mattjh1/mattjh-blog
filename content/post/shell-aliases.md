@@ -40,9 +40,24 @@ alias .5="cd ../../../../.."
 
 # Create nested directories with verbose output
 alias mkdir='mkdir -pv'
+
 ```
 
 These aliases are invaluable for quickly moving up and managing directories without needing long paths.
+
+```bash
+# z is for zoxide
+alias j='z'
+alias f='zi'
+```
+
+Taken from the initial section of [zoxide readme](https://github.com/ajeetdsouza/zoxide):
+
+> zoxide is a smarter cd command, inspired by z and autojump.
+> It remembers which directories you use most frequently, so you can "jump" to them in just a few keystrokes.
+> zoxide works on all major shells.
+
+It is awesome, do yourself a favor and try this one. And these aliases just makes things more comfortable in general.
 
 ## System Commands & Utilities
 
@@ -94,9 +109,9 @@ These are perfect for quickly glancing at files or counting contents without com
 [bat is cat on steroids](https://github.com/sharkdp/bat) and it is what i use as a drop-in-replacement for `cat`
 {{< /card >}}
 
-## Git & Dotfile Management
+## Git
 
-Managing Git repositories and dotfiles is simplified with these aliases. The git aliases found here I actually fetch via a shell plugin, that contains a whole lot more than i actually use (yet).
+Managing Git repositories is simplified with these aliases. The git aliases found here I actually fetch via a shell plugin, that contains a whole lot more than i actually use (yet).
 
 ```sh
 # Selection of my most used git aliases
@@ -148,7 +163,6 @@ alias tmat="tmux attach-session -t"
 alias tmkas="tmux kill-session -a"
 alias tml="tmux list-sessions"
 alias tmn="tmux new-session"
-alias tmns="tmux new -s"
 alias tms="tmux new-session -s"
 ```
 
@@ -191,3 +205,15 @@ alias zz='pmset displaysleepnow'
 alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 ```
+
+Oh and not to forget this beauty.
+
+```bash
+# Original ctrl+z behavior, suspend program
+# Repeat action to move suspended program to foreground
+_zsh_cli_fg() { fg; }
+zle -N _zsh_cli_fg
+bindkey '^Z' _zsh_cli_fg
+```
+
+Is it too much of an effort needing to press ctrl+z followed by 'fg' to return it to foreground? Then you'll love this suspend toggle!
