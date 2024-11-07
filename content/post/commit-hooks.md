@@ -16,6 +16,7 @@ This will be a short post about a nifty feature I found in `lazygit`. Strangely,
 So lets just go through the premiss real quickly, you're on your feature branch and the code is flowing. You go to commit, and you cant! You're enforced to follow the strict pre-commit hook setup for the project. This is fine, and actually really good practice to keep a nice coherent history of what exactly is going on. Buuut... If you're anything like me, you like to commit often and small individual pieces to sort of organize things for yourself, while you're working. If you do that, these commit-hooks get annoying unless you take some actions.
 
 ```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'dark', 'gitGraph': { 'showBranches': true, 'showCommitLabel': true }}}%%
 gitGraph
     commit
     commit
