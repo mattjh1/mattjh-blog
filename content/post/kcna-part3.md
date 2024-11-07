@@ -27,8 +27,6 @@ These notes are a polished version of my personal reflections taken while follow
 
 Container technology has fundamentally transformed our approach to application development and architecture. Their ability to enable efficient management of applications at scale has become increasingly important.
 
-Here's how you could break down your "A Brief History of Container Technology" section with more granular subheadings for clarity:
-
 ## A Brief History of Container Technology
 
 Understanding containers requires a look back at the evolution of virtualization and isolation technologies over the decades.
@@ -58,8 +56,6 @@ Understanding containers requires a look back at the evolution of virtualization
 
 - **Docker**: Docker emerged in 2013, combining namespaces and cgroups to create a user-friendly container platform. Its open-source launch popularized containerization by simplifying the deployment and management of applications across environments.
 - **OCI Standards**: As container usage grew, the Open Container Initiative (OCI) established standards to ensure compatibility across container tools, extending Docker’s impact across the industry.
-
-Your sections are clear and cover the fundamentals well. To make this content even more engaging, here are a few refinements that could help readers easily follow the concepts, especially if they’re new to containerization.
 
 ## Understanding Container Images
 
