@@ -72,15 +72,6 @@ jobs:
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
-      - name: Cache Dart Sass files
-        uses: actions/cache@v3
-        with:
-          path: ${{ runner.temp }}/sass_cache
-          key: sass-cache-${{ github.ref }}-${{ github.sha }}
-          restore-keys: |
-            sass-cache-${{ github.ref }}
-            sass-cache-
-
       - name: Download Dart Sass binary
         run: |
           mkdir -p ${{ runner.temp }}/dart-sass
@@ -94,29 +85,12 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            node-modules-
-
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-
-      - name: Cache Hugo files
-        uses: actions/cache@v3
-        with:
-          path: ${{ runner.temp }}/hugo_cache
-          key: hugo-cache-${{ github.ref }}-${{ github.sha }}
-          restore-keys: |
-            hugo-cache-${{ github.ref }}
-            hugo-cache-
 
       - name: Build with Hugo
         env:
