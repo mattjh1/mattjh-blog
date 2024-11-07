@@ -34,8 +34,12 @@
         >
           <div
             class="postListItem"
-            data-tags="{{ delimit .Params.tags "," }}"
-            data-categories="{{ delimit .Params.categories "," }}"
+            {{ with .Params.tags }}
+              data-tags="{{ delimit . "," }}"
+            {{ end }}
+            {{ with .Params.categories }}
+              data-categories="{{ delimit . "," }}"
+            {{ end }}
           >
             <div class="postHeader">
               <span class="postTitle">{{ .Title }}</span>

@@ -34,11 +34,10 @@ caches:
     dir: :cacheDir/:project
     maxAge: 31536000
 
-paginate: 5
 pagination:
   disableAliases: false
-  pagerSize: 10
-  path: page
+  pagerSize: 5
+  path: post
 
 security:
   enableInlineShortcodes: false
