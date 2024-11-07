@@ -164,7 +164,7 @@ Lets try some exercises that show us these concepts in action.
    docker history layered-example
    ```
 
-   Notice how each command in the `Dockerfile` adds a new layer to the image. Encourage readers to minimize layers and remove unnecessary commands to keep images lean.
+   Notice how each command in the `Dockerfile` adds a new layer to the image. Now lets minimize layers and remove unnecessary commands to keep images lean.
 
    In this setup, we have two `RUN` statements, so Docker creates a new layer for each one.
 

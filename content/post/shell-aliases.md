@@ -61,7 +61,7 @@ It is awesome, do yourself a favor and try this one. And these aliases just make
 
 ## System Commands & Utilities
 
-Some core commands, like clearing the terminal, reloading the shell, and printing the PATH, come in handy multiple times a day.
+Some core commands, like clearing the terminal, reloading the shell, and printing `PATH`, come in handy multiple times a day.
 
 ```sh
 # Clear the terminal and reload configuration

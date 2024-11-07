@@ -57,7 +57,7 @@ To seamlessly integrate the Tmux Session Script with Alacritty, follow these ste
 
 3. Save the configuration file.
 
-Now, every time you launch Alacritty, the Tmux Session Script will run automatically, providing a seamless way to manage your projects.
+Now, every time you launch Alacritty, the Tmux Session Script will run automatically before anything else, the entrypoint for the terminal emulator so to say, providing a seamless way to manage your projects.
 
 ## Seamless Workflow Integration
 
@@ -142,7 +142,7 @@ _Since writing this, I’ve further enhanced my environment management by integr
 
 With **chezmoi**, I can manage dotfiles and configuration settings across different systems, making it easy to adapt the Tmux Session Script based on the environment. **Go templates** add another layer of flexibility, enabling dynamic generation of configuration files tailored to each machine.
 
-The script itself remains intact, but this added layer of customization has significantly improved my workflow, especially when dealing with different environments such as development, testing, or production.
+The script itself remains intact, but this added layer of customization has given me peace of mind, ready to move my `tmux` config to any server or wherever on a moments notice.
 
 ## Conclusion
 
