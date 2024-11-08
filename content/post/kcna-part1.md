@@ -6,6 +6,7 @@ tags:
   - KCNA
   - k8s
   - certification
+  - kubernetes
 categories:
   - k8s
   - cloud-native

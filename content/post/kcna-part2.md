@@ -7,6 +7,7 @@ tags:
   - k8s
   - certification
   - architecture
+  - kubernetes
 categories:
   - k8s
   - cloud-native
