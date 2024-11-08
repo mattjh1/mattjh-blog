@@ -1,29 +1,12 @@
-<script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous"
-  defer
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"
-  integrity="sha512-FwWaT/y9ajd/+J06KL9Fko1jELonJNHMUTR4nGP9MSIq4ZdU2w9/OiLxn16p/zEOZkryHi3wKYsnWPuADD328Q=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  defer
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"
-  integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  defer
-></script>
-
-{{ $js1 := resources.Get "js/typeit.js" }}
-{{ $js2 := resources.Get "js/copyCode.js" }}
-{{ $js3 := resources.Get "js/backToTop.js" }}
-{{ $js4 := resources.Get "js/search.js" }}
-{{ $js := slice $js1 $js2 $js3 $js4 | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
+{{/* Bundle together all js files for performance */}}
+{{ $js1 := resources.Get "js/lib/jquery-3.7.1.js" }}
+{{ $js2 := resources.Get "js/lib/fuse-7.0.0.js" }}
+{{ $js3 := resources.Get "js/lib/mark-8.11.1.js" }}
+{{ $js4 := resources.Get "js/typeit.js" }}
+{{ $js5 := resources.Get "js/copyCode.js" }}
+{{ $js6 := resources.Get "js/backToTop.js" }}
+{{ $js7 := resources.Get "js/search.js" }}
+{{ $js := slice $js1 $js2 $js3 $js4 $js5 $js6 $js7 | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
 
 
 <script
@@ -42,7 +25,8 @@
     content="{{ with .Params.featured_image }}
       {{ $.Site.Params.cloudFront.images }}/{{ . | safeURL }}
     {{ else }}
-      {{ $.Site.Params.cloudFront.images }}/mjh-logo.png
+      {{ $logo := resources.Get "images/mjh-logo.avif" }}
+      {{ $logo.RelPermalink }}
     {{ end }}"
   />
   <meta property="og:image:width" content="1200" />
