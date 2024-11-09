@@ -252,9 +252,13 @@ Lets try some exercises that show us these concepts in action.
 3. **Run Both Versions**
 
    ```bash
-   docker run -d -p 5000:5000 flask-app:v1
+   docker run -d -p 5000:5000 flask-app:latest
    docker run -d -p 5001:5000 flask-app:v2
    ```
+
+{{< card type="info" >}}
+Remember, we did not specify a tag on the first build and thus the applied tag is the default `latest`. And as you can see in this case. this tag is not necessarily the latest release tag.
+{{< /card >}}
 
 ### Cleaning Up Containers and Images
 
