@@ -99,3 +99,7 @@ params:
   minify: true
   assets:
     cachedir: "resources/_gen"
+
+  utterances:
+    repo: mattjh1/mattjh-blog
+    theme: github-dark

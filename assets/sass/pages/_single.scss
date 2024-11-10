@@ -14,6 +14,31 @@
   border: 1px solid #4c566a;
 }
 
+.spacer {
+  height: 1rem;
+}
+
+.comments-heading {
+  font-family: v.$fontCode;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+.comments-heading::before,
+.comments-heading::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+  margin: 0 5px;
+}
+
+.comments-heading span {
+  font-weight: bold;
+}
+
 dt,
 dd {
   line-height: 1.5;
