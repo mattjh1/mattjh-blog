@@ -37,7 +37,10 @@
     <div>
       {{ .Content }}
     </div>
-    {{ partial "comments.html" . }}
+    <!-- Conditionally render comments below content, based on showMetadata -->
+    {{ if .Params.showMetadata | default true }}
+      {{ partial "comments.html" . }}
+    {{ end }}
   </div>
   <!-- Include Mermaid Partial -->
   {{ partial "mermaid.html" . }}

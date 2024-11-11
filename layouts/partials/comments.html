@@ -2,13 +2,40 @@
 <div class="comments-heading">
   <span>COMMENTS</span>
 </div>
-<div class="utterances">
-  <script
-    src="https://utteranc.es/client.js"
-    repo="{{ $.Site.Params.utterances.repo }}"
-    issue-term="pathname"
-    theme="{{ $.Site.Params.utterances.theme }}"
-    crossorigin="anonymous"
-    async
-  ></script>
-</div>
+<div id="comment-section"></div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      const commentSection = document.getElementById("comment-section");
+      const commentsHeading = document.querySelector(".comments-heading");
+			const spinner = document.querySelector(".spinner");
+
+      const loadComments = function () {
+          const script = document.createElement("script");
+          script.src = "https://utteranc.es/client.js";  // Utterances CDN
+          script.setAttribute("repo", "{{ $.Site.Params.utterances.repo }}");
+          script.setAttribute("issue-term", "pathname");
+          script.setAttribute("theme", "{{ $.Site.Params.utterances.theme }}");
+          script.crossOrigin = "anonymous";
+          script.async = true;
+
+          commentSection.innerHTML = "";  // Clear loading text
+          commentSection.appendChild(script);
+      };
+
+      if ("IntersectionObserver" in window) {
+         const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                  loadComments();
+                  observer.disconnect();
+               }
+            });
+         });
+         observer.observe(commentSection);
+      } else {
+         // Fallback: load comments immediately
+         loadComments();
+      }
+   });
+</script>
