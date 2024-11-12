@@ -1,7 +1,7 @@
 ---
 title: "Learning k8s, KCNA preparation (Part 3)"
 date: 2024-11-03
-description: "Containers and Kubernetes Fundamentals – My KCNA Journey (Part 3)"
+description: "Container Fundamentals – My KCNA Journey (Part 3)"
 tags:
   - KCNA
   - k8s
@@ -19,7 +19,7 @@ In this third part of the series, we’ll dive into the fundamentals of **Contai
 <!--more-->
 
 {{< card type="disclaimer" >}}
-These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW). I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
+These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW) with the great instructor James Spurin. I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
 {{< /card >}}
 
 ---

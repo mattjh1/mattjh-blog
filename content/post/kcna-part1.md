@@ -19,7 +19,7 @@ As I prepare for the **Kubernetes Cloud Native Associate (KCNA)** certification,
 Today’s post will focus on **Cloud Native** concepts and the **Cloud Native Computing Foundation (CNCF)**, which form the foundation of KCNA preparation.
 
 {{< card type="disclaimer" >}}
-These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW). I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
+These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW) with the great instructor James Spurin. I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
 {{< /card >}}
 
 ---

@@ -18,7 +18,7 @@ In this second part of this series we're diving into some fundamental aspects of
 <!--more-->
 
 {{< card type="disclaimer" >}}
-These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW). I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
+These notes are a polished version of my personal reflections taken while following along with [this Udemy course](https://www.udemy.com/course/dive-into-cloud-native-containers-kubernetes-and-the-kcna/?couponCode=LETSLEARNNOW) with the great instructor James Spurin. I found that taking meticulous notes while watching the content, combined with discussions with GPT about the topics, greatly enhances my understanding. Thus, some of this content is AI-generated.
 {{< /card >}}
 
 ---
@@ -316,4 +316,4 @@ For cloud-native systems to function optimally, roles like **DevOps Engineers**,
 
 As the landscape of cloud-native technologies continues to evolve, practices like **continuous integration**, **continuous delivery**, and **predictive autoscaling** will only become more advanced. With the **CNCF** and its rich ecosystem driving forward the cloud-native movement, businesses can seize new opportunities for automation, scalability, and innovation. The cloud-native journey promises higher efficiency and resilience, helping organizations deliver modern, secure applications that meet today’s business and user demands.
 
-This post is part two this **KCNA preparation series**. Stay tuned for the next installment, where we’ll dive deep into **Kubernetes fundamentals**!
+This post is part two this **KCNA preparation series**. Stay tuned for the next installment, where we’ll dive deep into **Container fundamentals**!
