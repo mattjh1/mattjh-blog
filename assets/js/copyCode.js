@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const text = block.textContent;
       navigator.clipboard.writeText(text).then(() => {
         button.innerText = "Copied!";
-        setTimeout(() => (button.innerText = "Copy"), 2000);
+        setTimeout(() => (button.innerText = "Copy"), 4000);
       });
     };
     block.parentNode.insertBefore(button, block);
