@@ -12,10 +12,9 @@ tags:
 categories:
   - k8s
   - cloud-native
-draft: true
 ---
 
-In this installment of our KCNA series, we’ll dive into the fundamentals of Kubernetes and explore how it helps manage containers at scale. Running a few containers can be straightforward, but when dealing with hundreds or thousands of containers, efficient management requires more than basic tools—it needs a sophisticated orchestration platform. This is where Kubernetes excels.
+In this installment of this KCNA series, we’ll dive into the fundamentals of Kubernetes and explore how it helps manage containers at scale. Running a few containers can be straightforward, but when dealing with hundreds or thousands of containers, efficient management requires more than basic tools—it needs a sophisticated orchestration platform. This is where Kubernetes excels.
 
 <!--more-->
 
@@ -25,7 +24,36 @@ These notes are a polished version of my personal reflections taken while follow
 
 ---
 
-## Why Kubernetes? Understanding the Role of Container Orchestration
+## Understanding the Role of Container Orchestration
+
+```mermaid
+flowchart TD
+    subgraph ContainerOrchestration["Container Orchestration"]
+        direction TB
+        A[Provisioning]
+        B[Deployment]
+        C[Scaling]
+        D[Standards & Frameworks]
+        E[Core Component Integration]
+    end
+
+    subgraph Kubernetes["Kubernetes Capabilities"]
+        direction TB
+        F[Availability & Self-healing]
+        G[Resource Management]
+        H[Exposing Services]
+        I[Security & Authorization]
+        J[Autoscaling]
+        K["Custom Resource Definitions (CRDs)"]
+    end
+
+    A --> G
+    B --> F
+    C --> J
+    D --> K
+    E --> H
+    E --> I
+```
 
 Container orchestration handles critical aspects of deploying and managing containers across multiple environments. Here are some ways container orchestration simplifies and enhances containerized workloads:
 
@@ -44,43 +72,80 @@ Kubernetes stands out in container orchestration due to its focus on reliability
 - **Autoscaling**: Scales workloads up or down as needed.
 - **Custom Resource Definitions (CRDs)**: Extends Kubernetes functionality to manage custom resources.
 
-## Kubernetes Architecture Overview
+## Architecture Overview
 
 At its core, Kubernetes follows a client-server architecture, dividing responsibilities between the **Control Plane** and **Nodes**:
 
-- **Control Plane**: Manages the overall state of the Kubernetes cluster.
+- **Control Plane**: Manages the overall state of the cluster.
 - **Nodes**: Execute the containers based on instructions from the Control Plane.
 
 In a basic setup, there is one Control Plane and one Node, but Kubernetes supports **high availability** through multiple Control Planes and Nodes. In highly available clusters, `etcd`, the distributed key-value store, employs a [RAFT consensus algorithm](https://raft.github.io/) to synchronize state across nodes.
 
-### Container Runtimes in Kubernetes
+```mermaid
+flowchart TD
+    subgraph ControlPlane["Control Plane"]
+        direction TB
+        APIServer["KubeAPI Server"]
+        Scheduler["Kube-Scheduler"]
+        Controller["Controller-Manager"]
+        CloudController["Cloud-Controller-Manager (optional)"]
+        etcd["etcd"]
+    end
 
-#### Low-Level Container Runtimes
+    subgraph Nodes["Nodes"]
+        direction TB
+        Kubelet["Kubelet"]
+        KubeProxy["Kube-Proxy"]
+        CoreDNS["CoreDNS"]
+        Runtime["Container Runtime"]
+    end
 
-Low-level runtimes handle the core functionality of running containers. They interface with operating system components like Linux **namespaces** and **cgroups** to create isolated environments. `runc` is the main example here:
+    %% Control Plane Relationships
+    APIServer --> etcd
+    APIServer --> Scheduler
+    APIServer --> Controller
+    APIServer --> CloudController
+
+    %% Node Relationships
+    Kubelet -->|Uses PodSpecs| Runtime
+    Kubelet -->|Monitors| APIServer
+    CoreDNS --> APIServer
+    KubeProxy -->|Handles Networking| CoreDNS
+
+    %% Node and Control Plane Connections
+    ControlPlane --> Nodes
+    APIServer -->|Coordinates With| Kubelet
+    APIServer -->|Exposes Cluster API| Users
+
+    %% Optional Control Plane Component
+    CloudController -.->|Cloud-specific Operations| Controller
+```
+
+### Container Runtimes
+
+**Low-level** runtimes handle the core functionality of running containers. They interface with operating system components like Linux **namespaces** and **cgroups** to create isolated environments. `runc` is the main example here:
 
 - **`runc`**: An Open Container Initiative (OCI) runtime, initially created by Docker, which now serves as the reference implementation.
 - Other examples include **crun**, **kata-runtime**, and **gVisor**.
 
-#### High-Level Container Runtimes
-
-A high-level runtime, such as `containerd`, manages the entire lifecycle of containers and communicates with the low-level runtime:
+A **high-level** runtime, such as `containerd`, manages the entire lifecycle of containers and communicates with the low-level runtime:
 
 - **`containerd`**: Originally developed by Docker and now part of CNCF, `containerd` handles pulling images, storing them, and managing containers through the low-level runtime `runc`.
 
----
+### Core Components of the Control Plane
 
-## Core Components of the Kubernetes Control Plane
-
-### Kubelet
+#### Kubelet
 
 The **kubelet** runs on both the Control Plane and Nodes, ensuring that the specified containers (called **Pods**) are running on the system:
 
 - It uses **Pod Specifications (PodSpecs)** in YAML or JSON to manage and monitor pod status.
 - PodSpecs can be provided via API requests or a designated directory, often `/etc/kubernetes/manifests`.
 - Kubelet coordinates with `containerd` and `runc` to create **static pods** essential to the Control Plane.
+- It also monitors node health e.g., checking CPU, memory, and storage metrics.
 
-### Static Pods and Key Control Plane Components
+#### Static Pods and Key Control Plane Components
+
+Static pods differ from dynamic pods in that they are defined directly on nodes and aren't managed by the API server. This is why they are central for bootstrapping essential control plane services.
 
 1. **etcd**:
 
@@ -90,7 +155,7 @@ The **kubelet** runs on both the Control Plane and Nodes, ensuring that the spec
 
 2. **KubeAPI Server**:
 
-   - Acts as the primary interface to the Kubernetes Control Plane.
+   - Acts as the primary interface to the Control Plane.
    - Provides a RESTful API and manages data stored in `etcd`.
    - Communicates with kubelet and other components to orchestrate pods.
 
@@ -103,6 +168,7 @@ The **kubelet** runs on both the Control Plane and Nodes, ensuring that the spec
 
    - Runs as a DaemonSet, handling network routing and load-balancing for services.
    - Configures forwarding for TCP, UDP, and SCTP connections across nodes.
+   - Uses **iptables** and **IPVS** as underlying tools for networking.
 
 5. **CoreDNS**:
 
@@ -113,12 +179,16 @@ The **kubelet** runs on both the Control Plane and Nodes, ensuring that the spec
 
    - Runs various controllers, such as Replication Controller and Node Controller, to maintain desired cluster state.
    - Monitors and enforces resource counts and configurations specified in the cluster.
+   - Some of controllers run by Controller-Manager are ReplicaSet Controller, Endpoint Controller, and Service Account Controller.
 
 7. **Cloud-Controller-Manager** (optional):
    - Interfaces with cloud providers to support features like load balancers and persistent storage.
    - Enables seamless integration of Kubernetes with cloud-specific services, typically only found in managed Kubernetes offerings.
+   - Cloud-Controller-Manager components like **Route Controller** and **Node Controller** handle node lifecycle management in cloud environment, distinguishing this component from on-premise Kubernetes setups.
 
-## Services
+## Managing Resources
+
+### Services and Networking
 
 Kubernetes **Services** expose applications running on Pods as network services. There are four main types of services, each serving a specific purpose:
 
@@ -129,9 +199,7 @@ Kubernetes **Services** expose applications running on Pods as network services.
 
 **Headless Services** are also worth noting. They allow direct access to each pod rather than routing through a single IP, which can be helpful for stateful applications that need unique pod identities.
 
-## Hands-On Examples
-
-### Port Forwarding with `kubectl`
+#### Port Forwarding with `kubectl`
 
 Assume we have a pod running an `nginx` server. We can use `kubectl`'s port forwarding feature to expose this pod’s service locally.
 
@@ -141,7 +209,7 @@ kubectl port-forward pod/nginx 8080:80
 
 With this command, the `nginx` server running on port `80` in the pod will be accessible at `http://localhost:8080` on our machine. This feature is incredibly useful for accessing resources running in the cluster without external exposure.
 
-### Pod-to-Pod Communication
+#### Pod-to-Pod Communication
 
 Let's confirm that pods in a Kubernetes cluster can communicate with each other seamlessly. Assuming we have an `nginx` pod running at `http://10.42.2.2`, we can start a `curl` pod to make requests to it:
 
@@ -151,7 +219,7 @@ kubectl run -it --rm curl --image=curlimages/curl --restart=Never -- http://10.4
 
 This command deploys a temporary pod running `curl` to fetch content from the `nginx` pod. Kubernetes’ internal networking simplifies communication between pods, even across multiple nodes, without complex networking configurations.
 
-### YAML-Based Deployments
+### Managing Resources with YAML
 
 While `kubectl` commands are great for quick interactions, Kubernetes relies heavily on **YAML** files for defining configurations in a declarative way.
 
@@ -184,7 +252,7 @@ To deploy this pod, we use the **apply** command, which is Kubernetes' preferred
 kubectl apply -f nginx.yaml
 ```
 
-### Managing Pods with YAML
+#### Combined YAML files
 
 We can extend our pod management capabilities by combining multiple YAML files into one and applying them at once. Suppose we have both an `nginx.yaml` and `ubuntu.yaml` file; we can combine and apply them as follows:
 
@@ -199,7 +267,7 @@ Using this combined YAML structure, Kubernetes will handle multiple resources in
 in YAML, `---` signals a new separate section
 {{< /card >}}
 
-### Creating a Pod with Multiple Containers
+#### Creating a Pod with Multiple Containers
 
 Let’s create a pod that includes two containers: an `nginx` web server and a "sidecar" container running a simple loop. This setup can be useful for scenarios like logging or monitoring, where a second container in the same pod supports the main container.
 
@@ -235,7 +303,9 @@ With both containers running, we can view pod details with `kubectl get pods` an
 kubectl logs mypod -c sidecar
 ```
 
-### Troubleshooting and Testing
+### Pod Lifecycle Management
+
+#### Troubleshooting and Testing with `kubectl exec`
 
 We can use `kubectl exec` to run commands inside containers. Suppose we want to simulate a crash in our sidecar container by creating a specific file:
 
@@ -251,7 +321,7 @@ To view logs of a previous instance (after a restart), use the `-p` flag:
 kubectl logs mypod -c sidecar -p
 ```
 
-### Init Containers
+#### Init Containers
 
 Init Containers run setup scripts or initialization tasks before the main container in a pod starts. They ensure that essential operations, like configuration checks or dependency preparations, are complete before launching the main app.
 
@@ -327,12 +397,18 @@ Namespaces help organize resources within a Kubernetes cluster, providing logica
 
    Now, commands like `kubectl get pods` will operate within `mynamespace`.
 
-### Deployments and ReplicaSets
+## Deployments, DaemonSets, and Jobs
 
-**Deployments** are ideal for managing application updates, ensuring availability, and handling rollbacks if something goes wrong.
+Kubernetes offers various ways to manage application workloads, providing the flexibility to handle continuous deployments, node-specific processes, and scheduled tasks.
+
+### Continuous and Scheduled Workloads
+
+#### Deployments and ReplicaSet
+
+**Deployments** are essential for managing application updates, ensuring availability, and rolling back if necessary. Deployments also handle creating and maintaining ReplicaSets behind the scenes, which manage the actual pod replicas, simplifying scaling and reliability.
 
 1. **Create a Deployment**:
-   This command generates a deployment YAML for an Nginx pod, then immediately applies it.
+   This command generates a deployment YAML for an nginx pod, then immediately applies it.
 
    ```bash
    kubectl create deployment nginx --image=nginx --dry-run=client -o yaml | tee nginx-deployment.yaml | kubectl apply -f -
@@ -352,40 +428,9 @@ Namespaces help organize resources within a Kubernetes cluster, providing logica
 
 Deployments will create a ReplicaSet behind the scenes, which manages the actual pod replicas. This makes scaling and reliability much simpler to handle.
 
-### DaemonSets
+#### Jobs
 
-DaemonSets ensure a copy of a pod is running on every node in the cluster. They are ideal for tasks like logging and monitoring agents that need to run across all nodes.
-
-1. **Create a DaemonSet**:
-   Here’s an example of a DaemonSet using Fluentd for logging:
-
-   ```yaml
-   apiVersion: apps/v1
-   kind: DaemonSet
-   metadata:
-     name: fluentd
-   spec:
-     selector:
-       matchLabels:
-         name: fluentd
-     template:
-       metadata:
-         labels:
-           name: fluentd
-       spec:
-         containers:
-           - name: fluentd
-             image: fluent/fluentd:latest
-   ```
-
-2. **Deploy the DaemonSet**:
-   ```bash
-   kubectl apply -f daemonset.yaml
-   ```
-
-### Jobs
-
-**Jobs** are Kubernetes objects designed to run a task to completion, whether for batch processing, data crunching, or scheduled tasks.
+**Jobs** are Kubernetes objects designed to run a task to completion, whether for batch processing, data crunching,, or other one-off tasks. Jobs allow control over task completion and parallel execution.
 
 1. **Create a Job to Calculate PI**:
    This job uses a Perl container to calculate PI.
@@ -441,7 +486,40 @@ DaemonSets ensure a copy of a pod is running on every node in the cluster. They 
 
 Jobs in Kubernetes provide an effective way to run, complete, and repeat tasks as needed.
 
-### CronJobs
+### DaemonSets and CronJobs
+
+#### DaemonSets
+
+DaemonSets ensure a copy of a pod is running on every node in the cluster. They are ideal for tasks like logging and monitoring agents that need to run across all nodes.
+
+1. **Create a DaemonSet**:
+   Here’s an example of a DaemonSet using Fluentd for logging:
+
+   ```yaml
+   apiVersion: apps/v1
+   kind: DaemonSet
+   metadata:
+     name: fluentd
+   spec:
+     selector:
+       matchLabels:
+         name: fluentd
+     template:
+       metadata:
+         labels:
+           name: fluentd
+       spec:
+         containers:
+           - name: fluentd
+             image: fluent/fluentd:latest
+   ```
+
+2. **Deploy the DaemonSet**:
+   ```bash
+   kubectl apply -f daemonset.yaml
+   ```
+
+#### CronJobs
 
 CronJobs allow you to schedule Jobs in Kubernetes, enabling you to run tasks at specific times, much like a traditional cron job on Unix systems. They’re ideal for tasks like:
 
@@ -473,9 +551,13 @@ spec:
 
 In this example, Kubernetes runs the job daily at 2 AM, generating reports automatically.
 
+## Configuration Management
+
+When managing configurations and sensitive information in Kubernetes, **ConfigMaps** and **Secrets** provide two distinct approaches, each with a specific purpose: ConfigMaps handle non-sensitive data, while Secrets securely manage sensitive information. Both are essential for separating configuration from application code, enhancing security and reusability.
+
 ### ConfigMaps
 
-ConfigMaps provide a way to store non-sensitive configuration data in key-value pairs. They make it easy to keep your configuration separate from application code, allowing for flexible and reusable setups. You can create ConfigMaps directly with literal values, from files, or from directories.
+**ConfigMaps** provide a way to store non-sensitive configuration data in key-value pairs. They make it easy to keep your configuration separate from application code, allowing for flexible and reusable setups. You can create ConfigMaps directly with literal values, from files, or from directories.
 
 #### Creating a ConfigMap with Literal Values
 
@@ -500,7 +582,7 @@ We can then create a ConfigMap from this file:
 kubectl create configmap color-configmap --from-env-file=configmap-color.properties
 ```
 
-To view a ConfigMap:
+#### Viewing a ConfigMap:
 
 ```bash
 kubectl describe configmap color-configmap
@@ -513,7 +595,7 @@ ConfigMaps are incredibly flexible and can be used in various scenarios, from en
 While ConfigMaps store non-sensitive data, **Secrets** are intended for storing sensitive information like API keys, passwords, and other confidential data. Kubernetes Secrets are similar to ConfigMaps, but with extra restrictions for handling sensitive information.
 
 {{< card type="warning" >}}
-Kubernetes Secrets are not encrypted by default; they are base64-encoded. Make sure to secure access to `etcd`, where Secrets are stored. Or consider alternatives for handling highly confidential data.
+Kubernetes Secrets are not encrypted by default; they are base64-encoded. And rely on additional measures to remain confidential. Make sure to secure access to `etcd`, where Secrets are stored. Or consider alternatives for handling highly confidential data.
 {{< /card >}}
 
 #### Creating a Secret with Literal Values
@@ -526,15 +608,21 @@ kubectl create secret generic color-secret --from-literal=COLOR=red --from-liter
 
 This command will create a Secret containing base64-encoded key-value pairs, allowing applications to access sensitive data without hardcoding it into the application code. To inspect the Secret values:
 
+#### Viewing a Secret
+
+To view the contents of a Secret:
+
 ```bash
 kubectl describe secret color-secret
 ```
 
-### Labels
+ConfigMaps and Secrets provides an efficient and secure way to manage both configuration data and sensitive information, keeping the application code clean and secure.
 
-Labels are essential for organizing, identifying, and selecting resources in Kubernetes. By adding key-value pairs to resources, you can group, filter, and manage related resources, making labels fundamental for resource management.
+## Labels
 
-#### Adding a Label to a Pod
+**Labels** in Kubernetes are crucial for organizing, identifying, and selecting resources. Labels, represented as key-value pairs, can be added to any resource, enabling logical grouping, filtering, and management of related resources. As your cluster environment grows, a consistent labeling strategy will simplify management and allow for efficient resource organization.
+
+### Adding a Label to a Pod
 
 Here’s a basic YAML configuration that adds a `run: nginx` label to a Pod:
 
@@ -579,6 +667,6 @@ When managing Kubernetes resources, consider these approaches:
   kubectl explain pod.spec.dnsPolicy
   ```
 
-### Conclusion
+## Conclusion
 
 This turned in to a long post and we're only scratching the surface of this behemoth, but these hands-on examples should help you feel comfortable deploying and managing basic resources. In the next post, we’ll go deeper into exciting subjects like, the Kubernetes API, RBAC, Scheduling, Helm and more.
