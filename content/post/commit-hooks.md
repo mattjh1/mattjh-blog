@@ -7,6 +7,7 @@ tags:
   - lazygit
 categories:
   - productivity
+toc: false
 ---
 
 This will be a short post about a nifty feature I found in `lazygit`. Strangely, I have not ran into projects enforcing specific git messages that much. But things have changed and it did not take long before it started to annoy me and I had to look for solutions.

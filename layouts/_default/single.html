@@ -42,6 +42,12 @@
       {{ partial "comments.html" . }}
     {{ end }}
   </div>
+
+  {{ if .Page.Params.toc | default true }}
+    <aside class="tocWrapper">
+      {{ .TableOfContents }}
+    </aside>
+  {{ end }}
   <!-- Include Mermaid Partial -->
   {{ partial "mermaid.html" . }}
 {{ end }}

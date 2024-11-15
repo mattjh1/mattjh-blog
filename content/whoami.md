@@ -3,6 +3,7 @@ title: "whoami"
 date: "2023-11-25"
 showMetadata: false
 description: "Welcome to my space! My name is Mattias and this is where I share whatever i want!"
+toc: false
 ---
 
 ## Hello, I'm Mattias Holmgren

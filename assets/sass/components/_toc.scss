@@ -1,0 +1,55 @@
+@use "utils/variables" as v;
+
+.tocWrapper {
+  font-weight: bold;
+  font-family: v.$fontCode;
+  font-size: 70%;
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #88c0d0;
+  background-color: rgba(46, 52, 64, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tocWrapper ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.tocWrapper ul ul {
+  padding-left: 1.5rem;
+}
+
+.tocWrapper li {
+  margin: 0.5rem 0;
+}
+
+.tocWrapper li a {
+  color: #d8dee9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.tocWrapper li a:hover {
+  color: #88c0d0;
+}
+
+.tocWrapper li a.active {
+  color: #a3be8c;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .tocWrapper {
+    display: none;
+  }
+}
