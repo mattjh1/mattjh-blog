@@ -1,219 +1,219 @@
 @use "../utils/variables" as v;
 
 .content {
-	text-align: left;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1 auto;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 auto;
 }
 
 .content img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .copy-button {
-	position: absolute;
-	top: 0.5em;
-	right: 0.5em;
-	padding: 0.5em 1em;
-	background-color: #5e81ac;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-	opacity: 0;
-	pointer-events: none;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  padding: 0.5em 1em;
+  background-color: #5e81ac;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  opacity: 0;
+  pointer-events: none;
 }
 
 pre:hover .copy-button {
-	opacity: 1;
-	pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .copy-button:hover {
-	background-color: #4c566a;
+  background-color: #4c566a;
 }
 
 /* 16:9 Aspect Ratio */
 .youtube-video-wrapper {
-	position: relative;
-	padding-bottom: 56.25%;
-	height: 0;
-	overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
 }
 
 .youtube-consent-banner {
-	background-color: #2e3440;
-	color: #eceff4;
-	border: 1px solid #4c566a;
-	padding: 12px;
-	border-radius: 5px;
-	text-align: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	box-sizing: border-box;
+  background-color: #2e3440;
+  color: #eceff4;
+  border: 1px solid #4c566a;
+  padding: 12px;
+  border-radius: 5px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .youtube-consent-button {
-	background-color: #5e81ac;
-	color: #eceff4;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	font-size: 16px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	padding-top: 10x;
+  background-color: #5e81ac;
+  color: #eceff4;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding-top: 10x;
 }
 
 .youtube-consent-button:hover {
-	background-color: #81a1c1;
+  background-color: #81a1c1;
 }
 
 .youtube-consent-banner p {
-	margin: 0 0 8px 0;
-	font-size: 14px;
-	text-align: center;
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
-	.youtube-consent-banner {
-		padding: 10px;
-		box-shadow: none;
-	}
+  .youtube-consent-banner {
+    padding: 10px;
+    box-shadow: none;
+  }
 
-	.youtube-consent-button {
-		padding: 8px 14px;
-		width: 100%;
-		max-width: 200px;
-	}
+  .youtube-consent-button {
+    padding: 8px 14px;
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 .back-to-top {
-	display: none;
+  display: none;
 
-	@media (min-width: 768px) {
-		position: fixed;
-		bottom: 40px;
-		right: 40px;
-		background: v.$backgroundDarker;
-		color: white;
-		padding: 10px 15px;
-		border-radius: 50%;
-		cursor: pointer;
-		z-index: 1000;
-		opacity: 0.7;
-		display: none;
-		transition: opacity 0.3s ease;
+  @media (min-width: 768px) {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: v.$backgroundDarker;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.7;
+    display: none;
+    transition: opacity 0.3s ease;
 
-		&:hover {
-			opacity: 1;
-		}
+    &:hover {
+      opacity: 1;
+    }
 
-		i {
-			font-size: 1em;
-		}
-	}
+    i {
+      font-size: 1em;
+    }
+  }
 }
 
 .mermaid {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
-	background-color: #2e3440;
-	border-left: 4px solid;
-	border-radius: 5px;
-	padding: 15px;
-	margin: 20px 0;
-	position: relative;
-	color: #eceff4;
+  background-color: #2e3440;
+  border-left: 4px solid;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px 0;
+  position: relative;
+  color: #eceff4;
 }
 
 .card-icon {
-	margin-right: 4px;
-	font-size: 1.2em;
-	font-family: "Font Awesome\ 6 Free";
-	font-weight: 900;
+  margin-right: 4px;
+  font-size: 1.2em;
+  font-family: "Font Awesome\ 6 Free";
+  font-weight: 900;
 }
 
 .card.notice {
-	border-left-color: #ebcb8b;
+  border-left-color: #ebcb8b;
 }
 
 .card.notice .card-icon::before {
-	content: "\f328";
-	color: #ebcb8b;
+  content: "\f328";
+  color: #ebcb8b;
 }
 
 .card.disclaimer {
-	border-left-color: #ebcb8b;
+  border-left-color: #ebcb8b;
 }
 
 .card.disclaimer .card-icon::before {
-	content: "\f071";
-	color: #ebcb8b;
+  content: "\f071";
+  color: #ebcb8b;
 }
 
 .card.info {
-	border-left-color: #a3be8c;
+  border-left-color: #a3be8c;
 }
 
 .card.info .card-icon::before {
-	content: "";
-	color: #a3be8c;
+  content: "";
+  color: #a3be8c;
 }
 
 .card.warning {
-	border-left-color: #d08770;
+  border-left-color: #d08770;
 }
 
 .card.warning .card-icon::before {
-	content: "\f06a";
-	color: #d08770;
+  content: "\f06a";
+  color: #d08770;
 }
 
 .card.success {
-	border-left-color: #a3be8c;
+  border-left-color: #a3be8c;
 }
 
 .card.success .card-icon::before {
-	content: "\f058";
-	color: #a3be8c;
+  content: "\f058";
+  color: #a3be8c;
 }
 
 .vertical {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .flexWrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	min-height: 100vh;
-	flex: 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  flex: 1 auto;
 }
 
 .main {
-	height: 100%;
+  height: 100%;
 
-	@media only screen and (min-width: v.$breakLarge) {
-		width: v.$width;
-	}
+  @media only screen and (min-width: v.$breakLarge) {
+    width: v.$width;
+  }
 
-	@media screen and (max-width: v.$breakLarge) {
-		width: 100%;
-	}
+  @media screen and (max-width: v.$breakLarge) {
+    width: 100%;
+  }
 }
