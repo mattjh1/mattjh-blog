@@ -1,23 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const tocWrapper = document.querySelector(".tocWrapper");
   const tocLinks = document.querySelectorAll(".tocWrapper a");
   const headings = Array.from(document.querySelectorAll("h2, h3, h4"));
   let isScrolling = true;
+  const showThreshold = window.innerHeight / 2; // Half a page
 
-  tocLinks.forEach((link) => {
-    link.addEventListener("mouseenter", () => {
-      const icon = link.querySelector("i");
-      if (icon && icon.classList.contains("fa-caret-right")) {
-        icon.style.transform = "rotate(90deg)"; // Rotate caret
-      }
-    });
+  if (!tocWrapper) {
+    return; // Exit if .tocWrapper doesn't exist
+  }
+  // Ensure ToC is initially hidden
+  tocWrapper.style.opacity = "0";
+  tocWrapper.style.pointerEvents = "none";
 
-    link.addEventListener("mouseleave", () => {
-      const icon = link.querySelector("i");
-      if (icon && icon.classList.contains("fa-caret-right")) {
-        icon.style.transform = "rotate(0deg)"; // Reset caret
-      }
-    });
-  });
+  function toggleTocVisibility() {
+    if (window.scrollY > showThreshold) {
+      tocWrapper.style.opacity = "1";
+      tocWrapper.style.pointerEvents = "auto";
+    } else {
+      tocWrapper.style.opacity = "0";
+      tocWrapper.style.pointerEvents = "none";
+    }
+  }
+
+  // Attach scroll event listener to toggle ToC visibility
+  window.addEventListener("scroll", toggleTocVisibility);
 
   function setActiveLink(link) {
     tocLinks.forEach((l) => l.classList.remove("active"));
