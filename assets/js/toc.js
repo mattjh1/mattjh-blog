@@ -8,17 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!tocWrapper) {
     return; // Exit if .tocWrapper doesn't exist
   }
-  // Ensure ToC is initially hidden
-  tocWrapper.style.opacity = "0";
-  tocWrapper.style.pointerEvents = "none";
 
   function toggleTocVisibility() {
     if (window.scrollY > showThreshold) {
-      tocWrapper.style.opacity = "1";
-      tocWrapper.style.pointerEvents = "auto";
+      tocWrapper.classList.add("visible");
     } else {
-      tocWrapper.style.opacity = "0";
-      tocWrapper.style.pointerEvents = "none";
+      tocWrapper.classList.remove("visible");
     }
   }
 

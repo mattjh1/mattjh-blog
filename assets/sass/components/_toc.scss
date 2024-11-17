@@ -1,7 +1,10 @@
 @use "utils/variables" as v;
 
 .tocWrapper {
-  transition: opacity 0.3s ease-in-out;
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.3s ease-in-out;
+  transform: translateY(-50%) translateX(100%);
   opacity: 0;
   pointer-events: none;
   font-weight: bold;
@@ -10,7 +13,6 @@
   position: fixed;
   right: 1rem;
   top: 50%;
-  transform: translateY(-50%);
   width: 340px;
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
@@ -19,6 +21,12 @@
   border-left: 4px solid #a3be8c;
   background-color: rgba(46, 52, 64, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tocWrapper.visible {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .tocWrapper ul {
