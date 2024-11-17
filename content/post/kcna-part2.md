@@ -102,19 +102,19 @@ Cloud-native microservices decouple the components of the application into indep
 
 To fully embrace cloud-native architectures, there are several best practices to follow:
 
-### 1. Microservices Architecture
+### Microservices Architecture
 
 This approach breaks down the application into **loosely coupled** components that can be independently deployed and managed. Each microservice focuses on a single responsibility, enhancing **agility** and **scalability**.
 
-### 2. Containerization
+### Containerization
 
 By packaging applications and their dependencies into containers, developers ensure that these containers can run consistently across different environments. This approach enhances **isolation**, **efficiency**, and simplifies **management**.
 
-### 3. DevOps
+### DevOps
 
 DevOps emphasizes collaboration between software development and IT operations teams, with a focus on **automation**, **monitoring**, and **collaboration**. This methodology speeds up the software development lifecycle and improves the quality of releases.
 
-### 4. Continuous Delivery (CD)
+### Continuous Delivery (CD)
 
 CD is all about automating the build, test, and deployment processes, ensuring that code is always in a **releasable state**. This reduces the risk of introducing bugs and shortens the release cycle, enabling frequent, reliable updates.
 
@@ -230,7 +230,7 @@ In any organization pursuing cloud-native practices, multiple professional roles
 
 Below are some of the key roles that shape cloud-native operations:
 
-### 1. DevOps Engineer
+#### DevOps Engineer
 
 {{< image src="devops-infinity.png" alt="DevOps Infinity loop" center=true max-width="100%" >}}
 
@@ -243,7 +243,7 @@ A DevOps Engineer combines development and operations expertise to manage infras
 
 Their workflow follows the familiar DevOps infinity loop: planning → coding → building → testing → deploying → operating → monitoring.
 
-### 2. Site Reliability Engineer (SRE)
+#### Site Reliability Engineer (SRE)
 
 Born from Google's need to manage reliability at scale, SREs focus on **availability, scalability, and robustness**. They are responsible for SLAs, SLOs, and SLIs, ensuring uptime and quick response times.
 
@@ -251,11 +251,11 @@ Born from Google's need to manage reliability at scale, SREs focus on **availabi
 - **SLO**: Keeping response times under 200ms
 - **SLI**: Monitoring performance against objectives
 
-### 3. CloudOps Engineer
+#### CloudOps Engineer
 
 CloudOps narrows its focus to cloud deployment, operation, and monitoring, especially for cloud-native environments. Tools like Terraform or direct cloud resource management differentiate CloudOps from traditional DevOps roles.
 
-### 4. Security Engineer
+#### Security Engineer
 
 Specializing in **IT security**, they address threats from various vectors, including:
 
@@ -263,15 +263,15 @@ Specializing in **IT security**, they address threats from various vectors, incl
 - **Operating System Security**
 - **Threat Detection and Mitigation**
 
-### 5. DevSecOps Engineer
+#### DevSecOps Engineer
 
 A blend of DevOps and security principles, DevSecOps Engineers integrate security best practices into the DevOps lifecycle. They automate vulnerability scanning, enforce security protocols, and ensure code and infrastructure security from development to deployment.
 
-### 6. Full Stack Developer
+#### Full Stack Developer
 
 Full-stack developers span both front-end and back-end development, working with **web frameworks**, **UI**, and backend **data handling** to build fully integrated systems.
 
-### 7. Cloud Architect
+#### Cloud Architect
 
 Cloud Architects design cloud infrastructures and ensure they meet business needs. They decide on:
 
@@ -279,7 +279,7 @@ Cloud Architects design cloud infrastructures and ensure they meet business need
 - **Multi-cloud strategies**
 - **Cloud interoperability**
 
-### 8. Data Engineer
+#### Data Engineer
 
 Focused on scaling data pipelines, **data engineers** build systems that collect, store, and process data. They handle distributed data processing, algorithmic efficiency, and vendor-agnostic solutions to prevent lock-in.
 
@@ -287,7 +287,7 @@ Focused on scaling data pipelines, **data engineers** build systems that collect
 
 Adopting open standards is crucial in cloud-native architecture. Open standards promote interoperability and flexibility, enabling organizations to use best-of-breed tools without vendor lock-in.
 
-### Examples of Open Standards:
+#### Examples of Open Standards
 
 - **OCI (Open Container Initiative)**: Ensures Docker images and runtimes are standardized, supporting compatibility across multiple platforms.
 
