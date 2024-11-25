@@ -3,6 +3,7 @@
 {{ $maxWidth := .Get "max-width" | default "70%" }}
 {{ $maxHeight := .Get "max-height" | default "auto" }}
 {{ $center := .Get "center" | default false }}
+{{ $caption := .Get "caption" }}
 
 {{ if $src }}
   {{ $original := resources.Get (printf "images/%s" $src) }}
@@ -48,6 +49,17 @@
           {{ end }}"
         />
       </picture>
+    {{ end }}
+    {{ if $caption }}
+      <p
+        style="font-style: italic; font-size: 0.9rem; text-align: {{ if eq $center true }}
+          center
+        {{ else }}
+          left
+        {{ end }}; margin-top: 5px;"
+      >
+        {{ $caption }}
+      </p>
     {{ end }}
   {{ else }}
     <p>Image not found in assets/images/ directory.</p>
