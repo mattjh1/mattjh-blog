@@ -26,7 +26,7 @@
     content="{{ with .Params.featured_image }}
       {{ $.Site.Params.cloudFront.images }}/{{ . | safeURL }}
     {{ else }}
-      /images/mjh-logo.avif
+      /images/mjh-logo.png
     {{ end }}"
   />
   <meta property="og:image:width" content="1200" />
