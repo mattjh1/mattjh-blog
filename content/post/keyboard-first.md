@@ -42,7 +42,7 @@ Personally i use Hammerspoon for a few things.
 
 ### Control-Escape
 
-As mentioned before I changed from using Karabiner-Elements to use Hammerspoon, and this solution does more than just swap caps-lock to escape. If caps-lock is pressed and held down, the button acts as ctrl. If the button is tapped it acts as escape, so essentially it is two buttons merged into one, and its one of the accessible keys on the keyboard, it is a thing of beauty really.
+As mentioned before I changed from using Karabiner-Elements to use Hammerspoon, and this solution does more than just swap caps-lock to escape. If caps-lock is pressed and held down, the button acts as ctrl. If the button is tapped it acts as escape, so essentially it is two buttons merged into one, and its one of the most accessible keys on the keyboard, it is a thing of beauty really.
 
 Have a look at the wonderful code snippet that makes this possible:
 
@@ -103,7 +103,7 @@ I use this button for two main things:
 1. Quickly change between apps
 2. Enable window change mode, e.g., resize/move windows
 
-When I researched window tiling managers for mac I did not really like what I found. i3 on Linux is much more to my liking, and if that was available I would consider using that instead. My research was awhile ago but things might have changed, for full featured [yabai](https://github.com/koekeishiya/yabai) you need to disable System Integrity Protection (SIP), which is a big no-no.And even if I wanted to I wouldn't be able to on my corporate managed laptop.
+When I researched window tiling managers for mac I did not really like what I found. i3 on Linux is much more to my liking, and if that was available I would consider using that instead. My research was awhile ago but things might have changed, for full featured [yabai](rttps://github.com/koekeishiya/yabai) you need to disable System Integrity Protection (SIP), which is a big no-no. And even if I wanted to I wouldn't be able to on my corporate managed laptop.
 
 So without further ado, lets rebind ctrl+shift+alt+super to simply ctrl!
 
@@ -192,7 +192,7 @@ return {
 
 ## Vimium
 
-Vimium makes it possible and easy to navigate your browser and page contents using only the keyboard, I basically use the default settings for this pluginwith one minor edit as to mimic the behavior i have set up in Neovim.
+Vimium makes it possible and easy to navigate your browser and page contents using only the keyboard, I basically use the default settings for this plugin with some minor edits to mimic the behavior i have set up in Neovim.
 
 ```text
 unmap J
@@ -208,13 +208,13 @@ unmap L
 map <c-l> goForward
 ```
 
-Using Vimium lets me open new tabs, search the web, and navigate effortlessly without a mouse, the plugin exists for all major browsers with some name variations but the idea is the same.
+Using Vimium lets me open new tabs, search the web, and navigate effortlessly without a mouse, the plugin exists for all major browsers with some name variations but the idea is the same. I also add some custom css to get Nord theme in Vimium, given the option, be sure I'll be adding Nord theme!
 
 ## Homerow
 
 Homerow is propriety paid software that makes int easier to incorporate universal keyboard centric navigation on macOS. It is free to use, you get an annoying popup every now and then prompting you to buy the product. Consider doing so if you like the product to support the developer.
 
-Homerow enables clicking without a mouse in any app, much like Vimium but yeah anywhere. I've bound this feature to hyper+space and it works great, I'll have to admit that when I first got it, I used it all the time, since the usage has somewhat declined, still an amazing app though.
+Homerow enables clicking without a mouse in any app, much like Vimium but yeah anywhere. I've bound this feature to hyper+space and it works great, I'll have to admit that when I first got it, I used it all the time, since then usage has somewhat declined, still an amazing app though.
 
 ## Conclusion
 
