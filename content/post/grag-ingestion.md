@@ -11,12 +11,13 @@ categories:
   - PoC
   - Project
   - OSS
-draft: true
 ---
 
-Retrieval-Augmented Generation (RAG) systems rely on one fundamental ingredient: data. But not just any data—it needs to be clean, structured, and ready to power intelligent retrieval and generation workflows. For **gRAG**, my experimental take on RAG, this process wasn’t just about converting unstructured text into something searchable. It was about pushing boundaries, exploring the unique potential of graph databases like Neo4j, and creating a framework where relationships between data points add a new dimension to retrieval.
+Retrieval-Augmented Generation (RAG) systems start with a simple but critical requirement: data. But not just any data—it needs to be clean, structured, and primed for meaningful retrieval and generation. With **gRAG**, my experimental take on RAG, I set out to explore what happens when you introduce a graph database like Neo4j into the mix.
 
 <!--more-->
+
+This wasn’t about reinventing the wheel—it was more of a personal journey to see how far I could push the boundaries of traditional RAG setups. Could a graph database uncover relationships that enhance retrieval? Could it offer context that a typical vector store might miss? These were the questions driving my work, and they shaped the design of an ingestion pipeline that bridges the gap between raw, unstructured data and a graph-powered system for smarter retrieval.
 
 The goal? Build a system that doesn’t just _find_ answers—it understands the context around them.
 
@@ -103,7 +104,7 @@ The next step in the pipeline is splitting large sections of text into smaller, 
 
 But then there’s the next level—one that I had been eager to explore ever since I discovered it: **Semantic Splitting**.
 
-Semantic splitting immediately intrigued me because it aligns with my ultimate goal: transforming chunks into a graph database without fragmentation. Addressing the fragmentation problem during this early phase was an obvious choice, and this approach delivers.
+Semantic splitting immediately intrigued me because it aligns with my ultimate goal: transforming chunks into a graph database without fragmentation. Addressing the fragmentation problem during this early phase was an obvious choice.
 
 #### What is Semantic Splitting?
 
@@ -130,7 +131,7 @@ Unlike other strategies, this method compares the meaning of consecutive sentenc
 
 #### Why I Love This Approach
 
-If this sounds exciting, you’re not alone. When I learned about this technique, I couldn’t wait to try it. Luckily, someone had already done the hard work! Greg Kamradt’s excellent [notebook](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb) dives deep into this topic, introducing the concept in a way that’s both insightful and practical. Even better, someone implemented his algorithm in `LangChain`, saving me hours of work. Now all I have to do is this:
+If this sounds exciting, you’re not alone. When I learned about this technique, I couldn’t wait to try it. Luckily, someone had already done the hard work! Greg Kamradt’s excellent [notebook](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb) dives deep into this topic, introducing the concept in a way that’s both insightful and practical. Even better, someone implemented his algorithm in `LangChain`, saving me hours or maybe days of work. Now all I have to do is this:
 
 ```python
 def semantic_split(doc: Document) -> list[Document]:
@@ -153,6 +154,10 @@ Pretty sweet, right? With just a few lines of code, I get chunks that are not on
 Now that we’ve tackled splitting the text into meaningful chunks, the next step is something I find even more exciting: **Graph Generation**. This is where we start weaving those chunks into a rich, interconnected structure that can power more advanced analyses and queries. Imagine turning raw text into a web of relationships—nodes, edges, and properties—all ready to be queried in a graph database like Neo4j.
 
 The core of this process involves converting text chunks into **GraphDocuments**, which are specialized data structures designed for representing knowledge graphs. Here’s how it works under the hood.
+
+{{< card type="Warning" >}}
+`LLMGraphTransformer` incur costs by being dependent on high performant LLMs like gpt-4o or claude and utilizing `function_calling` to generate graph docs. For reference, I created a graph using this strategy with the entirety of Bram Stoker's Dracula novel (418 pages), it cost ~$30
+{{< /card >}}
 
 #### Turning Documents Into Graphs
 
@@ -270,6 +275,18 @@ Here’s a breakdown:
 2. **Hybrid Search Configuration**: By setting the `search_type` to `HYBRID`, we enable both semantic and keyword-based search in the graph.
 3. **Dynamic Index Naming**: The index names for vectors and keywords are configurable via environment variables, making the process flexible across deployments.
 
+### Querying the Graph
+
+```plaintext
+MATCH (n) RETURN n LIMIT 25
+```
+
+{{< image src="example-graph.svg" alt="Example of a generated graph" max-width="100%" >}}
+
+Something special to note here is the green blobs, these are the `source document` nodes and each hold the initial text split that was transformed and the vector embeddings.
+
+As you may imagine, this get real messy really quick. This procedure net me a graph with 1514 node labels with 4903 relationships in total. But as messy as it seems, this format is what allows us to successfully use unstructured queries to query a structured graph database in the end.
+
 ### Why This Matters
 
 The ingestion pipeline is a carefully orchestrated process that begins with extracting raw, unstructured text using **Tika**, a tool that ensures we can handle various file formats seamlessly. Once the text is extracted, **text splitting** breaks it into manageable chunks while preserving context. This is followed by **graph generation**, where the structured representation of relationships, nodes, and properties is created, transforming isolated chunks into a cohesive network. Finally, **graph storage and indexing** takes the graph to the next level by enriching it with semantic embeddings and enabling efficient queries through hybrid and full-text search techniques.
@@ -289,4 +306,4 @@ The ingestion pipeline is a carefully orchestrated process that begins with extr
 </div>
 {{< /rawhtml >}}
 
-If you enjoyed this read, please check out my blog post about the [gRAG frontend Application](../grag-app).
+I have another post in the works that covers something completely different, the frontend application. Coming soon 😁
