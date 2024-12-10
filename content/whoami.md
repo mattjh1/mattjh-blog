@@ -10,8 +10,12 @@ toc: false
 
 {{< image src="me.jpg" alt="Me close" >}}
 
-**Welcome to my space!** I’m located in Sweden, originally from Stockholm but have been living in Kalmar for the past six years. As a passionate and self-motivated software engineer, I find great joy in simplifying complex problems. I love learning and sharing my thoughts on tech topics, particularly around productivity, customization, AI, and automation.
+**Hello! Passionate about Linux, AI, and automation? You’re in the right place.**
 
-I live with my family, which includes my wonderful partner and our two amazing daughters. My interests lie in Linux, automation, prompt engineering, and exploring the ever-evolving tech landscape. Through this blog, I aim to share my knowledge and experiences, and well whatever fun quirky things I deem worthy of sharing.
+I’m a software engineer living in Sweden, originally from Stockholm but now calling the cozy town of Kalmar home. I share my life here with my amazing partner and our two wonderful daughters.
 
-Feel free to explore my projects and skills. If you have any questions or just want to connect, you can contact [me@mattjh.sh](mailto:me@mattjh.sh)
+I love diving into complex problems and finding ways to make them simpler, whether it’s through automation, clever workflows, or a bit of AI magic. This blog is where I share what I’ve learned along the way—tips, tricks, and thoughts on everything from prompt engineering to quirky side projects I couldn’t resist tackling.
+
+My main interests? Linux, automation, and exploring all the ways AI can make life easier and more fun. I’m constantly learning, tinkering, and looking for new ways to streamline and improve.
+
+Feel free to explore my posts and projects, or just say hi! You can reach me at [me@mattjh.sh](mailto:me@mattjh.sh). Whether you’re here to learn, connect, or just browse, I’m happy you stopped by.
