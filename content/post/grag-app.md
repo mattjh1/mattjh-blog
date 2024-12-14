@@ -1,6 +1,6 @@
 ---
 title: "gRAG in Action: Building the Application"
-date: "2024-12-01"
+date: "2024-12-14"
 description: ""
 tags:
   - gRAG
@@ -13,7 +13,6 @@ categories:
   - PoC
   - Project
   - OSS
-draft: true
 ---
 
 Once the data is prepared and stored in a graph database, the next step is to make it usable. For **gRAG**, this meant building an application layer capable of retrieving and generating insightful, context-rich responses. At the core of this application is **LangChain**, a framework that seamlessly integrates retrieval and generation workflows.
@@ -72,7 +71,7 @@ With that said, the core components I want to highlight are:
 - **Retrievers**
 - **Managing LLMs**
 
-I’ll also touch briefly on how configuration and environment variables are handled throughout the application. There’s a lot to unpack, so let’s get into it!
+There’s a lot to unpack, so let’s get into it!
 
 ### Prompts
 
