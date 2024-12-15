@@ -159,7 +159,7 @@ Chat History:
 How do I treat flu?
 ```
 
-By rephrasing, the system can independently process the query, enabling accurate retrieval and generation.
+Rephrasing reduces the context size sent to the LLM by excluding chat history, leaving more space for retrieval context and enabling accurate generation.
 
 ##### 2. **Formatting Chat History**
 
