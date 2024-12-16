@@ -1,6 +1,6 @@
 ---
 title: "init.lua - Exploring my Neovim Config"
-date: "2024-12-14"
+date: "2024-12-16"
 description: ""
 tags:
   - neovim
