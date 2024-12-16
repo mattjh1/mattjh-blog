@@ -1,5 +1,5 @@
 ---
-title: "Commit hooks are great! Or are they?"
+title: "Commit Hooks are Great! Or are They?"
 date: "2024-11-07"
 description: ""
 tags:

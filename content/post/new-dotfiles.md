@@ -1,5 +1,5 @@
 ---
-title: "updated dotfiles"
+title: "Updated Dotfiles"
 date: "2024-09-08"
 description: "Major rework done to create a robust and portable way to manage my dev configuration across platforms"
 tags:

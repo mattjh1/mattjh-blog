@@ -1,5 +1,5 @@
 ---
-title: "Useful shell aliases"
+title: "Useful Shell Aliases"
 date: "2024-11-02"
 description: "Useful shell aliases i use on the daily"
 tags:

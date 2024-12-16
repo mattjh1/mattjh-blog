@@ -1,7 +1,7 @@
 ---
-title: "Vim motions"
+title: "Vim Motions"
 date: "2024-10-09"
-description: "What do i love most about Vim? Well vim motions of course, want to learn more? Check out this post"
+description: "What do i love Vim? Well vim motions of course, want to learn more? Check out this post"
 tags:
   - vim-motions
   - IDE-plugins

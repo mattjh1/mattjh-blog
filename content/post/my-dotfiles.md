@@ -1,5 +1,5 @@
 ---
-title: "dotfiles"
+title: "Dotfiles"
 date: 2023-11-26T19:00:00+00:00
 description: "Welcome to the heart of my computing environment. The core of my daily workflow."
 tags:
