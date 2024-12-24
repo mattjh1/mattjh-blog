@@ -306,4 +306,4 @@ The ingestion pipeline is a carefully orchestrated process that begins with extr
 </div>
 {{< /rawhtml >}}
 
-I have another post in the works that covers something completely different, the frontend application. Coming soon 😁
+I have another post that covers something completely different, the frontend application. [Check it out here!](../grag-app) 😁
