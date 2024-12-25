@@ -76,7 +76,7 @@ Out of these the "plugins" section is by far the most extensive, the `lua/plugin
 
 Lets start off with keybinds, this section is where I try to keep all my custom binds collected in one place. Most of these (not all) are tied to plugins as I try my best to keep the default binds intact so I'm still capable to manoeuvring a barebones vi setup when that need arise.
 
-Most setups I've seen use `<space>` as the leader key, i use `","`. There is actually plenty of drawbacks to using comma as the leader key. And I've seriously considered going for `<space>` instead, they reason i have not is because my current ways are so ingrained at this point and it is working fine for me, maybe at some point I'll go ahead and make the change, but that day is not today.
+Most setups I've seen use `<space>` as the leader key, i use `","`. There is actually plenty of drawbacks to using comma as the leader key. And I've seriously considered going for `<space>` instead, the reason I have not is because my current ways are so ingrained at this point and it is working fine, maybe at some point I'll go ahead and make the change, but that day is not today.
 
 Here are some noteworthy binds that are not directly tied to any plugins, we'll cover plugin specifics in the plugin section.
 
