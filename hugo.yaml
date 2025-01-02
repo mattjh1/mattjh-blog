@@ -1,4 +1,4 @@
-baseURL: https://www.mattjh.sh/
+baseURL: https://www.mattjh.sh
 languageCode: en-us
 title: mattjh blog
 
@@ -60,7 +60,7 @@ menu:
       url: whoami
     - name: cv
       weight: 3
-      url: https://cv.mattjh.sh/
+      url: https://cv.mattjh.sh
       hrefTargetBlank: true
 
 params:
