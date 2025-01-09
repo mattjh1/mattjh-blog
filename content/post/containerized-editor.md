@@ -3,16 +3,18 @@ title: "Containerize Neovim? But why??"
 date: "2025-01-09"
 description: ""
 tags:
-  - OCI
-  - containers
-  - docker
-  - github actions
-  - rant
-  - nvim
-  - editor
+  - Developer Experience (DX)
+  - DevOps
+  - VDI
+  - Neovim
+  - CLI Tools
+  - X11 Forwarding
 categories:
   - productivity
+  - Workflows
   - tools
+  - hacks
+  - Dev Rants
 toc: false
 ---
 
