@@ -18,7 +18,7 @@ categories:
 toc: false
 ---
 
-It’s tough when you find yourself at the mercy of some executive decisions that you know are going to cost more in the long run than they save. But hey, it’s a part of the game, right? Sometimes, execs make decisions based on advice from people who don’t have the full picture—leading to, let’s say, _interesting_ outcomes.
+It’s tough when you find yourself at the mercy of some executive decisions that you know are going to cost more in the long run than they save. But hey, it’s a part of the game, right? Sometimes, execs make decisions based on advice from people who don’t have the full picture—leading to, let’s say, _interesting_ outcomes. Or maybe I’m the one missing the full picture—but hey, that doesn’t make my pain points any less real.
 
 <!--more-->
 
