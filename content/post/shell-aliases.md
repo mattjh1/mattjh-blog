@@ -18,7 +18,7 @@ Okay so over the past couple of years I've kept adding new aliases to my dotfile
 
 ---
 
-Aliases in shell environments are shortcuts that allow users to create custom, simplified commands for frequently used or complex command sequences. By defining an alias, you can replace a lengthy command or set of options with a shorter, memorable keyword, improving efficiency and reducing typing errors. For instance, `alias ll='ls -lah'` in a Unix-like shell would make `ll` a shortcut for listing files in detail. Aliases can be temporary (for the current session) or permanent when added to shell configuration files like `.bashrc` or `.zshrc`, enabling a more streamlined and personalized command-line experience.
+Aliases in shell environments are shortcuts that allow users to create custom, simplified commands for frequently used or complex command sequences. By defining an alias, you can replace a lengthy command or set of options with a shorter, memorable keyword, improving efficiency and reducing typing errors. For instance, `alias ll='ls -lah'` in a *nix shell would make `ll` a shortcut for listing files in detail. Aliases can be temporary (for the current session) or permanent when added to shell configuration files like `.bashrc` or `.zshrc`, enabling a more streamlined and personalized command-line experience.
 
 {{< card type="info" >}}
 I use `zsh` as my default shell, but all of these can be applied to `bash` as well. With other shells your mileage way vary.
