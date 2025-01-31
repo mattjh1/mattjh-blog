@@ -21,9 +21,12 @@ For those unfamiliar, **KCNA (Kubernetes and Cloud Native Associate)** is basica
 
 {{< rawhtml >}}
 
-<div style="display: flex; justify-content: center; margin: 20px 0;">
-    <div style="background: white; padding: 15px; border-radius: 8px;">
-        <div data-iframe-width="640" data-iframe-height="250" data-share-badge-id="5e030c4c-4f9f-432f-9754-b92b842eda0c" data-share-badge-host="https://www.credly.com"></div>
+<div class="credly-badge-container">
+    <div class="credly-badge-wrapper">
+        <div data-iframe-width="640" data-iframe-height="250" 
+             data-share-badge-id="5e030c4c-4f9f-432f-9754-b92b842eda0c" 
+             data-share-badge-host="https://www.credly.com">
+        </div>
         <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
     </div>
 </div>
