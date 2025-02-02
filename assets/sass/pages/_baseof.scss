@@ -211,19 +211,21 @@ pre:hover .copy-button {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+  overflow: hidden;
 }
 
 .credly-badge-wrapper {
   background: white;
   padding: 15px;
   border-radius: 8px;
-  max-width: 640px;
+  max-width: 90%;
   width: 100%;
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
 }
 
-.credly-badge-wrapper > div {
+.credly-badge-wrapper>div {
   width: 100% !important;
   max-width: 100%;
   height: auto !important;
