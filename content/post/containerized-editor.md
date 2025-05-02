@@ -1,7 +1,7 @@
 ---
 title: "Containerize Neovim? But why??"
 date: "2025-01-09"
-description: ""
+description: "Stuck with a clunky dev setup? Here’s how I turned a frustrating VDI + X11 environment into a containerized Neovim workflow that actually works."
 tags:
   - Developer Experience (DX)
   - DevOps

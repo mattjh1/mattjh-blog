@@ -1,7 +1,7 @@
 ---
 title: "Let the Linter Save You from Being the Git Blame Target"
 date: "2025-04-27"
-description: ""
+description: "Strong linting and typing aren't nuisances—they're early warnings that save you from future bugs, reviews, and embarrassing git blame."
 tags:
   - code quality
   - linting

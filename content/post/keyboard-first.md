@@ -1,7 +1,7 @@
 ---
 title: "Keyboard First"
 date: "2024-11-25"
-description: ""
+description: "A deep dive into building a keyboard-first workflow on macOS using Karabiner, Hammerspoon, Vimium, and more."
 tags:
   - karabiner
   - hammerspoon
