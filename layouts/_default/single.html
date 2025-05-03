@@ -5,6 +5,9 @@
 
 {{ define "main" }}
   <div class="postWrapper">
+    <div class="breadcrumbs">
+      {{ partial "breadcrumbs.html" . }}
+    </div>
     <h1>{{ .Title }}</h1>
     {{ if .Params.showMetadata | default true }}
       <section class="postMetadata">

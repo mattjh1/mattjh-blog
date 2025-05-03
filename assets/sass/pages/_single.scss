@@ -1,4 +1,44 @@
 @use "../utils/variables" as v;
+@use "sass:map";
+
+.breadcrumb-list {
+  color: map.get(v.$primary-colors, "blue");
+}
+
+.breadcrumb-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: v.$whiter;
+}
+
+.breadcrumb-list li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-list a {
+  text-decoration: none;
+  color: map.get(v.$primary-colors, "blue");
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.breadcrumb-list .divider {
+  margin: 0 0.25rem;
+  color: #888;
+}
+
+.breadcrumb-list .current {
+  font-weight: bold;
+  color: v.$white;
+}
 
 .postWrapper {
   width: 100%;

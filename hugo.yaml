@@ -68,7 +68,7 @@ params:
     name: Mattias Holmgren
     bio: "I enjoy building things"
   user: mattjh
-  hostname: home
+  hostname: Home
   cloudFront:
     url: "https://d25ycjc5dtax3g.cloudfront.net"
     js: "https://d25ycjc5dtax3g.cloudfront.net/js"
