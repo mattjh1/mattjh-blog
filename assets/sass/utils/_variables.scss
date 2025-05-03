@@ -1,36 +1,51 @@
 @use "hugo:vars" as h;
 @use "sass:map";
 
-// Colors (Nord Theme)
-$darkGrey: #2e3440;
-$white: #e5e9f0;
-$whiter: #eceff4;
-$black: #434c5e; // slightly lighter than $backgroundDark for contrast
+// Nord Color Palette
+$nord0: #2e3440; // Polar Night - dark background
+$nord1: #3b4252;
+$nord2: #434c5e;
+$nord3: #4c566a; // used for borders and dividers
 
-$backgroundDarker: #2e3440; // Nord Polar Night (Darkest)
-$backgroundDark: #3b4252; // Slightly lighter shade from Nord Polar Night
+$nord4: #d8dee9; // Snow Storm - light foreground
+$nord5: #e5e9f0;
+$nord6: #eceff4; // lightest, good for backgrounds
 
-$fontHeader:
-  "Hack", "Consolas", "Lucida Console", "DejaVu Sans Mono", "Courier New",
-  monospace;
+$nord7: #8fbcbb; // Frost - secondary blue
+$nord8: #88c0d0; // Frost - primary blue
+$nord9: #81a1c1;
+$nord10: #5e81ac;
+
+$nord11: #bf616a; // Aurora - red
+$nord12: #d08770; // orange
+$nord13: #ebcb8b; // yellow
+$nord14: #a3be8c; // green
+$nord15: #b48ead; // purple
+
+// General Semantic Variables
+$backgroundDarker: $nord0;
+$backgroundDark: $nord1;
+$black: $nord2;
+$white: $nord5;
+$whiter: $nord6;
+
+$fontHeader: "Hack", "Consolas", "Lucida Console", "DejaVu Sans Mono",
+  "Courier New", monospace;
 $fontParagraph: "Open Sans", sans-serif;
-$fontCode:
-  "Hack", "Consolas", "Lucida Console", "DejaVu Sans Mono", "Courier New",
-  monospace;
+$fontCode: $fontHeader;
 
-// Content
 $breakLarge: 992px;
 $width: 760px;
 
-// Primary colors for Nord palette
+// Primary color mapping (optional but convenient)
 $primary-colors: (
-  "blue": #88c0d0,
-  "orange": #d08770,
-  "green": #a3be8c,
-  "red": #bf616a,
+  "blue": $nord8,
+  "orange": $nord12,
+  "green": $nord14,
+  "red": $nord11,
 );
 
-// Mixin to set primary color based on the Nord palette
+// Mixin to set primary color dynamically
 @mixin primary-color {
   @if map.has-key($primary-colors, h.$color) {
     color: map.get($primary-colors, h.$color);
