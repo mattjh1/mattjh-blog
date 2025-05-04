@@ -9,6 +9,23 @@
 {{ $js8 := resources.Get "js/toc.js" }}
 {{ $js := slice $js1 $js2 $js3 $js4 $js5 $js6 $js7 $js8 | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
 
+{{ if not hugo.IsServer }}
+  <script
+    async
+    defer
+    src="https://gc.zgo.at/count.js"
+    data-goatcounter="https://{{ .Site.Params.goatCounter }}/count"
+  ></script>
+  <noscript>
+    <img
+      src="https://{{- .Site.Params.goatCounter -}}/count?p=/noscript"
+      alt="."
+      style="display:none;"
+      referrerpolicy="no-referrer-when-downgrade"
+    />
+  </noscript>
+{{ end }}
+
 
 <script
   src="{{ $js.Permalink }}"

@@ -69,6 +69,7 @@ params:
     bio: "I enjoy building things"
   user: mattjh
   hostname: Home
+  goatCounter: "mattjh-blog.goatcounter.com"
   cloudFront:
     url: "https://d25ycjc5dtax3g.cloudfront.net"
     js: "https://d25ycjc5dtax3g.cloudfront.net/js"
