@@ -1,0 +1,52 @@
+{{- if .IsPage }}
+  {{- $sameAs := slice }}
+  {{- range .Site.Params.social }}
+    {{- $sameAs = $sameAs | append .url }}
+  {{- end }}
+
+  {{- $author := dict
+    "@type" "Person"
+    "name" .Site.Params.author.name
+    "url" ("whoami" | absURL)
+    "image" ("images/me_hu14000929010631010229.jpg" | absURL)
+    "sameAs" $sameAs
+  }}
+
+  {{- $jsonLD := dict
+    "@context" "https://schema.org"
+    "@type" "Article"
+    "headline" .Title
+    "description" ( .Params.description | default (.Summary | default .Content | plainify | truncate 150) )
+    "author" $author
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z")
+    "url" .Permalink
+    "publisher" (dict "@type" "Organization" "name" .Site.Params.author.name
+    "logo" (dict "@type" "ImageObject" "url"
+    "https://www.mattjh.sh/images/mjh-logo.png" ) ) "mainEntityOfPage" (dict
+    "@type" "WebPage" "@id" .Permalink )
+    "articleBody" .Content
+  }}
+
+  {{- if .Params.tags }}
+    {{- $jsonLD = merge $jsonLD (dict "keywords" (delimit .Params.tags ", ")) }}
+  {{- end }}
+
+  {{- if .Params.categories }}
+    {{- $about := slice }}
+    {{- range .Params.categories }}
+      {{- $about = $about | append (dict "@type" "Thing" "name" .) }}
+    {{- end }}
+    {{- $jsonLD = merge $jsonLD (dict "about" $about) }}
+  {{- end }}
+
+  {{- $imageURL := "https://www.mattjh.sh/images/mjh-logo.png" }}
+  {{- if .Params.featured_image }}
+    {{- $imageURL = (printf "https://%s/%s" .Site.Params.cloudFront.images (.Params.featured_image | safeURL)) }}
+  {{- end }}
+  {{- $jsonLD = merge $jsonLD (dict "image" $imageURL) }}
+
+  <script type="application/ld+json">
+    {{ $jsonLD | jsonify | safeJS }}
+  </script>
+{{- end }}
