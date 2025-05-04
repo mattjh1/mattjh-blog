@@ -18,11 +18,11 @@ The way we interface with computers with keyboard and mouse is really slow, even
 
 {{< image src="DALL-E-keyboard2.webp" alt="Dall-E generated 'keyboard first' image" center=true max-width="100%" caption="Dall-E generated image" >}}
 
-I've made multiple posts going over the power of Vim, and this post will not be another one of those albeit we might inevitably get into it briefly. This will be more about additional tools that can be used to create a keyboard friendly environment on macOS. I've also went onto replicating my setup on my Linux based system, but that will have to wait for a future post.
+I've made multiple posts going over the power of Vim, and this post will not be another one of those albeit we might inevitably get into it briefly. This will be more about additional tools that can be used to create a keyboard friendly environment on macOS. I've also gone on to replicating my setup on my Linux based system, but that will have to wait for a future post.
 
 ---
 
-So, enough about Linux, lets talk about some cool macOS tools that will help you achieve a keyboard centric workflow. For starters I want to give a shout-out to [Jason Rudolph](https://github.com/jasonrudolph) and his [keyboard project](https://github.com/jasonrudolph/keyboard) which was the enabler that opened my eyes to a keyboard centric approach to interacting with my computer. In this project he speaks about creating a useful keyboard experience everywhere, its not just tweaking the binds for some application but make system-wide changes that makes sense. Lets go through some of these great tools, starting wtih Karabiner-Elements.
+So, enough about Linux, let's talk about some cool macOS tools that will help you achieve a keyboard centric workflow. For starters I want to give a shout-out to [Jason Rudolph](https://github.com/jasonrudolph) and his [keyboard project](https://github.com/jasonrudolph/keyboard) which was the enabler that opened my eyes to a keyboard centric approach to interacting with my computer. In this project he speaks about creating a useful keyboard experience everywhere, its not just tweaking the binds for some application but make system-wide changes that makes sense. let's go through some of these great tools, starting with Karabiner-Elements.
 
 ## Karabiner-Elements
 
@@ -38,7 +38,7 @@ Hammerspoon is a macOS specific automation tool, essentially it is a bridge betw
 
 Hammerspoon is made up of small atomic pieces that solves specific problems, you can either write your own using the API or pick and choice from a vast selection of "Spoons" as they're called.
 
-Personally i use Hammerspoon for a few things.
+Personally I use Hammerspoon for a few things.
 
 ### Control-Escape
 
@@ -105,7 +105,7 @@ I use this button for two main things:
 
 When I researched window tiling managers for mac I did not really like what I found. i3 on Linux is much more to my liking, and if that was available I would consider using that instead. My research was awhile ago but things might have changed, for full featured [yabai](rttps://github.com/koekeishiya/yabai) you need to disable System Integrity Protection (SIP), which is a big no-no. And even if I wanted to I wouldn't be able to on my corporate managed laptop.
 
-So without further ado, lets rebind ctrl+shift+alt+super to simply ctrl!
+So without further ado, let's rebind ctrl+shift+alt+super to simply ctrl!
 
 ```lua
 local status, hyperModeAppMappings = pcall(require, "scripts.hyper-apps")
@@ -132,7 +132,7 @@ end
 
 ### Hyper Apps
 
-Lets also take a look at `scripts.hyper-apps`, with this setup I very rarely stretch to use the very clunky action of tabbing through applications.
+let's also take a look at `scripts.hyper-apps`, with this setup I very rarely stretch to use the very clunky action of tabbing through applications.
 
 ```lua
 return {
@@ -208,11 +208,11 @@ unmap L
 map <c-l> goForward
 ```
 
-Using Vimium lets me open new tabs, search the web, and navigate effortlessly without a mouse, the plugin exists for all major browsers with some name variations but the idea is the same. I also add some custom css to get Nord theme in Vimium, given the option, be sure I'll be adding Nord theme!
+Using Vimium let's me open new tabs, search the web, and navigate effortlessly without a mouse, the plugin exists for all major browsers with some name variations but the idea is the same. I also add some custom css to get Nord theme in Vimium, given the option, be sure I'll be adding Nord theme!
 
 ## Homerow
 
-Homerow is propriety paid software that makes int easier to incorporate universal keyboard centric navigation on macOS. It is free to use, you get an annoying popup every now and then prompting you to buy the product. Consider doing so if you like the product to support the developer.
+Homerow is propriety paid software that makes it easier to incorporate universal keyboard centric navigation on macOS. It is free to use, you get an annoying popup every now encouraging you to support the dev. Consider doing so if you like the product.
 
 Homerow enables clicking without a mouse in any app, much like Vimium but yeah anywhere. I've bound this feature to hyper+space and it works great, I'll have to admit that when I first got it, I used it all the time, since then usage has somewhat declined, still an amazing app though.
 
