@@ -68,7 +68,7 @@ params:
     name: Mattias Holmgren
     bio: "I enjoy building things"
   user: mattjh
-  hostname: Home
+  hostname: home
   goatCounter: "mattjh-blog.goatcounter.com"
   cloudFront:
     url: "https://d25ycjc5dtax3g.cloudfront.net"
