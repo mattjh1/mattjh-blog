@@ -1,13 +1,23 @@
+# Hugo build output
 /public/
 /resources/_gen/
-.DS_Store
+.hugo_build.lock
+hugo_stats.json
+
+# Dependencies
 node_modules
 _vendor
+
+# Environment config
 .env
 
+# OS and temporary files
+.DS_Store
+Thumbs.db
+*.log
+.sass-cache
+
+# Hugo binaries
 hugo.exe
 hugo.linux
 hugo.darwin
-
-# Temporary lock file while building
-/.hugo_build.lock
