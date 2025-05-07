@@ -6,7 +6,6 @@
       <i class="fa-regular fa-copyright fa-sm"></i>
       {{ now.Format "2006" }}
       {{ .Site.Params.author.name }} •
-      {{ i18n "powered_by" }}
       <a
         href="https://gohugo.io"
         class="footerLink"
@@ -14,6 +13,7 @@
         aria-label="Visit Hugo's website"
         target="_blank"
       >
+        {{ i18n "powered_by" }}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 128 128"
@@ -29,13 +29,23 @@
           />
         </svg>
       </a>
-      • Subscribe
+      <!-- View Source + GitHub Icon -->
+      |
+      <a
+        href="https://github.com/mattjh1/mattjh-blog"
+        target="_blank"
+        style="color: #e5e9f0; text-decoration: none;"
+        aria-label="View Source on GitHub"
+      >
+        View Source <i class="fa-brands fa-github"></i>
+      </a>
+      •
       <a
         href="/index.xml"
         target="_blank"
-        style="color: #e5e9f0"
+        style="color: #e5e9f0; text-decoration: none;"
         title="RSS Feed"
-      >
+        >Subscribe
         <i class="fa-solid fa-rss fa-sm"></i>
       </a>
     </span>
