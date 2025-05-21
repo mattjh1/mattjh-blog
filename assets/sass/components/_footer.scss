@@ -1,11 +1,41 @@
 @use "../utils/variables" as v;
 
 .footer {
-  padding: 15px;
+  padding: 1rem;
   text-align: center;
   background-color: v.$backgroundDarker;
+  font-size: 0.75rem;
+  font-family: v.$fontCode;
+  color: rgba(v.$white, 0.7);
+  line-height: 1.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+
+  svg {
+    width: 1.5em;
+    vertical-align: middle;
+  }
+
+  i {
+    font-size: 0.8em;
+    vertical-align: middle;
+    opacity: 0.8;
+  }
+
+  a {
+    color: rgba(v.$white, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: v.$white;
+    }
+  }
 }
 
 .footerLink {
-  color: v.$white;
+  color: inherit;
 }
