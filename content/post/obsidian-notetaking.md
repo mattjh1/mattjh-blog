@@ -13,7 +13,7 @@ categories:
 ---
 
 Over the years, my journey into effective note-taking has been anything but linear.
-From the chaos of handwritten notes in university to exploring various digital tools, I've discovered what works for me in managing information overload.
+From the chaos of disorganized, barely readable handwritten notes in university to exploring various digital tools, I've discovered what works for me in managing information overload.
 
 <!--more-->
 
@@ -35,7 +35,7 @@ After moving away from Notion, I tried out vimwiki and taskwarrior, looking for 
 
 Ultimately, I realized I wanted the best of both worlds—a solution that offered the flexibility and simplicity of a terminal-based tool with the organizational capabilities and aesthetics of something like Notion.
 
-## Discovering Obsidian
+### Discovering Obsidian
 
 {{< youtube zIGJ8NTHF4k >}}
 
@@ -43,7 +43,7 @@ My breakthrough came when I stumbled upon this compelling video by Mischa van de
 
 In the video, Mischa introduces the _Zettelkasten_ method, which completely changed how I approached note-taking. This method emphasizes creating small, atomic notes that are richly interconnected, forming a web of ideas over time. Obsidian’s internal linking and _Graph View_ bring this to life, allowing me to visualize connections between notes. It has been a game-changer, helping me build a _"second brain"_ where knowledge grows organically and meaningfully.
 
-## Why Obsidian Works for Me
+### Why Obsidian Works for Me
 
 Eight months into using Obsidian, I’ve found it to be the most sustainable note-taking system I've used so far. Here are the features that have made a significant impact on my workflow:
 
