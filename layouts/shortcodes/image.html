@@ -26,6 +26,7 @@
         {{ $small := $original.Process "fit 320x240" }}
         {{ $medium := $original.Process "fit 640x480" }}
         {{ $large := $original.Process "fit 1024x768" }}
+        {{ $zoom := $original.Process "fit 1920x1080" }}
 
 
         <source
@@ -43,8 +44,9 @@
           alt="{{ $alt }}"
           loading="lazy"
           decoding="async"
+          data-zoom-src="{{ $zoom.RelPermalink }}"
           style="max-width: {{ $maxWidth }}; max-height: {{ $maxHeight }};
-                 {{ if eq $center true }}
+         {{ if eq $center true }}
             display: block; margin-left: auto; margin-right: auto;
           {{ end }}"
         />

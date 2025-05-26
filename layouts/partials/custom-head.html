@@ -2,12 +2,13 @@
 {{ $js1 := resources.Get "js/lib/jquery-3.7.1.js" }}
 {{ $js2 := resources.Get "js/lib/fuse-7.0.0.js" }}
 {{ $js3 := resources.Get "js/lib/mark-8.11.1.js" }}
-{{ $js4 := resources.Get "js/typeit.js" }}
-{{ $js5 := resources.Get "js/copyCode.js" }}
-{{ $js6 := resources.Get "js/backToTop.js" }}
-{{ $js7 := resources.Get "js/search.js" }}
-{{ $js8 := resources.Get "js/toc.js" }}
-{{ $js := slice $js1 $js2 $js3 $js4 $js5 $js6 $js7 $js8 | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
+{{ $js4 := resources.Get "js/lib/medium-zoom-1.1.0.js" }}
+{{ $js5 := resources.Get "js/typeit.js" }}
+{{ $js6 := resources.Get "js/copyCode.js" }}
+{{ $js7 := resources.Get "js/backToTop.js" }}
+{{ $js8 := resources.Get "js/search.js" }}
+{{ $js9 := resources.Get "js/toc.js" }}
+{{ $js := slice $js1 $js2 $js3 $js4 $js5 $js6 $js7 $js8 $js9 | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
 
 {{ if not hugo.IsServer }}
   <script
@@ -32,6 +33,10 @@
   integrity="{{ $js.Data.Integrity }}"
   defer
 ></script>
+
+{{ if findRE "<img" .Content }}
+  {{ partial "img-zoom.html" . }}
+{{ end }}
 
 {{ if or .IsPage .IsHome }}
   <meta property="og:type" content="article" />
