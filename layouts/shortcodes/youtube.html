@@ -115,8 +115,14 @@
     <div {{ $divClassOrStyle | safeHTMLAttr }}>
       <div class="youtube-video-wrapper">
         <div class="youtube-consent-banner">
+          <i
+            class="fab fa-youtube fa-4x"
+            aria-hidden="true"
+            style="color: #FF0000; margin-bottom: 0.5em; display: block;"
+          ></i>
           <p>
-            This video requires your consent to load. Please accept to view.
+            This YouTube video is hosted on a third-party platform that may set
+            cookies. Please accept to view the video.
           </p>
           <button
             class="youtube-consent-button"
