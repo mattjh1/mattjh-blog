@@ -9,6 +9,7 @@ tags:
 categories:
   - productivity
   - tools
+featured_image: git-obsidian-zettelkasten-aigen.png
 ---
 
 Over the years, my journey into effective note-taking has been anything but linear.
