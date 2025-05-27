@@ -1,7 +1,6 @@
 ---
 title: "My Journey into Effective Note-Taking"
 date: "2024-10-16"
-description: "Going through my my experience into finding an effective note taking strategy"
 tags:
   - markdown
   - notes
