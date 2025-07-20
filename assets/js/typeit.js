@@ -28,7 +28,7 @@
   );
   const a = (e) => {
       let t = document.implementation.createHTMLDocument();
-      return (t.body.innerHTML = e), i(t.body);
+      return ((t.body.innerHTML = e), i(t.body));
     },
     o = "data-typeit-id",
     s = "ti-cursor",
@@ -83,7 +83,7 @@
       }),
       o = [];
     for (; (r = a.nextNode()); )
-      r.originalParent || (r.originalParent = r.parentNode), o.push(r);
+      (r.originalParent || (r.originalParent = r.parentNode), o.push(r));
     return t ? o.reverse() : o;
   }
   function f(e, t = !0) {
@@ -92,7 +92,7 @@
   const h = (e) => document.createElement(e),
     y = (e, t = "") => {
       let n = h("style");
-      (n.id = t), n.appendChild(r(e)), document.head.appendChild(n);
+      ((n.id = t), n.appendChild(r(e)), document.head.appendChild(n));
     },
     p = (t) => (e(t) || (t = [t / 2, t / 2]), t),
     m = (e, t) => Math.abs(Math.random() * (e + t - (e - t)) + (e - t));
@@ -122,7 +122,7 @@
               return !(!i || !r) || (r && n.firstChild.isSameNode(e));
             })
           : -1;
-      return a < 0 && (a = i ? 0 : e.length - 1), a - n + (i ? 0 : 1);
+      return (a < 0 && (a = i ? 0 : e.length - 1), a - n + (i ? 0 : 1));
     };
   let L = (e) =>
       new Promise((t) => {
@@ -158,7 +158,7 @@
         l = a,
         u = () => l && !l.delay,
         c = a.shouldPauseCursor() && i.autoPause;
-      for (; u(); ) o.push(l), u() && s++, (l = t[s] ? t[s][1] : null);
+      for (; u(); ) (o.push(l), u() && s++, (l = t[s] ? t[s][1] : null));
       if (o.length)
         return (
           await L(async () => {
@@ -175,10 +175,10 @@
             delay: c ? i.autoPauseDelay : 0,
           }),
         await n(async () => {
-          f && c && f.cancel(),
+          (f && c && f.cancel(),
             await L(() => {
               I(a);
-            });
+            }));
         }, a.delay),
         await (({ cursor: e, options: t, cursorOptions: n }) => {
           if (!e || !n) return;
@@ -189,17 +189,17 @@
             (r = i.currentTime),
             i.cancel());
           let a = D({ cursor: e, frames: n.animation.frames, options: t });
-          return r && (a.currentTime = r), a;
+          return (r && (a.currentTime = r), a);
         })({ cursor: r, options: d, cursorOptions: i }),
         e
       );
     };
   return function (e, r = {}) {
     let L = async (e, t, n = !1) => {
-        K.frozen &&
+        (K.frozen &&
           (await new Promise((e) => {
             this.unfreeze = () => {
-              (K.frozen = !1), e();
+              ((K.frozen = !1), e());
             };
           })),
           n || (await Y.beforeStep(this)),
@@ -207,11 +207,11 @@
             new Promise((r) => {
               n.push(
                 setTimeout(async () => {
-                  await e(), r();
+                  (await e(), r());
                 }, t || 0),
               );
             }))(e, t, W),
-          n || (await Y.afterStep(this));
+          n || (await Y.afterStep(this)));
       },
       C = (e, t) =>
         M({
@@ -232,7 +232,8 @@
         (function (e) {
           let { speed: t, deleteSpeed: n, lifeLike: r } = e;
           return (
-            (n = null !== n ? n : t / 3), r ? [m(t, g(t)), m(n, g(n))] : [t, n]
+            (n = null !== n ? n : t / 3),
+            r ? [m(t, g(t)), m(n, g(n))] : [t, n]
           );
         })(Y)[e],
       $ = () =>
@@ -256,7 +257,7 @@
       },
       R = async () => {
         if ((!x() && ne && J.appendChild(ne), te)) {
-          ((e, t) => {
+          (((e, t) => {
             let n = `[${o}='${e}'] .${s}`,
               r = getComputedStyle(t),
               i = Object.entries(P).reduce(
@@ -266,7 +267,7 @@
               );
             y(`${n} { display: inline-block; width: 0; ${i} }`, e);
           })(Z, J),
-            (ne.dataset.tiAnimationId = Z);
+            (ne.dataset.tiAnimationId = Z));
           let { animation: e } = Y.cursor,
             { frames: t, options: n } = e;
           D({
@@ -298,14 +299,14 @@
             if (!i.done) {
               if (!i.deletable || (i.deletable && $().length)) {
                 let r = await C(e, n);
-                Array(r - e)
+                (Array(r - e)
                   .fill(e + 1)
                   .map((e, t) => e + t)
                   .forEach((e) => {
                     let [r] = n[e];
                     t(r);
                   }),
-                  (e = r);
+                  (e = r));
               }
               t(r);
             }
@@ -315,7 +316,7 @@
             throw "";
           let r = Y.loopDelay;
           L(async () => {
-            await (async (e) => {
+            (await (async (e) => {
               let t = O();
               t && (await B({ value: t }));
               let n = $().map((e) => [
@@ -328,16 +329,16 @@
                 },
               ]);
               for (let r = 0; r < n.length; r++) await C(r, n);
-              ee.reset(), ee.set(0, { delay: e });
+              (ee.reset(), ee.set(0, { delay: e }));
             })(r[0]),
-              z();
+              z());
           }, r[1]);
         } catch (n) {}
         return this;
       },
       B = async (e) => {
         var t, n, r;
-        (t = e),
+        ((t = e),
           (n = X),
           (r = $()),
           (X = Math.min(Math.max(n + t, 0), r.length)),
@@ -345,7 +346,7 @@
             let r = t[n - 1],
               i = v(`.${s}`, e);
             (e = r?.parentNode || e).insertBefore(i, r || null);
-          })(J, $(), X);
+          })(J, $(), X));
       },
       _ = (e) =>
         ((e, t) => {
@@ -365,7 +366,7 @@
         let e = $();
         e.length && (x() ? (J.value = J.value.slice(0, -1)) : I(e[X]));
       };
-    (this.break = function (e) {
+    ((this.break = function (e) {
       return H({ func: () => _(h("BR")), typeable: !0 }, e);
     }),
       (this.delete = function (e = null, t = {}) {
@@ -423,7 +424,7 @@
         );
       }),
       (this.options = function (e, t = {}) {
-        return (e = w(e)), j(e), H({}, t);
+        return ((e = w(e)), j(e), H({}, t));
       }),
       (this.pause = function (e, t = {}) {
         return H({ delay: w(e) }, t);
@@ -457,21 +458,21 @@
         return K[e];
       }),
       (this.destroy = function (e = !0) {
-        W.forEach(clearTimeout),
+        (W.forEach(clearTimeout),
           (W = []),
           w(e) && ne && I(ne),
-          (K.destroyed = !0);
+          (K.destroyed = !0));
       }),
       (this.freeze = function () {
         K.frozen = !0;
       }),
       (this.unfreeze = () => {}),
       (this.reset = function (e) {
-        !this.is("destroyed") && this.destroy(),
+        (!this.is("destroyed") && this.destroy(),
           e ? (ee.wipe(), e(this)) : ee.reset(),
-          (X = 0);
+          (X = 0));
         for (let t in K) K[t] = !1;
-        return (J[x() ? "value" : "innerHTML"] = ""), this;
+        return ((J[x() ? "value" : "innerHTML"] = ""), this);
       }),
       (this.go = function () {
         return K.started
@@ -492,12 +493,12 @@
               : (z(), this));
       }),
       (this.flush = function (e = () => {}) {
-        return R(), z(!1).then(e), this;
+        return (R(), z(!1).then(e), this);
       }),
       (this.getQueue = () => ee),
       (this.getOptions = () => Y),
       (this.updateOptions = (e) => j(e)),
-      (this.getElement = () => J);
+      (this.getElement = () => J));
     let J = "string" == typeof (U = e) ? v(U) : U;
     var U;
     let W = [],
@@ -554,7 +555,7 @@
               a.set(n[e], r(t));
             },
             wipe: function () {
-              (a = new Map()), n(e);
+              ((a = new Map()), n(e));
             },
             reset: function () {
               a.forEach((e) => delete e.done);
@@ -567,7 +568,7 @@
           }
         );
       })([{ delay: Y.startDelay }]);
-    (J.dataset.typeitId = Z), y(c);
+    ((J.dataset.typeitId = Z), y(c));
     let te = !!Y.cursor && !x(),
       ne = (() => {
         if (x()) return;
@@ -579,7 +580,7 @@
             : ((e.style.visibility = "hidden"), e)
         );
       })();
-    (Y.strings = ((e) => {
+    ((Y.strings = ((e) => {
       let t = J.innerHTML;
       return t
         ? ((J.innerHTML = ""),
@@ -595,6 +596,6 @@
                 .concat(e))
         : e;
     })(t(Y.strings))),
-      Y.strings.length && q();
+      Y.strings.length && q());
   };
 });

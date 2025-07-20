@@ -5,6 +5,7 @@ showMetadata: false
 showBreadcrumb: false
 toc: false
 ---
+
 <div class="access-denied-wrapper">
   <h1>🚫 Access Denied</h1>
   <p id="reason-message">You’re not authorized to access the page or app you were trying to reach.</p>

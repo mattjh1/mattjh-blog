@@ -7,18 +7,18 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 var e, t;
-(e = this),
+((e = this),
   (t = function () {
     "use strict";
     function e(e, t) {
       var n = Object.keys(e);
       if (Object.getOwnPropertySymbols) {
         var r = Object.getOwnPropertySymbols(e);
-        t &&
+        (t &&
           (r = r.filter(function (t) {
             return Object.getOwnPropertyDescriptor(e, t).enumerable;
           })),
-          n.push.apply(n, r);
+          n.push.apply(n, r));
       }
       return n;
     }
@@ -66,10 +66,10 @@ var e, t;
     function i(e, t) {
       for (var n = 0; n < t.length; n++) {
         var r = t[n];
-        (r.enumerable = r.enumerable || !1),
+        ((r.enumerable = r.enumerable || !1),
           (r.configurable = !0),
           "value" in r && (r.writable = !0),
-          Object.defineProperty(e, v(r.key), r);
+          Object.defineProperty(e, v(r.key), r));
       }
     }
     function o(e, t, n) {
@@ -98,11 +98,11 @@ var e, t;
         throw new TypeError(
           "Super expression must either be null or a function",
         );
-      (e.prototype = Object.create(t && t.prototype, {
+      ((e.prototype = Object.create(t && t.prototype, {
         constructor: { value: e, writable: !0, configurable: !0 },
       })),
         Object.defineProperty(e, "prototype", { writable: !1 }),
-        t && u(e, t);
+        t && u(e, t));
     }
     function s(e) {
       return (
@@ -119,7 +119,7 @@ var e, t;
         (u = Object.setPrototypeOf
           ? Object.setPrototypeOf.bind()
           : function (e, t) {
-              return (e.__proto__ = t), e;
+              return ((e.__proto__ = t), e);
             }),
         u(e, t)
       );
@@ -274,15 +274,15 @@ var e, t;
       j = (function () {
         function e(t) {
           var n = this;
-          r(this, e), (this._keys = []), (this._keyMap = {});
+          (r(this, e), (this._keys = []), (this._keyMap = {}));
           var i = 0;
-          t.forEach(function (e) {
+          (t.forEach(function (e) {
             var t = A(e);
-            n._keys.push(t), (n._keyMap[t.id] = t), (i += t.weight);
+            (n._keys.push(t), (n._keyMap[t.id] = t), (i += t.weight));
           }),
             this._keys.forEach(function (e) {
               e.weight /= i;
-            });
+            }));
         }
         return (
           o(e, [
@@ -314,13 +314,13 @@ var e, t;
         r = null,
         i = 1,
         o = null;
-      if (m(e) || g(e)) (r = e), (t = I(e)), (n = C(e));
+      if (m(e) || g(e)) ((r = e), (t = I(e)), (n = C(e)));
       else {
         if (!O.call(e, "name")) throw new Error(L("name"));
         var c = e.name;
         if (((r = c), O.call(e, "weight") && (i = e.weight) <= 0))
           throw new Error(_(c));
-        (t = I(c)), (n = C(c)), (o = e.getFn);
+        ((t = I(c)), (n = C(c)), (o = e.getFn));
       }
       return { path: t, id: n, weight: i, src: r, getFn: o };
     }
@@ -395,7 +395,7 @@ var e, t;
             i = void 0 === n ? $.getFn : n,
             o = t.fieldNormWeight,
             c = void 0 === o ? $.fieldNormWeight : o;
-          r(this, e),
+          (r(this, e),
             (this.norm = (function () {
               var e =
                   arguments.length > 0 && void 0 !== arguments[0]
@@ -413,7 +413,7 @@ var e, t;
                   if (n.has(i)) return n.get(i);
                   var o = 1 / Math.pow(i, 0.5 * e),
                     c = parseFloat(Math.round(o * r) / r);
-                  return n.set(i, c), c;
+                  return (n.set(i, c), c);
                 },
                 clear: function () {
                   n.clear();
@@ -422,7 +422,7 @@ var e, t;
             })(c, 3)),
             (this.getFn = i),
             (this.isCreated = !1),
-            this.setIndexRecords();
+            this.setIndexRecords());
         }
         return (
           o(e, [
@@ -454,11 +454,11 @@ var e, t;
                     arguments.length > 0 && void 0 !== arguments[0]
                       ? arguments[0]
                       : [];
-                (this.keys = t),
+                ((this.keys = t),
                   (this._keysMap = {}),
                   t.forEach(function (t, n) {
                     e._keysMap[t.id] = n;
-                  });
+                  }));
               },
             },
             {
@@ -519,7 +519,7 @@ var e, t;
               value: function (e, t) {
                 var n = this,
                   r = { i: t, $: {} };
-                this.keys.forEach(function (t, i) {
+                (this.keys.forEach(function (t, i) {
                   var o = t.getFn ? t.getFn(e) : n.getFn(e, t.path);
                   if (x(o))
                     if (g(o)) {
@@ -547,7 +547,7 @@ var e, t;
                       r.$[i] = f;
                     }
                 }),
-                  this.records.push(r);
+                  this.records.push(r));
               },
             },
             {
@@ -568,7 +568,7 @@ var e, t;
         o = n.fieldNormWeight,
         c = void 0 === o ? $.fieldNormWeight : o,
         a = new R({ getFn: i, fieldNormWeight: c });
-      return a.setKeys(e.map(A)), a.setSources(t), a.create(), a;
+      return (a.setKeys(e.map(A)), a.setSources(t), a.create(), a);
     }
     function N(e) {
       var t =
@@ -627,7 +627,7 @@ var e, t;
           ignoreLocation: p,
         });
         if (((x = Math.min(_, x)), (w = m + k), S))
-          for (var O = 0; O < k; ) (L[m + O] = 1), (O += 1);
+          for (var O = 0; O < k; ) ((L[m + O] = 1), (O += 1));
       }
       w = -1;
       for (
@@ -636,7 +636,7 @@ var e, t;
         E += 1
       ) {
         for (var F = 0, R = I; F < R; )
-          N(t, {
+          (N(t, {
             errors: E,
             currentLocation: b + R,
             expectedLocation: b,
@@ -645,7 +645,7 @@ var e, t;
           }) <= x
             ? (F = R)
             : (I = R),
-            (R = Math.floor((I - F) / 2 + F));
+            (R = Math.floor((I - F) / 2 + F)));
         I = R;
         var P = Math.max(1, b - R + 1),
           T = l ? M : Math.min(b + R, M) + k,
@@ -710,7 +710,7 @@ var e, t;
                 -1 === r ||
                 ((i = o - 1) - r + 1 >= t && n.push([r, i]), (r = -1));
           }
-          return e[o - 1] && o - r >= t && n.push([r, o - 1]), n;
+          return (e[o - 1] && o - r >= t && n.push([r, o - 1]), n);
         })(L, d);
         J.length ? g && (B.indices = J) : (B.isMatch = !1);
       }
@@ -768,7 +768,7 @@ var e, t;
               x = this.pattern.length;
             if (x > W) {
               for (var w = 0, S = x % W, L = x - S; w < L; )
-                b(this.pattern.substr(w, W), w), (w += W);
+                (b(this.pattern.substr(w, W), w), (w += W));
               if (S) {
                 var _ = x - W;
                 b(this.pattern.substr(_), _);
@@ -786,7 +786,7 @@ var e, t;
                   r = t.includeMatches;
                 if ((n || (e = e.toLowerCase()), this.pattern === e)) {
                   var i = { isMatch: !0, score: 0 };
-                  return r && (i.indices = [[0, e.length - 1]]), i;
+                  return (r && (i.indices = [[0, e.length - 1]]), i);
                 }
                 var o = this.options,
                   c = o.location,
@@ -814,12 +814,12 @@ var e, t;
                     p = y.isMatch,
                     m = y.score,
                     k = y.indices;
-                  p && (g = !0),
+                  (p && (g = !0),
                     (v += m),
-                    p && k && (d = [].concat(f(d), f(k)));
+                    p && k && (d = [].concat(f(d), f(k))));
                 });
                 var y = { isMatch: g, score: g ? v / this.chunks.length : 1 };
-                return g && r && (y.indices = d), y;
+                return (g && r && (y.indices = d), y);
               },
             },
           ]),
@@ -828,7 +828,7 @@ var e, t;
       })(),
       K = (function () {
         function e(t) {
-          r(this, e), (this.pattern = t);
+          (r(this, e), (this.pattern = t));
         }
         return (
           o(
@@ -860,7 +860,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -906,7 +906,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -952,7 +952,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -998,7 +998,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -1044,7 +1044,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -1090,7 +1090,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -1211,7 +1211,7 @@ var e, t;
         a(n, e);
         var t = l(n);
         function n(e) {
-          return r(this, n), t.call(this, e);
+          return (r(this, n), t.call(this, e));
         }
         return (
           o(
@@ -1225,7 +1225,7 @@ var e, t;
                     (t = e.indexOf(this.pattern, n)) > -1;
 
                   )
-                    (n = t + i), r.push([t, n - 1]);
+                    ((n = t + i), r.push([t, n - 1]));
                   var o = !!r.length;
                   return { isMatch: o, score: o ? 0 : 1, indices: r };
                 },
@@ -1281,7 +1281,7 @@ var e, t;
             p = void 0 === y ? $.threshold : y,
             m = n.distance,
             k = void 0 === m ? $.distance : m;
-          r(this, e),
+          (r(this, e),
             (this.query = null),
             (this.options = {
               isCaseSensitive: o,
@@ -1330,7 +1330,7 @@ var e, t;
                 }
                 return r;
               });
-            })(this.pattern, this.options));
+            })(this.pattern, this.options)));
         }
         return (
           o(
@@ -1350,7 +1350,7 @@ var e, t;
                     a += 1
                   ) {
                     var u = t[a];
-                    (o.length = 0), (i = 0);
+                    ((o.length = 0), (i = 0));
                     for (var h = 0, l = u.length; h < l; h += 1) {
                       var d = u[h],
                         v = d.search(e),
@@ -1358,7 +1358,7 @@ var e, t;
                         y = v.indices,
                         p = v.score;
                       if (!g) {
-                        (c = 0), (i = 0), (o.length = 0);
+                        ((c = 0), (i = 0), (o.length = 0));
                         break;
                       }
                       if (((i += 1), (c += p), r)) {
@@ -1368,7 +1368,7 @@ var e, t;
                     }
                     if (i) {
                       var k = { isMatch: !0, score: c / i };
-                      return r && (k.indices = o), k;
+                      return (r && (k.indices = o), k);
                     }
                   }
                   return { isMatch: !1, score: 1 };
@@ -1438,7 +1438,7 @@ var e, t;
                 })(c),
               );
             var s = { keyId: C(c), pattern: a };
-            return r && (s.searcher = ie(a, t)), s;
+            return (r && (s.searcher = ie(a, t)), s);
           }
           var u = { children: [], operator: i[0] };
           return (
@@ -1456,16 +1456,16 @@ var e, t;
     }
     function fe(e, t) {
       var n = e.matches;
-      (t.matches = []),
+      ((t.matches = []),
         x(n) &&
           n.forEach(function (e) {
             if (x(e.indices) && e.indices.length) {
               var n = { indices: e.indices, value: e.value };
-              e.key && (n.key = e.key.src),
+              (e.key && (n.key = e.key.src),
                 e.idx > -1 && (n.refIndex = e.idx),
-                t.matches.push(n);
+                t.matches.push(n));
             }
-          });
+          }));
     }
     function de(e, t) {
       t.score = e.score;
@@ -1475,11 +1475,11 @@ var e, t;
         var i =
             arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
           o = arguments.length > 2 ? arguments[2] : void 0;
-        r(this, e),
+        (r(this, e),
           (this.options = t(t({}, $), i)),
           this.options.useExtendedSearch,
           (this._keyStore = new j(this.options.keys)),
-          this.setCollection(n, o);
+          this.setCollection(n, o));
       }
       return (
         o(e, [
@@ -1527,7 +1527,7 @@ var e, t;
           {
             key: "removeAt",
             value: function (e) {
-              this._docs.splice(e, 1), this._myIndex.removeAt(e);
+              (this._docs.splice(e, 1), this._myIndex.removeAt(e));
             },
           },
           {
@@ -1562,7 +1562,7 @@ var e, t;
                     r = void 0 === n ? $.ignoreFieldNorm : n;
                   e.forEach(function (e) {
                     var t = 1;
-                    e.matches.forEach(function (e) {
+                    (e.matches.forEach(function (e) {
                       var n = e.key,
                         i = e.norm,
                         o = e.score,
@@ -1572,7 +1572,7 @@ var e, t;
                         (c || 1) * (r ? 1 : i),
                       );
                     }),
-                      (e.score = t);
+                      (e.score = t));
                   });
                 })(u, { ignoreFieldNorm: s }),
                 c && u.sort(a),
@@ -1702,13 +1702,13 @@ var e, t;
                     o = e.i;
                   if (x(r)) {
                     var a = [];
-                    i.forEach(function (e, i) {
+                    (i.forEach(function (e, i) {
                       a.push.apply(
                         a,
                         f(t._findMatches({ key: e, value: r[i], searcher: n })),
                       );
                     }),
-                      a.length && c.push({ idx: o, item: r, matches: a });
+                      a.length && c.push({ idx: o, item: r, matches: a }));
                   }
                 }),
                 c
@@ -1774,7 +1774,7 @@ var e, t;
           c = e.keys,
           a = e.records,
           s = new R({ getFn: r, fieldNormWeight: o });
-        return s.setKeys(c), s.setIndexRecords(a), s;
+        return (s.setKeys(c), s.setIndexRecords(a), s);
       }),
       (ve.config = $),
       (function () {
@@ -1788,4 +1788,4 @@ var e, t;
     : "function" == typeof define && define.amd
       ? define(t)
       : ((e = "undefined" != typeof globalThis ? globalThis : e || self).Fuse =
-          t());
+          t()));

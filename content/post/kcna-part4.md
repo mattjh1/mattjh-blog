@@ -148,35 +148,29 @@ The **kubelet** runs on both the Control Plane and Nodes, ensuring that the spec
 Static pods differ from dynamic pods in that they are defined directly on nodes and aren't managed by the API server. This is why they are central for bootstrapping essential control plane services.
 
 1. **etcd**:
-
    - A distributed, strongly consistent key-value store.
    - Provides the "source of truth" for cluster state.
    - Supports leader elections and manages data consistency across nodes in highly available clusters.
 
 2. **KubeAPI Server**:
-
    - Acts as the primary interface to the Control Plane.
    - Provides a RESTful API and manages data stored in `etcd`.
    - Communicates with kubelet and other components to orchestrate pods.
 
 3. **Kube-Scheduler**:
-
    - Assigns pods to nodes based on resources and constraints.
    - Ensures efficient use of resources, dynamically adjusting to accommodate workloads.
 
 4. **Kube-Proxy**:
-
    - Runs as a DaemonSet, handling network routing and load-balancing for services.
    - Configures forwarding for TCP, UDP, and SCTP connections across nodes.
    - Uses **iptables** and **IPVS** as underlying tools for networking.
 
 5. **CoreDNS**:
-
    - A Deployment that handles DNS within the cluster.
    - Ensures that pods and services can resolve each other by name.
 
 6. **Controller-Manager**:
-
    - Runs various controllers, such as Replication Controller and Node Controller, to maintain desired cluster state.
    - Monitors and enforces resource counts and configurations specified in the cluster.
    - Some of controllers run by Controller-Manager are ReplicaSet Controller, Endpoint Controller, and Service Account Controller.

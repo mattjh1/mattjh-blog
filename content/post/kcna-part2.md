@@ -290,7 +290,6 @@ Adopting open standards is crucial in cloud-native architecture. Open standards 
 #### Examples of Open Standards
 
 - **OCI (Open Container Initiative)**: Ensures Docker images and runtimes are standardized, supporting compatibility across multiple platforms.
-
   - **Image Specification**: Defines how to bundle files into container images.
   - **Runtime Specification**: Standard for container runtimes (e.g., runC, kata Containers).
   - **Distribution Specification**: Standard for distributing container images.

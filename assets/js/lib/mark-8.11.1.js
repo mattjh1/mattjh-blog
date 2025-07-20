@@ -33,14 +33,14 @@
       function e(e, t) {
         for (var n = 0; n < t.length; n++) {
           var r = t[n];
-          (r.enumerable = r.enumerable || !1),
+          ((r.enumerable = r.enumerable || !1),
             (r.configurable = !0),
             "value" in r && (r.writable = !0),
-            Object.defineProperty(e, r.key, r);
+            Object.defineProperty(e, r.key, r));
         }
       }
       return function (t, n, r) {
-        return n && e(t.prototype, n), r && e(t, r), t;
+        return (n && e(t.prototype, n), r && e(t, r), t);
       };
     })(),
     r =
@@ -63,11 +63,11 @@
             arguments.length > 3 && void 0 !== arguments[3]
               ? arguments[3]
               : 5e3;
-        t(this, e),
+        (t(this, e),
           (this.ctx = n),
           (this.iframes = r),
           (this.exclude = i),
-          (this.iframesTimeout = o);
+          (this.iframesTimeout = o));
       }
       return (
         n(
@@ -137,7 +137,7 @@
                   o = null,
                   a = function a() {
                     if (!i) {
-                      (i = !0), clearTimeout(o);
+                      ((i = !0), clearTimeout(o));
                       try {
                         r.isIframeBlank(e) ||
                           (e.removeEventListener("load", a),
@@ -147,8 +147,8 @@
                       }
                     }
                   };
-                e.addEventListener("load", a),
-                  (o = setTimeout(a, this.iframesTimeout));
+                (e.addEventListener("load", a),
+                  (o = setTimeout(a, this.iframesTimeout)));
               },
             },
             {
@@ -176,10 +176,10 @@
                     return !0;
                   },
                   function (e) {
-                    r++,
+                    (r++,
                       n.waitForIframes(e.querySelector("html"), function () {
                         --r || t();
-                      });
+                      }));
                   },
                   function (e) {
                     e || t();
@@ -202,18 +202,18 @@
                 var u = function () {
                   --s <= 0 && o(c);
                 };
-                s || u(),
+                (s || u(),
                   a.forEach(function (t) {
                     e.matches(t, i.exclude)
                       ? u()
                       : i.onIframeReady(
                           t,
                           function (e) {
-                            n(t) && (c++, r(e)), u();
+                            (n(t) && (c++, r(e)), u());
                           },
                           u,
                         );
-                  });
+                  }));
               },
             },
             {
@@ -303,7 +303,7 @@
                     (l = o.node);
 
                 )
-                  this.iframes &&
+                  (this.iframes &&
                     this.forEachIframe(
                       t,
                       function (e) {
@@ -319,12 +319,12 @@
                         );
                       },
                     ),
-                    u.push(l);
-                u.forEach(function (e) {
+                    u.push(l));
+                (u.forEach(function (e) {
                   n(e);
                 }),
                   this.iframes && this.handleOpenIframes(c, e, n, r),
-                  i();
+                  i());
               },
             },
             {
@@ -337,7 +337,7 @@
                       : function () {},
                   o = this.getContexts(),
                   a = o.length;
-                a || i(),
+                (a || i(),
                   o.forEach(function (o) {
                     var s = function () {
                       r.iterateThroughNodes(e, o, t, n, function () {
@@ -345,7 +345,7 @@
                       });
                     };
                     r.iframes ? r.waitForIframes(o, s) : s();
-                  });
+                  }));
               },
             },
           ],
@@ -380,7 +380,7 @@
     })(),
     o = (function () {
       function o(e) {
-        t(this, o), (this.ctx = e), (this.ie = !1);
+        (t(this, o), (this.ctx = e), (this.ie = !1));
         var n = window.navigator.userAgent;
         (n.indexOf("MSIE") > -1 || n.indexOf("Trident") > -1) && (this.ie = !0);
       }
@@ -576,11 +576,11 @@
                   n.every(function (n) {
                     if (-1 !== n.indexOf(i)) {
                       if (r.indexOf(n) > -1) return !1;
-                      (e = e.replace(
+                      ((e = e.replace(
                         new RegExp("[" + n + "]", "gm" + t),
                         "[" + n + "]",
                       )),
-                        r.push(n);
+                        r.push(n));
                     }
                     return !0;
                   });
@@ -840,7 +840,7 @@
               var o = this,
                 a = 0 === t ? 0 : t + 1;
               this.getTextNodes(function (t) {
-                t.nodes.forEach(function (t) {
+                (t.nodes.forEach(function (t) {
                   t = t.node;
                   for (
                     var i = void 0;
@@ -850,12 +850,12 @@
                     if (n(i[a], t)) {
                       var s = i.index;
                       if (0 !== a) for (var c = 1; c < a; c++) s += i[c].length;
-                      (t = o.wrapRangeInTextNode(t, s, s + i[a].length)),
+                      ((t = o.wrapRangeInTextNode(t, s, s + i[a].length)),
                         r(t.previousSibling),
-                        (e.lastIndex = 0);
+                        (e.lastIndex = 0));
                     }
                 }),
-                  i();
+                  i());
               });
             },
           },
@@ -881,7 +881,7 @@
                       return n(s[a], e);
                     },
                     function (t, n) {
-                      (e.lastIndex = n), r(t);
+                      ((e.lastIndex = n), r(t));
                     },
                   );
                 }
@@ -895,7 +895,7 @@
               var i = this;
               this.getTextNodes(function (o) {
                 var a = o.value.length;
-                e.forEach(function (e, r) {
+                (e.forEach(function (e, r) {
                   var s = i.checkWhitespaceRanges(e, a, o.value),
                     c = s.start,
                     u = s.end;
@@ -912,7 +912,7 @@
                       },
                     );
                 }),
-                  r();
+                  r());
               });
             },
           },
@@ -925,8 +925,8 @@
 
               )
                 n.appendChild(e.removeChild(e.firstChild));
-              t.replaceChild(n, e),
-                this.ie ? this.normalizeTextNode(t) : t.normalize();
+              (t.replaceChild(n, e),
+                this.ie ? this.normalizeTextNode(t) : t.normalize());
             },
           },
           {
@@ -935,8 +935,8 @@
               if (e) {
                 if (3 === e.nodeType)
                   for (; e.nextSibling && 3 === e.nextSibling.nodeType; )
-                    (e.nodeValue += e.nextSibling.nodeValue),
-                      e.parentNode.removeChild(e.nextSibling);
+                    ((e.nodeValue += e.nextSibling.nodeValue),
+                      e.parentNode.removeChild(e.nextSibling));
                 else this.normalizeTextNode(e.firstChild);
                 this.normalizeTextNode(e.nextSibling);
               }
@@ -946,10 +946,11 @@
             key: "markRegExp",
             value: function (e, t) {
               var n = this;
-              (this.opt = t), this.log('Searching with expression "' + e + '"');
+              ((this.opt = t),
+                this.log('Searching with expression "' + e + '"'));
               var r = 0,
                 i = "wrapMatches";
-              this.opt.acrossElements && (i = "wrapMatchesAcrossElements"),
+              (this.opt.acrossElements && (i = "wrapMatchesAcrossElements"),
                 this[i](
                   e,
                   this.opt.ignoreGroups,
@@ -957,12 +958,12 @@
                     return n.opt.filter(t, e, r);
                   },
                   function (e) {
-                    r++, n.opt.each(e);
+                    (r++, n.opt.each(e));
                   },
                   function () {
-                    0 === r && n.opt.noMatch(e), n.opt.done(r);
+                    (0 === r && n.opt.noMatch(e), n.opt.done(r));
                   },
-                );
+                ));
             },
           },
           {
@@ -976,13 +977,13 @@
                 a = o.keywords,
                 s = o.length,
                 c = this.opt.caseSensitive ? "" : "i";
-              this.opt.acrossElements && (i = "wrapMatchesAcrossElements"),
+              (this.opt.acrossElements && (i = "wrapMatchesAcrossElements"),
                 0 === s
                   ? this.opt.done(r)
                   : (function e(t) {
                       var o = new RegExp(n.createRegExp(t), "gm" + c),
                         u = 0;
-                      n.log('Searching with expression "' + o + '"'),
+                      (n.log('Searching with expression "' + o + '"'),
                         n[i](
                           o,
                           1,
@@ -990,16 +991,16 @@
                             return n.opt.filter(i, t, r, u);
                           },
                           function (e) {
-                            u++, r++, n.opt.each(e);
+                            (u++, r++, n.opt.each(e));
                           },
                           function () {
-                            0 === u && n.opt.noMatch(t),
+                            (0 === u && n.opt.noMatch(t),
                               a[s - 1] === t
                                 ? n.opt.done(r)
-                                : e(a[a.indexOf(t) + 1]);
+                                : e(a[a.indexOf(t) + 1]));
                           },
-                        );
-                    })(a[0]);
+                        ));
+                    })(a[0]));
             },
           },
           {
@@ -1020,7 +1021,7 @@
                       return n.opt.filter(e, t, r, i);
                     },
                     function (e, t) {
-                      r++, n.opt.each(e, t);
+                      (r++, n.opt.each(e, t));
                     },
                     function () {
                       n.opt.done(r);
@@ -1035,7 +1036,7 @@
               var t = this;
               this.opt = e;
               var n = this.opt.element ? this.opt.element : "*";
-              (n += "[data-markjs]"),
+              ((n += "[data-markjs]"),
                 this.opt.className && (n += "." + this.opt.className),
                 this.log('Removal selector "' + n + '"'),
                 this.iterator.forEachNode(
@@ -1051,7 +1052,7 @@
                       : NodeFilter.FILTER_ACCEPT;
                   },
                   this.opt.done,
-                );
+                ));
             },
           },
           {
@@ -1111,16 +1112,16 @@
       n = new o(e);
     return (
       (this.mark = function (e, r) {
-        return n.mark(e, r), t;
+        return (n.mark(e, r), t);
       }),
       (this.markRegExp = function (e, r) {
-        return n.markRegExp(e, r), t;
+        return (n.markRegExp(e, r), t);
       }),
       (this.markRanges = function (e, r) {
-        return n.markRanges(e, r), t;
+        return (n.markRanges(e, r), t);
       }),
       (this.unmark = function (e) {
-        return n.unmark(e), t;
+        return (n.unmark(e), t);
       }),
       this
     );
