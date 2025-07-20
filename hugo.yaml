@@ -16,6 +16,9 @@ markup:
   highlight:
     style: "nord"
     tabWidth: 2
+  goldmark:
+    renderer:
+      unsafe: true
 
 privacy:
   youtube:
