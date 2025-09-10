@@ -1,7 +1,7 @@
 {{ if .Store.Get "hasMermaid" }}
-<script type="module" async>
+  <script type="module" async>
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
-    
+
     mermaid.initialize({
       startOnLoad: true,
       theme: "base",
@@ -22,29 +22,29 @@
     class MermaidZoomController {
       constructor(container) {
         this.container = container;
-        this.wrapper = container.querySelector('.mermaid-wrapper');
-        this.mermaidEl = container.querySelector('.mermaid');
-        this.zoomInBtn = container.querySelector('.zoom-in');
-        this.zoomOutBtn = container.querySelector('.zoom-out');
-        this.resetBtn = container.querySelector('.reset-btn');
-        this.zoomLevel = container.querySelector('.zoom-level');
-        
+        this.wrapper = container.querySelector(".mermaid-wrapper");
+        this.mermaidEl = container.querySelector(".mermaid");
+        this.zoomInBtn = container.querySelector(".zoom-in");
+        this.zoomOutBtn = container.querySelector(".zoom-out");
+        this.resetBtn = container.querySelector(".reset-btn");
+        this.zoomLevel = container.querySelector(".zoom-level");
+
         this.panzoomInstance = null;
         this.currentScale = 1;
-        
+
         this.waitForMermaidAndInit();
       }
 
       waitForMermaidAndInit() {
         const checkForSvg = () => {
-          const svg = this.mermaidEl.querySelector('svg');
+          const svg = this.mermaidEl.querySelector("svg");
           if (svg) {
             this.initializePanzoom();
           } else {
             setTimeout(checkForSvg, 100);
           }
         };
-        
+
         // Start checking after a short delay
         setTimeout(checkForSvg, 200);
       }
@@ -54,11 +54,11 @@
         this.panzoomInstance = panzoom(this.mermaidEl, {
           maxScale: 3,
           minScale: 0.3,
-          contain: 'outside',
+          contain: "outside",
           smoothScroll: true,
           zoomDoubleClickSpeed: 1,
           bounds: true,
-          boundsPadding: 0.2
+          boundsPadding: 0.2,
         });
 
         this.setupEventListeners();
@@ -69,13 +69,13 @@
         if (!this.panzoomInstance) return;
 
         // Listen for zoom changes
-        this.mermaidEl.addEventListener('panzoomzoom', (event) => {
+        this.mermaidEl.addEventListener("panzoomzoom", (event) => {
           this.currentScale = event.detail.scale;
           this.updateZoomLevel();
         });
 
         // Smooth wheel scrolling
-        this.wrapper.addEventListener('wheel', (e) => {
+        this.wrapper.addEventListener("wheel", (e) => {
           e.preventDefault();
           const delta = e.deltaY > 0 ? 0.9 : 1.1;
           this.panzoomInstance.zoomToPoint(this.currentScale * delta, e);
@@ -83,7 +83,9 @@
       }
 
       updateZoomLevel() {
-        const scale = this.panzoomInstance ? this.panzoomInstance.getScale() : this.currentScale;
+        const scale = this.panzoomInstance
+          ? this.panzoomInstance.getScale()
+          : this.currentScale;
         this.zoomLevel.textContent = `${Math.round(scale * 100)}%`;
       }
     }
@@ -92,8 +94,8 @@
     document.addEventListener("DOMContentLoaded", () => {
       // Wait a bit more for Mermaid to finish rendering
       setTimeout(() => {
-        const containers = document.querySelectorAll('.mermaid-container');
-        containers.forEach(container => {
+        const containers = document.querySelectorAll(".mermaid-container");
+        containers.forEach((container) => {
           new MermaidZoomController(container);
         });
       }, 500);
