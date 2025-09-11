@@ -54,28 +54,32 @@
 
       setupResponsiveDisplay() {
         // Update indicator text based on screen size
-        const desktopText = this.container.querySelector('.pan-text.desktop-only');
-        const mobileText = this.container.querySelector('.pan-text.mobile-only');
-        
+        const desktopText = this.container.querySelector(
+          ".pan-text.desktop-only",
+        );
+        const mobileText = this.container.querySelector(
+          ".pan-text.mobile-only",
+        );
+
         if (isMobile()) {
-          if (desktopText) desktopText.style.display = 'none';
-          if (mobileText) mobileText.style.display = 'inline';
+          if (desktopText) desktopText.style.display = "none";
+          if (mobileText) mobileText.style.display = "inline";
         } else {
-          if (desktopText) desktopText.style.display = 'inline';
-          if (mobileText) mobileText.style.display = 'none';
+          if (desktopText) desktopText.style.display = "inline";
+          if (mobileText) mobileText.style.display = "none";
         }
       }
 
       setupMobileView() {
         // Enable native scrolling for mobile
-        this.wrapper.style.overflow = 'auto';
-        this.wrapper.style.webkitOverflowScrolling = 'touch';
-        
+        this.wrapper.style.overflow = "auto";
+        this.wrapper.style.webkitOverflowScrolling = "touch";
+
         // Scale down SVG for mobile if needed
         const svg = this.mermaidEl.querySelector("svg");
         if (svg && window.innerWidth <= 480) {
-          svg.style.transform = 'scale(0.9)';
-          svg.style.transformOrigin = 'center top';
+          svg.style.transform = "scale(0.9)";
+          svg.style.transformOrigin = "center top";
         }
       }
 
@@ -93,7 +97,7 @@
 
           this.setupDesktopEventListeners();
         } catch (error) {
-          console.warn('Panzoom initialization failed:', error);
+          console.warn("Panzoom initialization failed:", error);
         }
       }
 
@@ -103,26 +107,29 @@
         // Smooth wheel scrolling for desktop only
         this.wrapper.addEventListener("wheel", (e) => {
           if (isMobile() || !this.panzoomInstance) return;
-          
+
           e.preventDefault();
           const delta = e.deltaY > 0 ? 0.9 : 1.1;
-          
+
           try {
-            this.panzoomInstance.zoomToPoint(this.panzoomInstance.getScale() * delta, e);
+            this.panzoomInstance.zoomToPoint(
+              this.panzoomInstance.getScale() * delta,
+              e,
+            );
           } catch (error) {
-            console.warn('Zoom failed:', error);
+            console.warn("Zoom failed:", error);
           }
         });
 
         // Handle window resize
-        window.addEventListener('resize', () => {
+        window.addEventListener("resize", () => {
           this.handleResize();
         });
       }
 
       handleResize() {
         this.setupResponsiveDisplay();
-        
+
         // If switching to mobile, destroy panzoom
         if (isMobile() && this.panzoomInstance) {
           this.panzoomInstance.dispose();

@@ -20,6 +20,7 @@ His whole degoogling journey and approach to self-hosting got me thinking - if F
 ## The Hardware Sitting There, Judging Me
 
 I had a gaming PC collecting dust in the corner:
+
 - AMD Ryzen 5 3600X (12 threads)
 - 32GB RAM
 - RX 5700 XT
@@ -40,12 +41,14 @@ Within a week, I had convinced myself that if I'm already running one container,
 Here's what the "simple Nextcloud setup" eventually became:
 
 **Core Services:**
+
 - **Nextcloud** - Finally ditched Google Drive (mostly)
 - **Immich** - AI-powered photo management that actually runs on my hardware
 - **Paperless-NGX** - OCR document management with Swedish and English support
 - **AdGuard Home** - Network-wide ad blocking that makes browsing tolerable again
 
 **Infrastructure Services:**
+
 - **PostgreSQL** with vector extensions because apparently I needed AI features
 - **Redis** for caching everything
 - **Prometheus + Grafana** for monitoring everything else
@@ -55,7 +58,7 @@ Here's what the "simple Nextcloud setup" eventually became:
 graph TB
     %% External Layer
     Internet["🌐 Internet"] --> Cloudflare["Cloudflare Tunnel"]
-    
+
     %% Application Layer
     subgraph "Web Applications"
         Nextcloud["Nextcloud<br/>:8080"]
@@ -63,36 +66,36 @@ graph TB
         AdGuard["AdGuard Home<br/>:3000"]
         Paperless["Paperless-ngx<br/>:8000"]
     end
-    
-    %% Infrastructure Layer  
+
+    %% Infrastructure Layer
     subgraph "Database & Cache"
         PostgreSQL[("PostgreSQL<br/>Vector DB")]
         Redis[("Redis<br/>Cache")]
     end
-    
+
     %% Monitoring Layer
     subgraph "Monitoring Stack"
         Grafana["Grafana<br/>:3001"]
         Prometheus["Prometheus<br/>:9090"]
         NodeExporter["Node Exporter"]
-        RedisExporter["Redis Exporter"]  
+        RedisExporter["Redis Exporter"]
         PostgresExporter["Postgres Exporter"]
         BackupValidator["Backup Validator"]
     end
-    
+
     %% Support Services
     subgraph "Background Services"
         NextcloudCron["Nextcloud Cron"]
         ImmichML["Immich ML"]
     end
-    
+
     %% External connections
     Cloudflare --> Nextcloud
     Cloudflare --> Immich
     Cloudflare --> AdGuard
     Cloudflare --> Paperless
     Cloudflare --> Grafana
-    
+
     %% Database connections
     Nextcloud --> PostgreSQL
     Nextcloud --> Redis
@@ -100,11 +103,11 @@ graph TB
     Immich --> Redis
     Paperless --> PostgreSQL
     Paperless --> Redis
-    
+
     %% Support service connections
     Nextcloud -.-> NextcloudCron
     Immich -.-> ImmichML
-    
+
     %% Monitoring connections
     Prometheus --> Grafana
     NodeExporter --> Prometheus
