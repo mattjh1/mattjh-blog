@@ -49,7 +49,7 @@
 
       setupDisplay() {
         this.updateIndicatorText();
-        
+
         if (isMobile()) {
           this.setupSimpleMobileView();
         } else {
@@ -57,12 +57,13 @@
         }
 
         // Handle window resize
-        window.addEventListener('resize', () => {
-          const wasMobile = !this.panzoomInstance || this.panzoomInstance._disposed;
+        window.addEventListener("resize", () => {
+          const wasMobile =
+            !this.panzoomInstance || this.panzoomInstance._disposed;
           const isMobileNow = isMobile();
-          
+
           this.updateIndicatorText();
-          
+
           if (wasMobile !== isMobileNow) {
             if (isMobileNow) {
               this.destroyPanzoom();
@@ -75,42 +76,46 @@
       }
 
       updateIndicatorText() {
-        const desktopText = this.container.querySelector('.pan-text.desktop-only');
-        const mobileText = this.container.querySelector('.pan-text.mobile-only');
-        
+        const desktopText = this.container.querySelector(
+          ".pan-text.desktop-only",
+        );
+        const mobileText = this.container.querySelector(
+          ".pan-text.mobile-only",
+        );
+
         if (isMobile()) {
-          if (desktopText) desktopText.style.display = 'none';
-          if (mobileText) mobileText.style.display = 'inline';
+          if (desktopText) desktopText.style.display = "none";
+          if (mobileText) mobileText.style.display = "inline";
         } else {
-          if (desktopText) desktopText.style.display = 'inline';
-          if (mobileText) mobileText.style.display = 'none';
+          if (desktopText) desktopText.style.display = "inline";
+          if (mobileText) mobileText.style.display = "none";
         }
       }
 
       setupSimpleMobileView() {
         // Simple mobile: just fit the diagram nicely in the container
-        this.wrapper.style.overflow = 'hidden';
-        this.wrapper.style.cursor = 'default';
-        
+        this.wrapper.style.overflow = "hidden";
+        this.wrapper.style.cursor = "default";
+
         const svg = this.mermaidEl.querySelector("svg");
         if (svg) {
           // Reset any transforms
-          svg.style.transform = '';
-          svg.style.transformOrigin = '';
-          
+          svg.style.transform = "";
+          svg.style.transformOrigin = "";
+
           // Make sure SVG fits nicely
-          svg.style.maxWidth = '100%';
-          svg.style.maxHeight = '100%';
-          svg.style.width = 'auto';
-          svg.style.height = 'auto';
-          svg.style.display = 'block';
-          svg.style.margin = 'auto';
+          svg.style.maxWidth = "100%";
+          svg.style.maxHeight = "100%";
+          svg.style.width = "auto";
+          svg.style.height = "auto";
+          svg.style.display = "block";
+          svg.style.margin = "auto";
         }
       }
 
       setupDesktopPanzoom() {
         if (this.panzoomInstance) return; // Already setup
-        
+
         try {
           this.panzoomInstance = panzoom(this.mermaidEl, {
             maxScale: 3,
@@ -124,7 +129,7 @@
           this.fitToContainer();
           this.setupDesktopEvents();
         } catch (error) {
-          console.warn('Panzoom initialization failed:', error);
+          console.warn("Panzoom initialization failed:", error);
         }
       }
 
@@ -133,15 +138,16 @@
 
         this.wrapper.addEventListener("wheel", (e) => {
           if (isMobile() || !this.panzoomInstance) return;
-          
+
           e.preventDefault();
-          
+
           try {
-            const currentScale = this.panzoomInstance.getScale ? 
-                                this.panzoomInstance.getScale() : 1;
+            const currentScale = this.panzoomInstance.getScale
+              ? this.panzoomInstance.getScale()
+              : 1;
             const delta = e.deltaY > 0 ? 0.9 : 1.1;
             const newScale = currentScale * delta;
-            
+
             if (this.panzoomInstance.zoomToPoint) {
               this.panzoomInstance.zoomToPoint(newScale, e);
             } else if (this.panzoomInstance.zoom) {
@@ -155,21 +161,21 @@
 
       fitToContainer() {
         if (!this.panzoomInstance) return;
-        
+
         try {
           const svg = this.mermaidEl.querySelector("svg");
           if (svg) {
             const containerRect = this.wrapper.getBoundingClientRect();
             const svgRect = svg.getBoundingClientRect();
-            
+
             const scaleX = containerRect.width / svgRect.width;
             const scaleY = containerRect.height / svgRect.height;
             const scale = Math.min(scaleX, scaleY, 1);
-            
+
             if (scale < 1) {
               this.panzoomInstance.zoom(scale, { animate: false });
             }
-            
+
             this.panzoomInstance.center({ animate: false });
           }
         } catch (error) {
