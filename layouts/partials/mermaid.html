@@ -23,8 +23,8 @@
       return window.innerWidth <= 768;
     }
 
-    // Simplified zoom controller class
-    class MermaidZoomController {
+    // Simplified controller - desktop gets zoom, mobile gets simple view
+    class MermaidController {
       constructor(container) {
         this.container = container;
         this.wrapper = container.querySelector(".mermaid-wrapper");
@@ -38,12 +38,7 @@
         const checkForSvg = () => {
           const svg = this.mermaidEl.querySelector("svg");
           if (svg) {
-            this.setupResponsiveDisplay();
-            if (!isMobile()) {
-              this.initializePanzoom();
-            } else {
-              this.setupMobileView();
-            }
+            this.setupDisplay();
           } else {
             setTimeout(checkForSvg, 100);
           }
@@ -52,99 +47,144 @@
         setTimeout(checkForSvg, 200);
       }
 
-      setupResponsiveDisplay() {
-        // Update indicator text based on screen size
-        const desktopText = this.container.querySelector(
-          ".pan-text.desktop-only",
-        );
-        const mobileText = this.container.querySelector(
-          ".pan-text.mobile-only",
-        );
-
+      setupDisplay() {
+        this.updateIndicatorText();
+        
         if (isMobile()) {
-          if (desktopText) desktopText.style.display = "none";
-          if (mobileText) mobileText.style.display = "inline";
+          this.setupSimpleMobileView();
         } else {
-          if (desktopText) desktopText.style.display = "inline";
-          if (mobileText) mobileText.style.display = "none";
+          this.setupDesktopPanzoom();
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          const wasMobile = !this.panzoomInstance || this.panzoomInstance._disposed;
+          const isMobileNow = isMobile();
+          
+          this.updateIndicatorText();
+          
+          if (wasMobile !== isMobileNow) {
+            if (isMobileNow) {
+              this.destroyPanzoom();
+              this.setupSimpleMobileView();
+            } else {
+              this.setupDesktopPanzoom();
+            }
+          }
+        });
+      }
+
+      updateIndicatorText() {
+        const desktopText = this.container.querySelector('.pan-text.desktop-only');
+        const mobileText = this.container.querySelector('.pan-text.mobile-only');
+        
+        if (isMobile()) {
+          if (desktopText) desktopText.style.display = 'none';
+          if (mobileText) mobileText.style.display = 'inline';
+        } else {
+          if (desktopText) desktopText.style.display = 'inline';
+          if (mobileText) mobileText.style.display = 'none';
         }
       }
 
-      setupMobileView() {
-        // Enable native scrolling for mobile
-        this.wrapper.style.overflow = "auto";
-        this.wrapper.style.webkitOverflowScrolling = "touch";
-
-        // Scale down SVG for mobile if needed
+      setupSimpleMobileView() {
+        // Simple mobile: just fit the diagram nicely in the container
+        this.wrapper.style.overflow = 'hidden';
+        this.wrapper.style.cursor = 'default';
+        
         const svg = this.mermaidEl.querySelector("svg");
-        if (svg && window.innerWidth <= 480) {
-          svg.style.transform = "scale(0.9)";
-          svg.style.transformOrigin = "center top";
+        if (svg) {
+          // Reset any transforms
+          svg.style.transform = '';
+          svg.style.transformOrigin = '';
+          
+          // Make sure SVG fits nicely
+          svg.style.maxWidth = '100%';
+          svg.style.maxHeight = '100%';
+          svg.style.width = 'auto';
+          svg.style.height = 'auto';
+          svg.style.display = 'block';
+          svg.style.margin = 'auto';
         }
       }
 
-      initializePanzoom() {
+      setupDesktopPanzoom() {
+        if (this.panzoomInstance) return; // Already setup
+        
         try {
           this.panzoomInstance = panzoom(this.mermaidEl, {
             maxScale: 3,
             minScale: 0.3,
-            contain: "outside",
+            contain: "inside",
             smoothScroll: true,
-            zoomDoubleClickSpeed: 1,
             bounds: true,
-            boundsPadding: 0.2,
+            boundsPadding: 0.1,
           });
 
-          this.setupDesktopEventListeners();
+          this.fitToContainer();
+          this.setupDesktopEvents();
         } catch (error) {
-          console.warn("Panzoom initialization failed:", error);
+          console.warn('Panzoom initialization failed:', error);
         }
       }
 
-      setupDesktopEventListeners() {
+      setupDesktopEvents() {
         if (!this.panzoomInstance) return;
 
-        // Smooth wheel scrolling for desktop only
         this.wrapper.addEventListener("wheel", (e) => {
           if (isMobile() || !this.panzoomInstance) return;
-
+          
           e.preventDefault();
-          const delta = e.deltaY > 0 ? 0.9 : 1.1;
-
+          
           try {
-            this.panzoomInstance.zoomToPoint(
-              this.panzoomInstance.getScale() * delta,
-              e,
-            );
+            const currentScale = this.panzoomInstance.getScale ? 
+                                this.panzoomInstance.getScale() : 1;
+            const delta = e.deltaY > 0 ? 0.9 : 1.1;
+            const newScale = currentScale * delta;
+            
+            if (this.panzoomInstance.zoomToPoint) {
+              this.panzoomInstance.zoomToPoint(newScale, e);
+            } else if (this.panzoomInstance.zoom) {
+              this.panzoomInstance.zoom(newScale);
+            }
           } catch (error) {
-            console.warn("Zoom failed:", error);
+            // Silently fail - zoom still works via other methods
           }
         });
-
-        // Handle window resize
-        window.addEventListener("resize", () => {
-          this.handleResize();
-        });
       }
 
-      handleResize() {
-        this.setupResponsiveDisplay();
-
-        // If switching to mobile, destroy panzoom
-        if (isMobile() && this.panzoomInstance) {
-          this.panzoomInstance.dispose();
-          this.panzoomInstance = null;
-          this.setupMobileView();
-        }
-        // If switching to desktop and no panzoom, initialize it
-        else if (!isMobile() && !this.panzoomInstance) {
-          this.initializePanzoom();
+      fitToContainer() {
+        if (!this.panzoomInstance) return;
+        
+        try {
+          const svg = this.mermaidEl.querySelector("svg");
+          if (svg) {
+            const containerRect = this.wrapper.getBoundingClientRect();
+            const svgRect = svg.getBoundingClientRect();
+            
+            const scaleX = containerRect.width / svgRect.width;
+            const scaleY = containerRect.height / svgRect.height;
+            const scale = Math.min(scaleX, scaleY, 1);
+            
+            if (scale < 1) {
+              this.panzoomInstance.zoom(scale, { animate: false });
+            }
+            
+            this.panzoomInstance.center({ animate: false });
+          }
+        } catch (error) {
+          // Silently fail
         }
       }
 
-      destroy() {
+      destroyPanzoom() {
         if (this.panzoomInstance) {
-          this.panzoomInstance.dispose();
+          try {
+            this.panzoomInstance.dispose();
+          } catch (error) {
+            // Silently fail
+          }
+          this.panzoomInstance = null;
         }
       }
     }
@@ -154,7 +194,7 @@
       setTimeout(() => {
         const containers = document.querySelectorAll(".mermaid-container");
         containers.forEach((container) => {
-          new MermaidZoomController(container);
+          new MermaidController(container);
         });
       }, 500);
     });
