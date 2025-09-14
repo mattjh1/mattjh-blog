@@ -142,4 +142,4 @@ In the next post, I'll dive into the Docker reality check: how my simple `docker
 
 It gets interesting when you're trying to prevent a machine learning service from eating all your RAM at 3 AM.
 
-<!-- **Next up: [The Docker Spiral - From Simple Compose to 15+ Services](link-to-part-2)** -->
+**Next up: [The Docker Spiral - From Simple Compose to 15+ Services](../home-server-part2)**
