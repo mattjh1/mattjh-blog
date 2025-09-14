@@ -16,7 +16,7 @@ My `docker-compose.yml` started as maybe 20 lines for a simple Nextcloud install
 
 <!--more-->
 
-*This is Part 2 of my home server journey. [Part 1 covered the inspiration and initial setup](../home-server-part1)*
+_This is Part 2 of my home server journey. [Part 1 covered the inspiration and initial setup](../home-server-part1)_
 
 ## Docker Compose at Scale
 
@@ -61,8 +61,8 @@ services:
 
 Every single service has health checks now. I learned this lesson the hard way when services would appear to be running but were actually broken in creative ways. "Running" doesn't mean "working," and Docker will happily keep a zombie container warm for you indefinitely.
 
-
 ## Version Pinning and Renovate
+
 I pin every single version because I've been burned by automatic updates before. Not necessarily on this stack, but enough times to know better.
 Looking at my setup - everything from `nextcloud:31.0.8` to `prom/prometheus:v2.55.1` to Immich's proper version tags like `v1.118.0` (though I went through a confusing phase with those commit-based tags before I found the actual releases).
 
@@ -98,7 +98,6 @@ Manual version management gets old fast when you have 15+ services. Enter Renova
 Renovate opens pull requests when new versions are available, but with guardrails. Major updates are blocked entirely - those need human judgment. Nextcloud only gets updated monthly after the release has been out for a week (because rushing Nextcloud updates is asking for trouble). Security patches get auto-merged because sleeping through a security vulnerability is worse than dealing with a potential bug.
 
 It runs Monday mornings at 6 AM Stockholm time, so I can review updates over coffee instead of being surprised by them at random times. One PR per hour, maximum two concurrent, so my repository doesn't get spammed.
-
 
 ## Data Architecture
 
@@ -309,7 +308,7 @@ CLOUDFLARE_TUNNEL=your_tunnel_token_here
 
 Simple.
 
-Not every value in my `.env` is *strictly sensitive* — sometimes I’ll drop in things like service ports, image tags, just so there’s a **single source of truth** for configuration. It keeps everything in one place, easy to update, and makes local and production setups more consistent.
+Not every value in my `.env` is _strictly sensitive_ — sometimes I’ll drop in things like service ports, image tags, just so there’s a **single source of truth** for configuration. It keeps everything in one place, easy to update, and makes local and production setups more consistent.
 
 ## The Results So Far
 
