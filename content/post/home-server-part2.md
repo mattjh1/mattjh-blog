@@ -166,7 +166,7 @@ The container I'm most happy about is Immich's machine learning service. This th
 
 ```yaml
 immich-machine-learning:
-  image: ghcr.io/immich-app/immich-machine-learning:release
+  image: ghcr.io/immich-app/immich-machine-learning:v1.142.0
   container_name: immich-machine-learning
   restart: unless-stopped
   environment:
