@@ -191,6 +191,22 @@ Eight gigs of RAM limit, four workers, proper cache volumes. It's like having a 
 
 The memory limits took some tuning. Too low and the ML models can't load properly. Too high and it starves other services. 8GB with a 2GB reservation seems to be the sweet spot for my 32GB system.
 
+### The GPU Disappointment
+
+My RX 5700 XT was a conscious decision back in the day - a decent gaming GPU with solid open-source Linux drivers. It handles everything I throw at it for gaming and general compute work. But when it came time to accelerate Immich's machine learning tasks with ROCm, reality hit hard.
+
+Despite AMD's claims about ROCm support, the RX 5700 XT (RDNA1/gfx1010) lives in a frustrating compatibility limbo. The ROCm container starts up fine, detects the GPU, but fails spectacularly when actually trying to run inference:
+
+```
+HIP error hipErrorInvalidDeviceFunction:invalid device function
+```
+
+Turns out RDNA1 cards are effectively unsupported despite appearing on some compatibility lists. Even the various `HSA_OVERRIDE_GFX_VERSION` workarounds that work for some older GCN cards don't help here.
+
+This is the reality of AMD's compute ecosystem - great intentions, inconsistent execution. NVIDIA's CUDA might be proprietary, but it just works. Meanwhile, my perfectly capable gaming GPU sits there doing nothing while the CPU churns through face detection and smart search tasks.
+
+For now, the CPU-only configuration handles my photo library just fine, but it's a reminder that choosing hardware for future workloads is always a gamble. Next GPU upgrade will probably be NVIDIA, much as I hate to admit it.
+
 ## Document Management Integration
 
 One of my favorite additions is Paperless-ngx, which automatically OCRs and organizes documents:
