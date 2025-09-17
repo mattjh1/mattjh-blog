@@ -16,7 +16,7 @@ My `docker-compose.yml` started as maybe 20 lines for a simple Nextcloud install
 
 <!--more-->
 
-_This is Part 2 of my home server journey. [Part 1 covered the inspiration and initial setup](../home-server-part1)_
+_This is Part 2 of my home server journey. [Part 1 covered the inspiration and initial setup](../home-server-part1).
 
 ## Docker Compose at Scale
 
@@ -335,5 +335,5 @@ All 15+ services run comfortably on a single machine, sharing resources efficien
 But of course, once you've got this much running, you start worrying about losing it all. What happens if that NVMe drive dies? How do you restore 15+ services from backups? How do you keep everything updated without breaking the delicate balance?
 
 That's where Part 3 comes in - because running infrastructure is one thing, but making it bulletproof is another challenge entirely.
-
-<!-- **Next up: [Backups, Security, and the Wins That Actually Matter](../home-server-part3)** -->
+Six
+**Next up: [Backups, Security, and the Wins That Actually Matter](../home-server-part3)**
