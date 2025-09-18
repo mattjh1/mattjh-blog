@@ -16,7 +16,7 @@ My `docker-compose.yml` started as maybe 20 lines for a simple Nextcloud install
 
 <!--more-->
 
-_This is Part 2 of my home server journey. [Part 1 covered the inspiration and initial setup](../home-server-part1).
+_This is Part 2 of my home server journey. [Part 1 covered the inspiration and initial setup](../home-server-part1)._
 
 ## Docker Compose at Scale
 
