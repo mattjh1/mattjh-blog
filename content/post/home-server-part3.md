@@ -16,15 +16,16 @@ Once you're responsible for your own data, backup anxiety hits different. I spen
 
 <!--more-->
 
-*This is Part 3 of my home server journey. [Part 1](../home-server-part1) covered the inspiration, [Part 2](../home-server-part2) dove into Docker management.*
+_This is Part 3 of my home server journey. [Part 1](../home-server-part1) covered the inspiration, [Part 2](../home-server-part2) dove into Docker management._
 
 ## The Backup Paranoia
 
 A backup that isn't tested is just a false sense of security. That's the mantra that drove me to build a proper backup system instead of just copying files to another drive and hoping for the best.
 
 I ended up with three overlapping strategies:
+
 - **Daily data snapshots** - All user data from Nextcloud, Paperless, and Immich (hot backup, services stay running)
-- **System configs 3x/week** - Docker configs, systemd services, scripts (cold backup, brief downtime)  
+- **System configs 3x/week** - Docker configs, systemd services, scripts (cold backup, brief downtime)
 - **Weekly full backups** - Everything, including OS state (cold backup, brief downtime)
 
 All with proper retention policies, encryption, and most importantly, tested restore procedures.
@@ -35,7 +36,7 @@ The actual implementation is more comprehensive than I'll cover here. The full b
 backup/
 ├── scripts/
 │   ├── backup-data.sh          # Daily user data
-│   ├── backup-system.sh        # Weekly configs  
+│   ├── backup-system.sh        # Weekly configs
 │   ├── backup-full.sh          # Monthly everything
 │   ├── restore-data.sh         # Data recovery
 │   ├── restore-system.sh       # Config recovery
@@ -76,7 +77,7 @@ sudo -E borg create --verbose --stats --compression zstd \
   /srv-data/immich/photos \
   --exclude-caches
 
-# Prune old backups (keep 7 daily, 4 weekly, 6 monthly)  
+# Prune old backups (keep 7 daily, 4 weekly, 6 monthly)
 sudo -E borg prune --verbose "$BORG_REPO" \
   --keep-daily=7 --keep-weekly=4 --keep-monthly=6
 
@@ -96,7 +97,7 @@ Description=Borg Backup - Data Only
 Type=oneshot
 ExecStart=/srv/system-backup/backup-data.sh
 
-# borg-backup-data.timer  
+# borg-backup-data.timer
 [Unit]
 Description=Daily Borg Backup - Data
 
@@ -168,21 +169,21 @@ Prometheus and Grafana turned from "nice to have" to "absolutely essential" once
 ```yaml
 # prometheus.yml (excerpt)
 scrape_configs:
-  - job_name: 'prometheus'
+  - job_name: "prometheus"
     static_configs:
-      - targets: ['localhost:9090']
-      
-  - job_name: 'node-exporter'
+      - targets: ["localhost:9090"]
+
+  - job_name: "node-exporter"
     static_configs:
-      - targets: ['172.17.0.1:9100']
-      
-  - job_name: 'redis'
+      - targets: ["172.17.0.1:9100"]
+
+  - job_name: "redis"
     static_configs:
-      - targets: ['redis-exporter:9121']
-      
-  - job_name: 'postgresql'
+      - targets: ["redis-exporter:9121"]
+
+  - job_name: "postgresql"
     static_configs:
-      - targets: ['postgres-exporter:9187']
+      - targets: ["postgres-exporter:9187"]
 ```
 
 Now I get alerts if backups stop running, disk space gets low, or any service starts behaving strangely. The peace of mind is worth the setup time.
@@ -221,7 +222,7 @@ But beyond ad blocking, it gives me granular control over what the kids can acce
 
 Few months in, my data is mine again. No ads, no tracking, no wondering what some algorithm is doing with my information behind the scenes. I can search years of documents instantly, photos organize themselves intelligently, and everything just works the way I want it to.
 
-Well, mostly. There are definitely rough edges. Sometimes Nextcloud decides to re-sync everything for no apparent reason. Immich occasionally chokes on weirdly formatted photos. The backup notifications don't always work perfectly. 
+Well, mostly. There are definitely rough edges. Sometimes Nextcloud decides to re-sync everything for no apparent reason. Immich occasionally chokes on weirdly formatted photos. The backup notifications don't always work perfectly.
 
 But the backup strategy has been rock solid. Borg's deduplication is genuinely impressive - I can backup the system, data, everything multiple times without filling up storage instantly. What would normally be hundreds of gigabytes of redundant backups becomes a fraction of that thanks to intelligent block-level deduplication. I'm backing up more comprehensively than I ever did before while using less space.
 
@@ -229,7 +230,7 @@ But honestly? More than anything, this was an amazing learning experience. What 
 
 My partner can access her files from anywhere (when the internet connection cooperates), I can easily share content with friends, and while the kids are small now, they'll grow into having their own accounts and storage.
 
-My partner is impressed with what I've built, but she's also quick to point out when things don't "just work" the way they do with Apple or Google. Fair point. This isn't plug-and-play infrastructure. But it's *my* infrastructure, and I understand every piece of it now. That knowledge is worth more than the convenience trade-offs.
+My partner is impressed with what I've built, but she's also quick to point out when things don't "just work" the way they do with Apple or Google. Fair point. This isn't plug-and-play infrastructure. But it's _my_ infrastructure, and I understand every piece of it now. That knowledge is worth more than the convenience trade-offs.
 
 ## What's Next
 
