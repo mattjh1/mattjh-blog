@@ -14,7 +14,7 @@ My dotfiles, are the core of my daily workflow. Carefully configured for product
 
 <!--more-->
 
-> **Update:** I've recently revamped my dotfiles to create an even more streamlined and powerful setup. Check out the [new dotfiles configuration](./new-dotfiles.md) `ansible`, `chezmoi`, `Go templates`, `1password`, and enhanced portability across different systems.
+> **Update:** I've recently revamped my dotfiles to create an even more streamlined and powerful setup. Check out the [new dotfiles configuration](../new-dotfiles) `ansible`, `chezmoi`, `Go templates`, `1password`, and enhanced portability across different systems.
 
 My dotfiles hosted on [GitHub](https://github.com/mattjh1/dotfiles.old)
 
