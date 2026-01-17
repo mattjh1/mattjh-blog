@@ -39,7 +39,7 @@ Emotional reactions can even feel rewarded.
 But the rule still holds: **the person who stays calm under pressure usually ends up controlling the situation**.
 
 Discipline under provocation doesn’t mean passivity.  
-It means choosing *when* and *how* to act — instead of reacting on someone else’s terms.
+It means choosing _when_ and _how_ to act — instead of reacting on someone else’s terms.
 
 ---
 
@@ -52,9 +52,9 @@ You can’t reframe bad measurements.
 
 That mindset transfers cleanly:
 
-- verify assumptions  
-- anchor decisions in observable reality  
-- separate facts from stories  
+- verify assumptions
+- anchor decisions in observable reality
+- separate facts from stories
 
 In environments where narratives travel faster than truth, calmly checking reality is rare — and extremely valuable.
 
@@ -67,9 +67,9 @@ It’s about making sure the next person doesn’t get burned.
 
 In corporate work, that turns into:
 
-- clear documentation  
-- explicit decisions  
-- written follow-ups  
+- clear documentation
+- explicit decisions
+- written follow-ups
 
 Not as a threat.  
 Not as leverage.  
@@ -84,9 +84,9 @@ Ironically, doing this quietly creates real leverage — because outcomes become
 Respect on a job site comes from competence and reliability, not titles.  
 That carries over cleanly:
 
-- focus on solving the actual problem  
-- don’t optimize for appearances  
-- let consistency compound  
+- focus on solving the actual problem
+- don’t optimize for appearances
+- let consistency compound
 
 Recognition might be delayed — but it’s rarely misplaced.
 
@@ -94,16 +94,16 @@ Recognition might be delayed — but it’s rarely misplaced.
 
 ## 5. Silence as a Tool
 
-One of the hardest habits to carry over is knowing when *not* to speak.
+One of the hardest habits to carry over is knowing when _not_ to speak.
 
 Not every provocation deserves a response.  
 Not every misalignment needs immediate correction.
 
 Intentional silence:
 
-- gives others space to reveal themselves  
-- keeps your emotional surface area small  
-- preserves optionality  
+- gives others space to reveal themselves
+- keeps your emotional surface area small
+- preserves optionality
 
 It’s not avoidance.  
 It’s restraint.

@@ -526,7 +526,6 @@ var e, t;
                       for (
                         var c = [], a = [{ nestedArrIndex: -1, value: o }];
                         a.length;
-
                       ) {
                         var s = a.pop(),
                           u = s.nestedArrIndex,
@@ -618,7 +617,6 @@ var e, t;
           S = d > 1 || g,
           L = S ? Array(M) : [];
         (m = e.indexOf(t, w)) > -1;
-
       ) {
         var _ = N(t, {
           currentLocation: m,
@@ -1223,7 +1221,6 @@ var e, t;
                   for (
                     var t, n = 0, r = [], i = this.pattern.length;
                     (t = e.indexOf(this.pattern, n)) > -1;
-
                   )
                     ((n = t + i), r.push([t, n - 1]));
                   var o = !!r.length;
