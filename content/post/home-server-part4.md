@@ -20,7 +20,7 @@ This was supposed to be the easy part. I had a plan. I had a repo of scripts. I 
 
 <!--more-->
 
-_This is Part 4 of my home server journey. [Part 1](../home-server-part1) covered the inspiration, [Part 2](../home-server-part2) the Docker spiral, [Part 3](../home-server-part3) backups and security. Part 5 covers the split-DNS payoff that this post made possible._
+_This is Part 4 of my home server journey. [Part 1](../home-server-part1) covered the inspiration, [Part 2](../home-server-part2) the Docker spiral, [Part 3](../home-server-part3) backups and security. Part 5 will cover the split-DNS payoff that this post made possible._
 
 ## Why Bother
 
@@ -50,7 +50,7 @@ Hardware ended up minimal:
 
 About that PoE thing. The RB5009 comes in two variants: with and without PoE-out. I cheaped out and got the non-PoE one. The logic at the time was "I only need to power one device, the injector is included with the cAP ax, the PoE router is €80 more, do the math." The math was wrong. The cabinet has no spare power outlets and no room for a power strip, so the injector ended up mounted next to the RJ45 wall socket on the other side of the room — a visible, ugly little black brick. The €80 would have bought me a tidy cabinet and the option to add another PoE device later without thinking. Future me, learn from this me.
 
-{{< image src="poe_injector.jpg" alt="PoE injector in livingroom" caption="Sure its not that big a deal but still an eyesoar in an otherwise very satisfying setup I have to say.Network cabinet with patch panel, RB5009 router, and labeled cables" max-width="100%" >}}
+{{< image src="poe_injector.jpg" alt="PoE injector in livingroom" caption="Sure its not that big a deal but still an eyesoar in an otherwise very satisfying setup I have to say." max-width="100%" >}}
 
 The fiber media converter feeds straight into the router's `ether1`. Everything else is copper.
 
@@ -90,6 +90,13 @@ Print this, stick it on the cabinet, save your future self:
 | ether6 | **MGMT fallback**    | Always-on admin port. The hero of this post. |
 
 {{< image src="cabinet-overview.jpg" alt="Network cabinet with patch panel, RB5009 router, and labeled cables" max-width="100%" >}}
+
+{{< rawhtml >}}
+
+<div style="text-align: center;">
+    <img src="/images/like-a-glove-ace-ventura.webp" alt="And so on and so on and so on." width="840">
+</div>
+{{< /rawhtml >}}
 
 ## The Repeatable Setup Dream
 
@@ -385,7 +392,7 @@ The home server has a stable, predictable LAN IP. Which finally lets me solve th
 
 ## Things I Did Right (Eventually)
 
-- **One emergency port, untouchable.** `ether6` with a plain mgmt IP. No VLAN, no fanciness. When everything else breaks, that port is your way back in. Label it. Document the recovery procedure on the cabinet itself, in physical Sharpie.
+- **One emergency port, untouchable.** `ether6` with a plain mgmt IP. No VLAN, no fanciness. When everything else breaks, that port is your way back in. Label it. Document the recovery procedure on the cabinet itself.
 - **Manual chunks > big-bang scripts**, at least the first time through. The repo I wrote is genuinely useful as documentation and for re-applying known-good config to a fresh router. It is _not_ useful as a "just run this" tool on hardware you can't easily reach, because partial failures are devastating.
 - **VLAN-filtering goes on _last_.** Build everything with filtering off, verify every interface, _then_ flip the switch.
 - **Update before debugging.** I'm pretending this lesson is somehow novel.
