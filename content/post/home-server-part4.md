@@ -80,14 +80,14 @@ Plus DNS redirects so CORE/KIDS/IOT can't bypass AdGuard by hardcoding `8.8.8.8`
 
 Print this, stick it on the cabinet, save your future self:
 
-| Port  | Role                  | Notes                                    |
-| ----- | --------------------- | ---------------------------------------- |
-| ether1 | WAN                  | Fiber media converter                    |
-| ether2 | CORE access (V20)    | Office wall jack                         |
-| ether3 | SRV access (V30)     | Server wall jack                         |
-| ether4 | AP trunk             | Tagged 10/20/50/60/70 to cAP ax          |
-| ether5 | IOT access (V60)     | Living room dumb switch uplink           |
-| ether6 | **MGMT fallback**    | Always-on admin port. The hero of this post. |
+| Port   | Role              | Notes                                        |
+| ------ | ----------------- | -------------------------------------------- |
+| ether1 | WAN               | Fiber media converter                        |
+| ether2 | CORE access (V20) | Office wall jack                             |
+| ether3 | SRV access (V30)  | Server wall jack                             |
+| ether4 | AP trunk          | Tagged 10/20/50/60/70 to cAP ax              |
+| ether5 | IOT access (V60)  | Living room dumb switch uplink               |
+| ether6 | **MGMT fallback** | Always-on admin port. The hero of this post. |
 
 {{< image src="cabinet-overview.jpg" alt="Network cabinet with patch panel, RB5009 router, and labeled cables" max-width="100%" >}}
 
@@ -162,7 +162,7 @@ This is the moment in every networking project where you discover whether you ha
 
 Here's where the MGMT fallback labeling paid for itself.
 
-Hard reset on the RB5009 — hold the button while powering on, release after 5-10 seconds for default-config reset (not the longer hold for netinstall mode). Wait two minutes. Plug laptop into `ether6` directly. Force a static `192.168.10.2/24` on the laptop NIC because Pop!_OS was still autoconnecting Wi-Fi and getting confused about routes:
+Hard reset on the RB5009 — hold the button while powering on, release after 5-10 seconds for default-config reset (not the longer hold for netinstall mode). Wait two minutes. Plug laptop into `ether6` directly. Force a static `192.168.10.2/24` on the laptop NIC because Pop!\_OS was still autoconnecting Wi-Fi and getting confused about routes:
 
 ```bash
 nmcli connection modify "Wired connection 1" \
