@@ -416,3 +416,11 @@ For now, the network is a network. The lights are green. The cabinet looks tidy.
 `ether6` is still labeled "EMERGENCY ROUTER ACCESS." It's not going anywhere.
 
 **Coming soon: Part 5 - The Network Finally Catches Up**
+
+---
+
+_Edit — 15 May 2026:_ The r/homelab comments on this post convinced me to try something I'd been nervous about: yanking the SFP module out of the Genexis ONT and plugging it directly into the RB5009's SFP+ cage. The community's verdict was that it's usually a standard uncoded Skylane SFP and just works.
+
+It just worked. One DHCP client on `sfp-sfpplus1`, one NAT masquerade rule update, and the router had WAN. The Genexis box is now in a drawer. The blue fiber cable goes straight into the router. One less device powered on the wall, one less ethernet hop, cabinet noticeably cleaner. Labels updated accordingly.
+
+{{< image src="cabinet-no-ont.png" alt="Network cabinet after removing Genexis ONT — fiber SFP plugged directly into MikroTik RB5009 SFP+ cage" caption="Same cabinet, one box lighter." max-width="100%" >}}
