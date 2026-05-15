@@ -1,6 +1,6 @@
 ---
 title: "Home Server - Part 6: When the Router Runs the Fallback DNS"
-date: "2026-05-16"
+date: "2026-05-15"
 description: "AdGuard became load-bearing infrastructure. The fix wasn't a Raspberry Pi — it was a container on the router itself, plus one mount I almost forgot."
 tags:
   - homeserver
