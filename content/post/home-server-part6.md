@@ -23,13 +23,14 @@ The traditional answer is "buy a Raspberry Pi." I didn't want to, and the router
 
 _This is Part 6 of my home server journey. [Part 1](../home-server-part1) covered the inspiration, [Part 2](../home-server-part2) the Docker spiral, [Part 3](../home-server-part3) backups and security, [Part 4](../home-server-part4) the network rebuild, [Part 5](../home-server-part5) split DNS and the Caddy ingress that made the server load-bearing in the first place._
 
+
 ## Why Not a Pi
 
-A Raspberry Pi sounds like the obvious fallback right up until you look at it as another box to maintain. SD card eventually corrupts. PSU ages. OS updates need attending to. It's a second always-on appliance whose only job is "be there when the other one isn't" — and it has its own failure modes that aren't correlated with the failure modes of the thing it's backstopping.
+What I actually wanted was a fallback that **shared a failure domain with the network itself**. If the router is gone, DNS being gone doesn't matter — the internet is already gone. If the router is up, the fallback should be up too. By that logic, the right place to run a backup resolver is the router itself.
 
-What I actually wanted was a fallback that **shared a failure domain with the network itself**. If the router is gone, DNS being gone is irrelevant — the internet is already gone. If the router is up, the fallback should be up too. By that logic the right place to run the backup DNS is the router.
+A Raspberry Pi fails that test before you even plug it in. It's a separate appliance with its own power supply, its own SD card, its own OS updates — failure modes that have nothing to do with the network going down. The one time you actually need the fallback, you find out the Pi kernel-panicked three days ago and nobody noticed.
 
-The RB5009 can do this. RouterOS 7.4 added container support — not Docker, just enough Linux to run an OCI image with sane-ish defaults. The official documentation is unusually candid about the security trade-offs, the resource ceiling is modest, and the tooling is barebones. For a single-purpose, always-on resolver, it's exactly the right shape.
+The RB5009 can do this. RouterOS 7.4 added container support...
 
 ## The Hardware Footprint
 
@@ -101,9 +102,9 @@ If you see `AdGuard Home is now available, please visit ...` followed by DNS ups
 
 The first version of this config had no rewrites. The logic: rewrites point at `192.168.30.10`, and if the server is down, they'd go nowhere anyway. Omitting them seemed like the principled minimal approach.
 
-The problem is that "server is down" isn't the only state where the fallback gets used. Clients don't do a clean failover and stay there — they wander. Timeouts, retry logic, which query happened to land on which server. Without rewrites on the fallback, you get a silent degraded state: some queries return local IPs, some return Cloudflare IPs, and whether `cloud.mattjh.sh` resolves to your server or the public internet depends entirely on DNS lottery. The kind of fault that presents as "huh, Nextcloud is loading slowly sometimes" rather than "Nextcloud is down." Worse to debug than an outage.
+The problem is that "server is down" isn't the only state where the fallback gets used. Clients wander — timeouts, retry logic, whichever query happened to land on whichever server. Without rewrites on the fallback, `cloud.mattjh.sh` might resolve to the public Cloudflare tunnel IP instead of `192.168.30.10`. The service still works — same backend — but you've just reintroduced the 30ms round-trip that Part 5 was specifically built to eliminate.
 
-With rewrites on both, when the server is down, local services are down. Consistently. You know immediately what happened. Nobody spends twenty minutes checking container logs before realising the problem was DNS.
+With rewrites on both resolvers, local services always resolve locally. Whichever server answers, the answer is the same.
 
 ```yaml
 dns:
