@@ -23,7 +23,6 @@ The traditional answer is "buy a Raspberry Pi." I didn't want to, and the router
 
 _This is Part 6 of my home server journey. [Part 1](../home-server-part1) covered the inspiration, [Part 2](../home-server-part2) the Docker spiral, [Part 3](../home-server-part3) backups and security, [Part 4](../home-server-part4) the network rebuild, [Part 5](../home-server-part5) split DNS and the Caddy ingress that made the server load-bearing in the first place._
 
-
 ## Why Not a Pi
 
 What I actually wanted was a fallback that **shared a failure domain with the network itself**. If the router is gone, DNS being gone doesn't matter — the internet is already gone. If the router is up, the fallback should be up too. By that logic, the right place to run a backup resolver is the router itself.
