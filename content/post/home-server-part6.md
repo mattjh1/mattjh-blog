@@ -187,7 +187,7 @@ Two open items I keep meaning to get to:
 
 **Off-site backups.** Local Borg snapshots are great until the house catches fire. Monthly syncs to cloud storage using Borg's native repo sync would solve it — same encryption, same dedup, just a copy living somewhere that isn't this building. Not hard. Not done.
 
-**Renovate automation.** Right now I review PRs over coffee on Mondays and run `docker compose pull && up` by hand. Wiring that to a systemd job that pulls, deploys, and pings me on failure is straightforward. There's a small irrational part of me that likes pressing the button manually. That part of me is wrong, and I will eventually overrule it.
+**Renovate automation.** Right now I review PRs over coffee on Mondays and run `git pull && docker compose up -d` by hand. Wiring that to a systemd job that pulls, deploys, and pings me on failure is straightforward. There's a small irrational part of me that likes pressing the button manually. That part of me is wrong, and I will eventually overrule it.
 
 ---
 
