@@ -366,4 +366,3 @@ _**Edit — 20th May 2026:** The manual DNS rewrite problem above didn't last lo
 _The setup keeps getting more interesting. Which is partly the point and partly a problem._
 
 ---
-
