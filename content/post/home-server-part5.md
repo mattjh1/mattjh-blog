@@ -359,6 +359,11 @@ Part 6 walks through putting AdGuard on the router itself as a fallback resolver
 
 **Coming soon: Part 6 - When the Router Runs the Fallback DNS**
 
+_**Edit — 20th May 2026:** The manual DNS rewrite problem above didn't last long. Switched to a wildcard `*.mattjh.sh` rewrite in AdGuard — both the server instance and the router fallback — and a wildcard DNS record in Cloudflare. Adding a new service now only requires a Cloudflare Tunnel hostname and a Caddyfile block. DNS sorts itself._
+
 ---
 
 _The setup keeps getting more interesting. Which is partly the point and partly a problem._
+
+---
+
