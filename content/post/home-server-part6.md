@@ -174,11 +174,13 @@ Bring the container back up and within the next query cycle the primary takes ov
 
 I run this test, deliberately, every couple of months — same way you should test a UPS by yanking the wall plug. A fallback you've never failed over to is not a fallback, it's a rumor.
 
+*(Narrator: it was a rumor. See the update at the end for why this test had a blind spot.)*
+
 ## What This Didn't Solve
 
 A few honest caveats:
 
-- **When the server is down, local services are down.** The fallback carries the rewrites, so DNS is consistent — but the rewrites still point at `192.168.30.10`, and nothing is answering there if the server is off. That's the correct behaviour. It does mean any LAN-only service without a Cloudflare tunnel path disappears entirely during a server outage. None of mine are in that state, but the day one is I'll need to remember this distinction.
+- **When the server is down, DNS itself keeps working**  — the router's AdGuard instance answers queries just fine, and the internet, LAN routing, and every other device on the network are unaffected. What's down is anything that depends on the server: the actual services behind those rewritten domains, and the Cloudflare tunnel that exposes them externally, since cloudflared runs on the same host. The fallback resolver's job was never to keep services alive — it's to keep DNS *consistent* so that when the server comes back, nothing needs re-resolving. That's a network-level guarantee, not a service-level one, and the two are easy to conflate.
 - **The container tooling is barebones.** RouterOS containers don't have Docker's update flow, the resource introspection, or years of community recipes. Updating AdGuard is "pull the new image, swap it in, restart." Treat them as appliances, not as a second Docker host.
 
 ## What's Next
@@ -192,3 +194,63 @@ Two open items I keep meaning to get to:
 ---
 
 _Six posts in and the network has stopped surprising me. That's either progress or hubris — I expect to find out which._
+
+## Update (2026-07-07): The Fallback That Wasn't Reachable
+
+Hubris, it turns out.
+
+The server went down for real a while back — not a `docker compose down`, the whole host, needing a manual power-on. This was the actual test of everything above. It failed. No internet, full stop, on every device on CORE/KIDS/IOT, for the entire outage.
+
+The container was fine. `/container print` showed it `running` the whole time, uptime on the router itself measured in weeks with no reboot in the window. Whatever broke, it wasn't the fallback resolver going down too.
+
+It was this, from Part 4's firewall rebuild, sitting quietly in the DNS redirect step:
+
+```routeros
+/ip firewall nat add chain=dstnat src-address=192.168.20.0/24 \
+  protocol=udp dst-port=53 action=dst-nat to-addresses=192.168.30.10 \
+  comment="CORE DNS redirect"
+```
+
+This rewrites *every* port-53 packet from CORE (and KIDS, and IOT) to the primary AdGuard, no exceptions. It exists to stop devices dodging the filter by hardcoding `1.1.1.1` or similar. It does that job fine. It also, as an unintended side effect, catches a client's own retry to the fallback server and bounces it right back to the primary — the one that's down. Doesn't matter that DHCP hands out `172.31.255.2` as a secondary DNS server. The network itself won't let a packet reach it. The fallback was up, healthy, and completely unreachable from the VLANs that needed it, for the entire outage.
+
+### Why "Proof It Works" Didn't Prove It
+
+Look again at the test earlier in this post:
+
+```bash
+docker stop adguard
+nslookup google.com
+# still resolves
+```
+
+That ran on the server itself. The server lives on SRV — the one subnet this redirect rule explicitly doesn't touch (`MGMT`/`SRV` are trusted, not force-redirected). The test proved the fallback resolver answers queries when nothing's in the way. It never proved a CORE or KIDS device could reach it, because the one client that can't hit the redirect wall is the one I tested from. Correct test, wrong vantage point — which is a more embarrassing bug than the NAT rule itself.
+
+### The Fix
+
+One line, six times:
+
+```routeros
+/ip firewall nat set [find comment="CORE DNS redirect"] dst-address=!172.31.255.2
+/ip firewall nat set [find comment="CORE DNS redirect TCP"] dst-address=!172.31.255.2
+/ip firewall nat set [find comment="KIDS DNS redirect"] dst-address=!172.31.255.2
+/ip firewall nat set [find comment="KIDS DNS redirect TCP"] dst-address=!172.31.255.2
+/ip firewall nat set [find comment="IOT DNS redirect"] dst-address=!172.31.255.2
+/ip firewall nat set [find comment="IOT DNS redirect TCP"] dst-address=!172.31.255.2
+```
+
+Now a packet already headed for the fallback address passes through untouched. Anything else on port 53 — a device trying to sneak off to `1.1.1.1` — still gets redirected onto AdGuard as intended. The redirect keeps doing its actual job; it just stops eating its own escape hatch.
+
+Small, dumb bug to write it out like that. It took an actual outage to surface, because the one test I'd written specifically to catch this class of problem was quietly exempt from the exact rule that broke it.
+
+### The Corrected Test
+
+Retest from a CORE device this time, not the server:
+
+```bash
+# on a CORE/KIDS client, after stopping AdGuard on the server:
+nslookup google.com
+# resolves via 172.31.255.2 now
+```
+
+That's the version of the test going in the rotation from here — the one that actually exercises the redirect a real client sits behind, not the one VLAN that was never going to hit the bug in the first place.
+
