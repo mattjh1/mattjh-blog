@@ -625,7 +625,7 @@ var e, t;
           ignoreLocation: p,
         });
         if (((x = Math.min(_, x)), (w = m + k), S))
-          for (var O = 0; O < k; ) ((L[m + O] = 1), (O += 1));
+          for (var O = 0; O < k;) ((L[m + O] = 1), (O += 1));
       }
       w = -1;
       for (
@@ -633,7 +633,7 @@ var e, t;
         E < k;
         E += 1
       ) {
-        for (var F = 0, R = I; F < R; )
+        for (var F = 0, R = I; F < R;)
           (N(t, {
             errors: E,
             currentLocation: b + R,
@@ -765,7 +765,7 @@ var e, t;
               },
               x = this.pattern.length;
             if (x > W) {
-              for (var w = 0, S = x % W, L = x - S; w < L; )
+              for (var w = 0, S = x % W, L = x - S; w < L;)
                 (b(this.pattern.substr(w, W), w), (w += W));
               if (S) {
                 var _ = x - W;
@@ -1310,13 +1310,13 @@ var e, t;
                   i < o;
                   i += 1
                 ) {
-                  for (var c = n[i], a = !1, s = -1; !a && ++s < Z; ) {
+                  for (var c = n[i], a = !1, s = -1; !a && ++s < Z;) {
                     var u = Y[s],
                       h = u.isMultiMatch(c);
                     h && (r.push(new u(h, t)), (a = !0));
                   }
                   if (!a)
-                    for (s = -1; ++s < Z; ) {
+                    for (s = -1; ++s < Z;) {
                       var l = Y[s],
                         f = l.isSingleMatch(c);
                       if (f) {

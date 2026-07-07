@@ -1043,11 +1043,11 @@
           }),
           lt: U(function (e, t, n) {
             var r;
-            for (r = n < 0 ? n + t : t < n ? t : n; 0 <= --r; ) e.push(r);
+            for (r = n < 0 ? n + t : t < n ? t : n; 0 <= --r;) e.push(r);
             return e;
           }),
           gt: U(function (e, t, n) {
-            for (var r = n < 0 ? n + t : n; ++r < t; ) e.push(r);
+            for (var r = n < 0 ? n + t : n; ++r < t;) e.push(r);
             return e;
           }),
         },
@@ -2918,13 +2918,11 @@
         l,
         c = e.cloneNode(!0),
         f = J(e);
-      if (
-        !(
-          le.noCloneChecked ||
-          (1 !== e.nodeType && 11 !== e.nodeType) ||
-          ce.isXMLDoc(e)
-        )
-      )
+      if (!(
+        le.noCloneChecked ||
+        (1 !== e.nodeType && 11 !== e.nodeType) ||
+        ce.isXMLDoc(e)
+      ))
         for (a = Ee(c), r = 0, i = (o = Ee(e)).length; r < i; r++)
           ((s = o[r]),
             (u = a[r]),

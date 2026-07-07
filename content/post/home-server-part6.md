@@ -174,13 +174,13 @@ Bring the container back up and within the next query cycle the primary takes ov
 
 I run this test, deliberately, every couple of months — same way you should test a UPS by yanking the wall plug. A fallback you've never failed over to is not a fallback, it's a rumor.
 
-*(Narrator: it was a rumor. See the update at the end for why this test had a blind spot.)*
+_(Narrator: it was a rumor. See the update at the end for why this test had a blind spot.)_
 
 ## What This Didn't Solve
 
 A few honest caveats:
 
-- **When the server is down, DNS itself keeps working**  — the router's AdGuard instance answers queries just fine, and the internet, LAN routing, and every other device on the network are unaffected. What's down is anything that depends on the server: the actual services behind those rewritten domains, and the Cloudflare tunnel that exposes them externally, since cloudflared runs on the same host. The fallback resolver's job was never to keep services alive — it's to keep DNS *consistent* so that when the server comes back, nothing needs re-resolving. That's a network-level guarantee, not a service-level one, and the two are easy to conflate.
+- **When the server is down, DNS itself keeps working** — the router's AdGuard instance answers queries just fine, and the internet, LAN routing, and every other device on the network are unaffected. What's down is anything that depends on the server: the actual services behind those rewritten domains, and the Cloudflare tunnel that exposes them externally, since cloudflared runs on the same host. The fallback resolver's job was never to keep services alive — it's to keep DNS _consistent_ so that when the server comes back, nothing needs re-resolving. That's a network-level guarantee, not a service-level one, and the two are easy to conflate.
 - **The container tooling is barebones.** RouterOS containers don't have Docker's update flow, the resource introspection, or years of community recipes. Updating AdGuard is "pull the new image, swap it in, restart." Treat them as appliances, not as a second Docker host.
 
 ## What's Next
@@ -211,7 +211,7 @@ It was this, from Part 4's firewall rebuild, sitting quietly in the DNS redirect
   comment="CORE DNS redirect"
 ```
 
-This rewrites *every* port-53 packet from CORE (and KIDS, and IOT) to the primary AdGuard, no exceptions. It exists to stop devices dodging the filter by hardcoding `1.1.1.1` or similar. It does that job fine. It also, as an unintended side effect, catches a client's own retry to the fallback server and bounces it right back to the primary — the one that's down. Doesn't matter that DHCP hands out `172.31.255.2` as a secondary DNS server. The network itself won't let a packet reach it. The fallback was up, healthy, and completely unreachable from the VLANs that needed it, for the entire outage.
+This rewrites _every_ port-53 packet from CORE (and KIDS, and IOT) to the primary AdGuard, no exceptions. It exists to stop devices dodging the filter by hardcoding `1.1.1.1` or similar. It does that job fine. It also, as an unintended side effect, catches a client's own retry to the fallback server and bounces it right back to the primary — the one that's down. Doesn't matter that DHCP hands out `172.31.255.2` as a secondary DNS server. The network itself won't let a packet reach it. The fallback was up, healthy, and completely unreachable from the VLANs that needed it, for the entire outage.
 
 ### Why "Proof It Works" Didn't Prove It
 
@@ -253,4 +253,3 @@ nslookup google.com
 ```
 
 That's the version of the test going in the rotation from here — the one that actually exercises the redirect a real client sits behind, not the one VLAN that was never going to hit the bug in the first place.
-

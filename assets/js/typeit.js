@@ -82,7 +82,7 @@
         },
       }),
       o = [];
-    for (; (r = a.nextNode()); )
+    for (; (r = a.nextNode());)
       (r.originalParent || (r.originalParent = r.parentNode), o.push(r));
     return t ? o.reverse() : o;
   }
@@ -158,7 +158,7 @@
         l = a,
         u = () => l && !l.delay,
         c = a.shouldPauseCursor() && i.autoPause;
-      for (; u(); ) (o.push(l), u() && s++, (l = t[s] ? t[s][1] : null));
+      for (; u();) (o.push(l), u() && s++, (l = t[s] ? t[s][1] : null));
       if (o.length)
         return (
           await L(async () => {
