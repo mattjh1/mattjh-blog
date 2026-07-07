@@ -15,6 +15,8 @@ categories:
 toc: true
 ---
 
+> **Update (2026-07-07):** this design had a real, production-breaking bug — see the postmortem at the end for what broke and why my own test didn't catch it.
+
 Part 5 ended on a confession: AdGuard on the home server is now critical infrastructure. If that container goes sideways — a bad update, a `docker compose down` at the wrong moment, the server hanging on a kernel upgrade — every device on the trusted VLANs loses DNS. Internet stops. The household notices in roughly four seconds.
 
 The traditional answer is "buy a Raspberry Pi." I didn't want to, and the router had a better idea anyway.
